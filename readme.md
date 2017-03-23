@@ -1,4 +1,4 @@
-# System zarządzania treścią witryny internetowej
+# TrainCMS - System zarządzania treścią witryny internetowej
 
 ## keywords
 cms, ruby on rails, calendar, comments, tags
@@ -13,20 +13,35 @@ Kamil Pek, numer albumu 231050, [github.com/kamilpek](https://github.com/kamilpe
 [github.com/kamilpek/traincms](https://github.com/kamilpek/traincms)
 
 ## Streszczenie
-W pracy przedstawiono/opisano (prototyp/wersję alpha) systemu zarządzania treścią witryny internetowej „TrainCMS”.
-Zaimplementowano ... funkcjonalność ... publikowanie artykułów, kategoryzowacja, wyświetlanie listy kategorii się pasku nawigacji na szczycie strony. 
-
-Wszystkie artykuły pojawiają się na stronie głównej, nie zależnie od kategorii w ustalonym porządku czyli od daty dodania malejąco. 
-
-Pojedynczy artykuł posiada dwa dodatkowe atrybuty takie jak aktywny i wyróżniony, które odpowiednio pozwalają na jego wyświetlanie i wyświetlanie w karuzeli obrazków na szczycie pod paskiem nawigacji. Do każdego artykułu możemy dodać tagi, które umożliwiają dodatkowe kategoryzowanie jak i łatwe wyszukiwanie interesujących nas treści. Artykuły można również komentować, ta funkcjonalność udostępniona jest dla każdego odwiedzającego. Kolejną dużą funkcjonalnością jest kalendarz wydarzeń. Wydarzenia również możemy komentować. Zarówno do artykułów jak i komentarzy można dodać ilustrację. Po zalogowaniu się z uprawnieniami administratora zyskujemy dostęp do zaplecza. 
-
-W panelu administratora dodano .. dostęp do podglądu statystyk jak i zarządzania stroną.
-
-Użyto ... technologie ...
+W pracy przedstawiono wersję beta systemu zarządzania treścią witryny internetowej „TrainCMS”. W trakcie pracy zaimplementowano publikowanie artykułów, kategoryzację, wyświetlanie listy kategorii się pasku nawigacji na szczycie strony. Zaimplementowano klasyczny User Interface, który wyświetla wszystkie artykuły na stronie głównej, nie zależnie od kategorii w ustalonym porządku czyli malejąco od daty dodania, które można również komentować. Kolejną częścią User Interface jest kalendarz wydarzeń, kótre również możena komentować. Zarówno do artykułów jak i komentarzy zaimplementowano możliwość dodania ilustracji.
+Po zalogowaniu się z uprawnieniami administratora zyskujemy dostęp do panelu administratora, w którym stworzono interfejs do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkwonikami i kalendarzem. Udostępniono także podgląd statystyk.
+Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundation, jQuery Turbolinks, Plataformatec Devise, CarrierWave, RMagick, reCAPTCHA, CKEditor, Chartkick, Prawn.
 
 ## Wstęp
-Motywacją do napisania własnego systemu zarządzania treścią (ang. _Content Managment System_, CMS)
-było zaprezentowanie jak obszerniejszej części nabytych umiejętności podczas trwania studiów. Innym ważnym aspektem, który skłonił mnie do stworzenia akurat CMS’a jest wieloletnia praca na systemie Joomla, zapragnąłem napisać coś podobnego samodzielnie, wykazać swoje podejście na ten temat robiąc wszystko tak jak bym chciał, nie idąc na żadne kompromisy. Takie systemy są często wybierane przez między innymi lokalne serwisy informacyjne, bądź różnego rodzaju firmy, dlatego w swoim systemie zawarłem wiele funkcjonalności, które na pewno przydadzą się różnym podmiotom i instytucjom w skutecznym zaistnieniu w Internecie.
+Motywacją do napisania własnego systemu zarządzania treścią (ang. _Content Managment System_, CMS) było zaprezentowanie jak obszerniejszej części nabytych umiejętności podczas trwania studiów. Innym ważnym aspektem, który skłonił mnie do stworzenia akurat CMS’a jest wieloletnia praca na systemie Joomla. Takie systemy są często wybierane przez między innymi lokalne serwisy informacyjne, bądź różnego rodzaju firmy, dlatego w swoim systemie zawarłem wiele funkcjonalności, które na pewno przydadzą się różnym podmiotom i instytucjom w skutecznym zaistnieniu w Internecie. Korzystając już z utartych schematów, pojedynczy artykuł posiada dwa dodatkowe atrybuty takie jak aktywny i wyróżniony, które odpowiednio pozwalają na jego wyświetlanie i wyświetlanie w karuzeli obrazków na szczycie pod paskiem nawigacji. Do każdego artykułu możemy dodać tagi, które umożliwiają dodatkowe kategoryzowanie jak i łatwe wyszukiwanie interesujących nas treści.
+
+## Spis treści
+1. Wstęp i opis problemu   
+   - Porównanie dostępnych rozwiązań,
+      - Joomla,
+      - WordPress,
+   - Możliwości zastosowania praktycznego,
+      - strona wizytówka,
+      - internetowe portfolio,
+      - serwis informacyjny,
+1. Projekt i analiza
+   - Diagram klas,
+   - Diagram modelu danych,
+   - Projekt interfejsu użytkownika,
+1. Implementacja
+   - Architektura rozwiązania - Ruby on Rails
+   - ZURB Foundation
+   - CarrierWave
+   - Prawn
+1. Bibliografia
+    - ksiązki,
+    - artykuły w Internecie,
+    - GitHub,
 
 ## Literatura
 1. [guides.rubyonrails.org](http://guides.rubyonrails.org/)
