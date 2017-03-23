@@ -17,9 +17,6 @@ W pracy przedstawiono wersję beta systemu zarządzania treścią witryny intern
 Po zalogowaniu się z uprawnieniami administratora zyskujemy dostęp do panelu administratora, w którym stworzono interfejs do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkwonikami i kalendarzem. Udostępniono także podgląd statystyk.
 Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundation, jQuery Turbolinks, Plataformatec Devise, CarrierWave, RMagick, reCAPTCHA, CKEditor, Chartkick, Prawn.
 
-## Wstęp
-Motywacją do napisania własnego systemu zarządzania treścią (ang. _Content Managment System_, CMS) było zaprezentowanie jak obszerniejszej części nabytych umiejętności podczas trwania studiów. Innym ważnym aspektem, który skłonił mnie do stworzenia akurat CMS’a jest wieloletnia praca na systemie Joomla. Takie systemy są często wybierane przez między innymi lokalne serwisy informacyjne, bądź różnego rodzaju firmy, dlatego w swoim systemie zawarłem wiele funkcjonalności, które na pewno przydadzą się różnym podmiotom i instytucjom w skutecznym zaistnieniu w Internecie. Korzystając już z utartych schematów, pojedynczy artykuł posiada dwa dodatkowe atrybuty takie jak aktywny i wyróżniony, które odpowiednio pozwalają na jego wyświetlanie i wyświetlanie w karuzeli obrazków na szczycie pod paskiem nawigacji. Do każdego artykułu możemy dodać tagi, które umożliwiają dodatkowe kategoryzowanie jak i łatwe wyszukiwanie interesujących nas treści.
-
 ## Spis treści
 1. Wstęp i opis problemu   
    - Porównanie dostępnych rozwiązań,
@@ -42,6 +39,9 @@ Motywacją do napisania własnego systemu zarządzania treścią (ang. _Content 
     - ksiązki,
     - artykuły w Internecie,
     - GitHub,
+
+## Wstęp
+Motywacją do napisania własnego systemu zarządzania treścią (ang. _Content Managment System_, CMS) było zaprezentowanie jak obszerniejszej części nabytych umiejętności podczas trwania studiów. Innym ważnym aspektem, który skłonił mnie do stworzenia akurat CMS’a jest wieloletnia praca na systemie Joomla. Takie systemy są często wybierane przez między innymi lokalne serwisy informacyjne, bądź różnego rodzaju firmy, dlatego w swoim systemie zawarłem wiele funkcjonalności, które na pewno przydadzą się różnym podmiotom i instytucjom w skutecznym zaistnieniu w Internecie. Korzystając już z utartych schematów, pojedynczy artykuł posiada dwa dodatkowe atrybuty takie jak aktywny i wyróżniony, które odpowiednio pozwalają na jego wyświetlanie i wyświetlanie w karuzeli obrazków na szczycie pod paskiem nawigacji. Do każdego artykułu możemy dodać tagi, które umożliwiają dodatkowe kategoryzowanie jak i łatwe wyszukiwanie interesujących nas treści.
 
 ## Literatura
 1. [guides.rubyonrails.org](http://guides.rubyonrails.org/)
