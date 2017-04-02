@@ -1,4 +1,4 @@
-# TrainCMS - System zarządzania treścią witryny internetowej
+# TrainCMS — System zarządzania treścią witryny internetowej
 
 ## keywords
 cms, ruby on rails, calendar, comments, tags
@@ -13,35 +13,41 @@ Kamil Pek, numer albumu 231050, [github.com/kamilpek](https://github.com/kamilpe
 [github.com/kamilpek/traincms](https://github.com/kamilpek/traincms)
 
 ## Streszczenie
-W pracy przedstawiono wersję beta systemu zarządzania treścią witryny internetowej „TrainCMS”. W trakcie pracy zaimplementowano publikowanie artykułów, kategoryzację, wyświetlanie listy kategorii się pasku nawigacji na szczycie strony. Zaimplementowano klasyczny User Interface, który wyświetla wszystkie artykuły na stronie głównej, nie zależnie od kategorii w ustalonym porządku czyli malejąco od daty dodania, które można również komentować. Kolejną częścią User Interface jest kalendarz wydarzeń, kótre również możena komentować. Zarówno do artykułów jak i komentarzy zaimplementowano możliwość dodania ilustracji.
-Po zalogowaniu się z uprawnieniami administratora zyskujemy dostęp do panelu administratora, w którym stworzono interfejs do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkwonikami i kalendarzem. Udostępniono także podgląd statystyk.
+W pracy przedstawiono wersję beta systemu zarządzania treścią witryny internetowej „TrainCMS”. W trakcie pracy zaimplementowano publikowanie artykułów, kategoryzację, wyświetlanie listy kategorii na pasku nawigacji. Stworzono User Interface, który wyświetla wszystkie artykuły na stronie głównej, niezależnie od kategorii w kolejności malejącej od daty dodania oraz kalendarz wydarzeń. Do artykułów i wydarzeń w kalendarzu zaimplementowano możliwość załączania ilustracji oraz dodawania komentarzy.
+
+Zaimplementowano panel administratora do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkownikami i kalendarzem oraz podglądu statystyk.
+
 Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundation, jQuery Turbolinks, Plataformatec Devise, CarrierWave, RMagick, reCAPTCHA, CKEditor, Chartkick, Prawn.
 
 ## Spis treści
 1. Wstęp i opis problemu   
-   - Porównanie dostępnych rozwiązań,
-      - Joomla,
-      - WordPress,
-   - Możliwości zastosowania praktycznego,
-      - strona wizytówka,
-      - internetowe portfolio,
-      - serwis informacyjny,
+   1. Porównanie dostępnych rozwiązań,
+      1. Joomla,
+      1. WordPress,
+   1. Możliwości zastosowania praktycznego,
+      1. strona wizytówka,
+      1. internetowe portfolio,
+      1. serwis informacyjny,
 1. Projekt i analiza
-   - Diagram klas,
-   - Diagram modelu danych,
-   - Projekt interfejsu użytkownika,
+   1. Diagram klas,
+   1. Diagram modelu danych,
+   1. Projekt interfejsu użytkownika,
 1. Implementacja
-   - Architektura rozwiązania - Ruby on Rails
-   - ZURB Foundation
-   - CarrierWave
-   - Prawn
+   1. Architektura rozwiązania - Ruby on Rails
+   1. ZURB Foundation
+   1. CarrierWave
+   1. Prawn
 1. Bibliografia
-    - ksiązki,
-    - artykuły w Internecie,
-    - GitHub,
+    1. książki
+    1. artykuły w Internecie
+    1. materiały dostępne na GitHub.com
 
 ## Wstęp
-Motywacją do napisania własnego systemu zarządzania treścią (ang. _Content Managment System_, CMS) było zaprezentowanie jak obszerniejszej części nabytych umiejętności podczas trwania studiów. Innym ważnym aspektem, który skłonił mnie do stworzenia akurat CMS’a jest wieloletnia praca na systemie Joomla. Takie systemy są często wybierane przez między innymi lokalne serwisy informacyjne, bądź różnego rodzaju firmy, dlatego w swoim systemie zawarłem wiele funkcjonalności, które na pewno przydadzą się różnym podmiotom i instytucjom w skutecznym zaistnieniu w Internecie. Korzystając już z utartych schematów, pojedynczy artykuł posiada dwa dodatkowe atrybuty takie jak aktywny i wyróżniony, które odpowiednio pozwalają na jego wyświetlanie i wyświetlanie w karuzeli obrazków na szczycie pod paskiem nawigacji. Do każdego artykułu możemy dodać tagi, które umożliwiają dodatkowe kategoryzowanie jak i łatwe wyszukiwanie interesujących nas treści.
+Podczas paroletniej pracy z najpopularniejszymi aplikacjami z tej kategorii, takimi jak Joomla i WordPress nabyłem pewne doświadczenie oraz swój pogląd na to jak ma wyglądać system zarządzania treścią (ang. _Content Managment System_, CMS). Naturalnym stało się stworzenie własnego systemu, przy okazji prezentując jak najszerszą część nabytych umiejętności w trakcie trwania studiów.
+
+Istniejące zaawansowane systemy są często wybierane przez między innymi lokalne serwisy informacyjne, przedsiębiorstwa i instytucje, dlatego w swoim systemie zawarłem funkcjonalności, które na pewno przydadzą się różnym podmiotom w skutecznym zaistnieniu w Internecie.
+
+Podczas tworzenia interfejsu użytkownika i administratora kierowałem się głównie ergonomią użytkowania i przedstawieniem możliwości jakie prezentuje system w jak najbardziej przystępny sposób tak, aby nawet najbardziej początkujący użytkowników mógł w sposób intuicyjny poruszać się po aplikacji.
 
 ## Literatura
 1. [guides.rubyonrails.org](http://guides.rubyonrails.org/)
