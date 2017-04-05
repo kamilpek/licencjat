@@ -15,7 +15,7 @@ Kamil Pek, numer albumu 231050, [github.com/kamilpek](https://github.com/kamilpe
 ## Streszczenie
 W pracy przedstawiono wersję beta systemu zarządzania treścią witryny internetowej „TrainCMS”. W trakcie pracy zaimplementowano publikowanie artykułów, kategoryzację, wyświetlanie listy kategorii na pasku nawigacji. Stworzono User Interface, który wyświetla wszystkie artykuły na stronie głównej, niezależnie od kategorii w kolejności malejącej od daty dodania oraz kalendarz wydarzeń. Do artykułów i wydarzeń w kalendarzu zaimplementowano możliwość załączania ilustracji oraz dodawania komentarzy.
 
-Zaimplementowano panel administratora do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkownikami i kalendarzem oraz podglądu statystyk.
+Zaimplementowano panel administratora do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkownikami i kalendarzem oraz do podglądu statystyk.
 
 Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundation, jQuery Turbolinks, Plataformatec Devise, CarrierWave, RMagick, reCAPTCHA, CKEditor, Chartkick, Prawn.
 
@@ -43,11 +43,11 @@ Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundati
     1. materiały dostępne na GitHub.com
 
 ## Wstęp
-Podczas paroletniej pracy z najpopularniejszymi aplikacjami z tej kategorii, takimi jak Joomla i WordPress nabyłem pewne doświadczenie oraz swój pogląd na to jak ma wyglądać system zarządzania treścią (ang. _Content Managment System_, CMS). Naturalnym stało się stworzenie własnego systemu, przy okazji prezentując jak najszerszą część nabytych umiejętności w trakcie trwania studiów.
+Podczas kilkuletniej pracy z najpopularniejszymi aplikacjami w tej kategorii, takimi jak Joomla i WordPress nabyłem doświadczenie oraz swój pogląd na to jak ma wyglądać system zarządzania treścią (ang. _Content Managment System_, CMS). Naturalnym stało się więc stworzenie własnego systemu, przy okazji prezentując jak najszerszą część umiejętności nabytych w trakcie trwania studiów.
 
-Istniejące zaawansowane systemy są często wybierane przez między innymi lokalne serwisy informacyjne, przedsiębiorstwa i instytucje, dlatego w swoim systemie zawarłem funkcjonalności, które na pewno przydadzą się różnym podmiotom w skutecznym zaistnieniu w Internecie.
+Istniejące systemy są często wybierane przez między innymi lokalne serwisy informacyjne, przedsiębiorstwa i instytucje, dlatego w swoim systemie zawarłem funkcjonalności, które na pewno przydadzą się różnym podmiotom w skutecznym zaistnieniu w Internecie.
 
-Podczas tworzenia interfejsu użytkownika i administratora kierowałem się głównie ergonomią użytkowania i przedstawieniem możliwości jakie prezentuje system w jak najbardziej przystępny sposób tak, aby nawet najbardziej początkujący użytkowników mógł w sposób intuicyjny poruszać się po aplikacji.
+Podczas tworzenia interfejsu użytkownika i administratora, kierowałem się głównie ergonomią użytkowania i przedstawieniem możliwości jakie prezentuje system w jak najbardziej przystępny sposób tak, aby początkujący użytkownik mógł poruszać się w sposób intuicyjny po aplikacji.
 
 ## Literatura
 1. [guides.rubyonrails.org](http://guides.rubyonrails.org/)
