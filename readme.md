@@ -20,18 +20,21 @@ Zaimplementowano panel administratora do zarządzania artykułami, kategoriami, 
 Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundation, jQuery Turbolinks, Plataformatec Devise, CarrierWave, RMagick, reCAPTCHA, CKEditor, Chartkick, Prawn.
 
 ## Spis treści
-1. Wstęp i opis problemu   
-   1. Porównanie dostępnych rozwiązań,
-      1. Joomla,
-      1. WordPress,
-   1. Możliwości zastosowania praktycznego,
-      1. strona wizytówka,
-      1. internetowe portfolio,
-      1. serwis informacyjny,
+1. Wstęp i opis problemu
+   1. Porównanie dostępnych rozwiązań
+      1. Joomla
+      1. WordPress
+   1. Możliwości zastosowania praktycznego
+      1. strona wizytówka
+      1. internetowe portfolio
+      1. serwis informacyjny
 1. Projekt i analiza
-   1. Diagram klas,
-   1. Diagram modelu danych,
-   1. Projekt interfejsu użytkownika,
+   1. Diagram związków encji
+   1. Diagram kontrolera danych
+   1. Projekt interfejsu użytkownika
+	1. Panel Administracyjny
+	1. Widok Redaktora
+	1. Widok Gościa
 1. Implementacja
    1. Architektura rozwiązania - Ruby on Rails
    1. ZURB Foundation

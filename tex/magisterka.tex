@@ -1,7 +1,7 @@
-\documentclass[brudnopis]{xmgr}
+%\documentclass[brudnopis]{xmgr}
 % Jeśli nowe rozdziały mają się zaczynać na stronach
 % nieparzystych:
-%\documentclass[openright]{xmgr}
+\documentclass[openright]{xmgr}
 
 %\defaultfontfeatures{Scale=MatchLowercase}
 %\setmainfont[Numbers=OldStyle,Ligatures=TeX]{Minion Pro}
@@ -88,32 +88,66 @@ System TrainCMS został opracowany w taki sposób, aby sprostać wielu wymaganio
 
 \subsection{Strona wizytkówa}
 
-W celu stworzenia optymalnej i efektownej strony wizytówki należałoby stworzyć dowolną, zależna od potrzeb ilość artykułów, które zawierać by mogły na przykład dane kontaktowe do firmy, kolejny artykuł zawierać by mógł referencję, natomiast kolejny parę zdań o firmie i jej profilu działalności. Po odpowiednim według operatora strony rozmieszczeniu informacji możemy przejść do podglądu statystyk, które w tym przypadku mogą wyświetlić informację na przykład o tym, która sekcji informacji jest najbardziej popularna. W tego rodzaju rozwiązaniu można by było się zastanowić na koniecznością włączenia modułu komentarzy. 
+W celu stworzenia optymalnej i efektownej strony wizytówki należałoby uruchomić tryb statycznej strony głównej. W tymże celu utworzymy zakładkę, którą oznaczymy jako strona główna. Ilość pozostałych zakładek jest dowolna. Może się też zdarzyć potrzeba prowadzenia minibloga lub prostych aktualności firmy, tutaj posłużymy się kategoriami i artykułami. Łącza do kategorii będą wyswietlona na górnym pasku nawigacji co ułatwi poruszanie się po stronie.  Po odpowiednim według operatora strony rozmieszczeniu informacji, możemy przejść do podglądu statystyk, które w tym przypadku mogą wyświetlić informację na przykład o tym, która sekcji informacji jest najbardziej popularna. 
 
 \subsection{Internetowe portfolio}
 
-Każda osoba tworząca w internecie portfolio swojej działalności zamierza przyciągnąć tym samym jak największą liczbę nowy klientów. Aby skutecznie rozwiązać ten problem proponuję każde dzieło opisywać w osobnym artykule. Natomiast informację, którą klient zechciałyby umieścić na szczycie należy zaznaczyć atrybut wyróżniony.
+Każda osoba tworząca w Internecie portfolio swojej działalności zamierza przyciągnąć w ten sposób jak największą liczbę nowy klientów. Aby skutecznie rozwiązać ten problem należy każde dzieło zaprezentować w osobnym artykule. Natomiast informacje, które klient chciałby, aby były zawsze łatwo dostępne, powinno sie umieścić w przygotowanych do tego zakładkach, do których to łącza będą wyswietlane na górnym pasku nawigacji. Można też przyjąć inne podejście do tego tematu, otóż ustawić stronę główna jako stronę statyczną, następnie utworzyć kategorię, do której łącze podobnie jak do zakładek ukaże się na górnym pasku nawigacji, w której to umiścimy dzieła swojej działalności. 
 
 \subsection{Serwis informacyjny}
 
-W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie funkcjonalności. Większość rozwiązań została wyprofilowana właśnie na tego typu zastosowania. Głównym szkieletem w tym przypadku będzie możliwość tworzenia wielu kategorii, gdzie redaktor takiego serwisu będzie mógł z pełną łatwością organizować wszystkie tematy poruszane na portalu i jednocześnie wszystkie artykuły z każdej kategorii będą wyświetlane na stronie głównej. Gorące tematy będzie można oznaczać jako wyróżnione i tym sposobem będą przez cały widoczne na szczycie karuzeli. Gość odwiedzający serwis z łatwością wejdzie w interakcję poprzez system komentarzy, operator serwisu będzie mógł korzystać z przejrzystych statystyk i za ich pomocą wyciągać wnioski na temat pracy portalu i planować dalszy jego rozwój. Z pomocą dla nowych gości przyjdą tagi, dzięki którym będzie można szybko wyszukać artykuły poruszające dany temat. Łatwiejsze stanie się planowanie różnego rodzaju imprez za pomocą wbudowanego kalendarza wydarzeń. Autor piszący artykuły dla serwisu nie będzie musiał zagłębiać się w panel zaplecza, na stronie głównej po zalogowaniu znajdzie skróty do najpotrzebniejszych funkcjonalności takich jak nowy artykuł, lista swoich artykułów oraz lista komentarzy pod swoimi artykułami.
+W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie funkcjonalności. Większość rozwiązań została wyprofilowana właśnie na tego typu zastosowania. Głównym szkieletem w tym przypadku będzie możliwość tworzenia wielu kategorii, gdzie redaktor takiego serwisu będzie mógł z pełną łatwością organizować wszystkie tematy poruszane na portalu i jednocześnie wszystkie artykuły z każdej kategorii będą wyświetlane na stronie głównej. Gorące tematy będzie można oznaczać jako wyróżnione i tym sposobem będą przez cały widoczne na szczycie karuzeli. Gość odwiedzający serwis z łatwością wejdzie w interakcję ze stroną poprzez system komentarzy, operator serwisu będzie mógł korzystać z przejrzystych statystyk i za ich pomocą wyciągać wnioski na temat pracy portalu i planować dalszy jego rozwój. Z pomocą dla nowych gości przyjdą tagi, dzięki którym będzie można szybko wyszukać artykuły poruszające dany temat. Łatwiejsze stanie się planowanie różnego rodzaju imprez za pomocą wbudowanego kalendarza wydarzeń. Autor piszący artykuły dla serwisu nie będzie musiał zagłębiać się w panel zaplecza, na stronie głównej po zalogowaniu znajdzie skróty do najważniejszych funkcji takich jak nowy artykuł, lista własnych artykułów oraz lista komentarzy pod tymi artykułami. Jeżeli autor zeche to ma możlwiość wyłączenia komentarzy. Jeżeli nadejdzie taka potrzeba, mozęmy skorzystać z zaimplemenotwanego mechanizmu zakładek, które to po utworzeniu wyśweitlane będą na górnym pasku nawigacji.
 
 \chapter{Projekt i analiza}
+
+\newpage
 
 \section{Diagram związków encji}
 
 \begin{figure}[!tbh]
 \centering
-\includegraphics[width=.86\linewidth]{fig/erd}
+\includegraphics[width=.8\linewidth]{fig/erd2}
 \caption{Diagram związków encji\label{RYS.1}}
 \source{Opracowanie własne}
 \end{figure}
 
-\section{Diagram modelu danych}
-Diagram modelu danych
+\section{Diagram kontrolera danych}
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=.9\linewidth]{fig/controllers}
+\caption{Diagram kontrolera danych\label{RYS.2}}
+\source{Opracowanie własne}
+\end{figure}
 
 \section{Projekt interfejsu użytkownika}
-Projekt GUI
+
+\subsection{Panel Administracyjny}
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=.9\linewidth]{fig/gui_admin}
+\caption{Projekt interfejsu użytkownika. Panel Administracyjny.\label{RYS.2}}
+\source{Opracowanie własne}
+\end{figure}
+
+\newpage
+
+\subsection{Widok Redaktora}
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=.9\linewidth]{fig/gui_editor}
+\caption{Projekt interfejsu użytkownika. Widok Redaktora.\label{RYS.2}}
+\source{Opracowanie własne}
+\end{figure}
+
+\newpage
+
+\subsection{Widok Gościa}
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=.9\linewidth]{fig/gui_guest}
+\caption{Projekt interfejsu użytkownika. Widok Gościa.\label{RYS.2}}
+\source{Opracowanie własne}
+\end{figure}
 
 \chapter{Implementacja}
 
@@ -142,14 +176,7 @@ git jest gitwbzyl semi
 
 % zakończenie
 \summary
-Możliwości, jakie stoją przed archiwum prac magisterskich opartych na
-XML-u, są ograniczone jedynie czasem, jaki należy poświęcić na pełną
-implementację systemu. Nie ma przeszkód technologicznych do stworzenia
-co najmniej równie doskonałego repozytorium, jak ma to miejsce w
-przypadku ETD. Jeżeli chcemy w pełni uczestniczyć w rozwoju nowej ery
-informacji, musimy szczególną uwagę przykładać do odpowiedniej
-klasyfikacji i archiwizacji danych. Sądzę, że język XML znacznie to
-upraszcza.
+to do
 
 % załączniki (opcjonalnie):
 \appendix
