@@ -25,6 +25,8 @@
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=xmgrBrickRed,bookmarks=true}
 %
+\usepackage{listings}
+%
 \RequirePackage{url}
 %\RequirePackage[polish]{polyglossia}
 % polyglossia >= v1.2.0 no longer supports loading language definition files
