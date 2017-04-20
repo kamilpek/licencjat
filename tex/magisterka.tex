@@ -119,6 +119,16 @@ W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie fu
 \source{Opracowanie własne}
 \end{figure}
 
+\newpage
+
+\section{Diagram Przypadków Użycia}
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=.9\linewidth]{fig/uc}
+\caption{Diagram Przypadków Użycia.\label{RYS.6}}
+\source{Opracowanie własne}
+\end{figure}
+
 \section{Projekt interfejsu użytkownika}
 
 \subsection{Panel Administracyjny}
@@ -263,18 +273,78 @@ W miejscu, w którym chcemy użyć ten komponent dodajemy linię o treści:
 Rozwiązanie to ściśle współpracuje z przedstawionym wyżej rozwiązaniem publikacji załączników, na przykładzie artykułów, możemy nie tylko dodać główną ilustrację publikacji, ale także za pomocą CKEditora dodać kilka innych załączników, nie tylko obrazków, które także znajdą się na serwerze usługi Cloudinary. 
 
 \section{Prawn}
-Prawn
+Prawn jest gemem generującym pliki w formacie PDF. Udostępniano został na licencji GPL.
 
-\chapter{Bibliografia}
+Aby zainstalować gem w naszym projekcie, należy go dodać do pliku Gemfile. W celu utworzenia plików PDF należy utworzyć klasę w kontrolerze, która będzie dziedziczyła z klas gemu:
+\begin{lstlisting}[language=ruby]
+class ArticleOnePdf < Prawn::Document
+\end{lstlisting}
+Wykorzystanie Prawn umożliwia bardzo precyzyjne, pod względem rozmieszczania poszczególnych elementów, projektowanie dokumentów. Do generowanych dokumentów możemy dodawać obrazy, tabelę  i wiele innych elementów. Podczas generowania precyzujemy rozmiar oraz orientację strony. 
 
-\section{ksiązki}
-ebooks
+\section{Chartkick}
+Chartkick jest gemem, który z pewnością wzbogaci wizualnie każdy projekt w którym się znajdzie. Głównym zadaniem gema jest generowanie wykresów. Pierwszy raz został opublikowany w 2013 i teraz udostępniany jest na licencji MIT License. 
 
-\section{zasoby Internetu}
-stackoverflow
+W celu zainstalowania gema należy dodać go do pliku Gemfile, następnie w pliku application.js dodać linię 
+\begin{lstlisting}[language=html]
+//= require chartkick
+\end{lstlisting}
+natomiast w pliku layouts/application.html.erb dodać linię:
+\begin{lstlisting}[language=html]
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+\end{lstlisting}
+Bardzo ciekawym wykresem jest wykres o nazwie „pie\_chart”. Można go umieścić w następujący sposób:
+\begin{lstlisting}[language=html]
+<%= pie_chart Article.group(:title).sum(:visit) %>
+\end{lstlisting}
+Generuje on bardzo przejrzysty obrazek z wykresem:
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=.6\linewidth]{fig/chartkick}
+\caption{Wykres kołowy.\label{RYS.6}}
+\source{Opracowanie własne}
+\end{figure}
 
-\section{dokumentacja na GitHub.com}
-git jest git
+\begin{thebibliography}{9}
+\bibitem{ror} 
+John Elder.
+\textit{Learn Ruby On Rails For Web Development: Learn Rails The Fast And Easy Way!}. 
+Codemy.com; 1 edition (January 19, 2015).
+ 
+\bibitem{enterprise} 
+Dan Chak.
+\textit{Enterprise Rails}. 
+O'Reilly Media; 1 edition (November 3, 2008).
+
+\bibitem{wikibook} 
+Użytkownicy Wikibooks.
+\textit{Ruby}. 
+Wikibooks; 1 edition (February 17, 2008).
+
+\bibitem{guides} 
+Ruby on Rails. Dokumentacja.
+\\\texttt{\url{http://guides.rubyonrails.org/}}
+
+\bibitem{api} 
+Ruby on Rails API. Dokumentacja.
+\\\texttt{\url{http://api.rubyonrails.org/}}
+
+\bibitem{foundation} 
+Foundation for Sites. Dokumentacja.
+\\\texttt{\url{http://foundation.zurb.com/sites/docs/}}
+
+\bibitem{ckeditor} 
+CKEditor for Rails. Dokumentacja.
+\\\texttt{\url{https://github.com/galetahub/ckeditor/}}
+
+\bibitem{prawn} 
+PrawnPDF. Dokumentacja.
+\\\texttt{\url{http://prawnpdf.org/api-docs/2.0/}}
+
+\bibitem{chartkick} 
+Chartkick. Dokumentacja.
+\\\texttt{\url{https://github.com/ankane/chartkick/}}
+\end{thebibliography}
+
 
 % zakończenie
 \summary
@@ -291,8 +361,7 @@ Treść załącznika jeden.
 Treść załącznika dwa.
 
 % literatura (obowiązkowo):
-\bibliographystyle{unsrt}
-\bibliography{xml}
+
 
 % spis tabel (jeżeli jest potrzebny):
 \listoftables
