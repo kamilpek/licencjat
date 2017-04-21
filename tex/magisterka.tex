@@ -30,6 +30,10 @@
 %\definecolor{stress}{cmyk}{0,1,0.13,0} % RubineRed
 %\definecolor{topic}{cmyk}{0.98,0.13,0,0.43} % MidnightBlue
 
+\usepackage{listings}
+\renewcommand{\lstlistingname}{kodów źródłowych}
+\renewcommand{\lstlistlistingname}{Spis \lstlistingname}
+
 \begin{document}
 
 % streszczenie
@@ -193,32 +197,32 @@ ZURB Foundation \cite{foundation} jest responsywnym frameworkiem frontendu. Zost
 
 \subsection{Instalacja}
 Dołączenie Foundation do projektu Ruby On Rails polega na zainstalowaniu Gema o nazwie \texttt{foundation-rails}. Następnie przeprowadzeniu automatycznej instalacji za pomocą polecenia 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash, caption={Polecenie instalujące Foundation w naszym projekcie}]
 $ rails g foundation:install 
 \end{lstlisting} 
 oraz dodaniu odpowiednich zapisów w plikach kaskadowych arkuszy stylów i plikach skryptów JavaScript.
 
 \subsection{Użycie}
 Podczas budowy całego systemu zarządzania treścią strony internetowej korzystałem z bogatej biblioteki komponentów jaką oferuje framework Foundation. Każda zaimplementowana tabela otrzymała klasę 
-\begin{lstlisting}[language=html]
+\begin{lstlisting}[language=html, caption={Przykładowa tabela}]
 <table class="stack"></table>
 \end{lstlisting}
 która odpowiedzialna jest za wyświetlanie tabeli w mobilnym widoku jako stos kolumn, wiersze tabeli wyświetlane są na przemian kolor biały z kolorem grafitowym, tę funkcję również  zawdzięczamy Foundation. Wszystkie odnośniki \mbox{posiadają klasę}
-\begin{lstlisting}[language=html]
+\begin{lstlisting}[language=html, caption={Przykladowy przycisk}]
 <%= link_to 'odnosnik', odnosnik_path, 
 	class:'button' %>
 \end{lstlisting}
 co pozwala na wyświetlania każdego odnośnika w formie prostokątnego z ostrymi rogami przycisku. Jednakże wszystkie odnośniki nie są przyciskami o tej samej wielkości, odnośniki zawarte w tabeli mają dodatkową klasę 
-\begin{lstlisting}[language=html]
+\begin{lstlisting}[language=html, caption={Przykładowy przycisk}]
 <%= link_to 'maly odnosnik', maly_odnosnik_path, 
 	class:'tiny button' %>
 \end{lstlisting}
 dzięki której przycisk staję bardzo mały i w elegancki sposób wkomponowuje się w wiersze tabeli. Również do nawigacji po stronicowaniu wykorzystano metodę renderowania w stylu Foundation. Ogólna konwencja graficzna opiera się na siatce, opisanej za pomocą znaczników \texttt{div}. Każda sekcja wszystkich stron poszczególnych modułów całego systemu zapisana jest w znaczniku \texttt{div}, który otrzymuje za każdym razem klasę 
-\begin{lstlisting}[language=html]
+\begin{lstlisting}[language=html, caption={Przykładowy div}]
 <div class="callout"></div>
 \end{lstlisting}
 która powoduje wyświetlanie treści na białym eleganckim prostokącie z ostrymi rogami. Strona główna została podzielona za pomocą siatki znaczników \texttt{div} na kilka sekcji. Formularze wprowadzania danych wykorzystują klasę \texttt{div} 
-\begin{lstlisting}[language=html]
+\begin{lstlisting}[language=html, caption={Przykładowe pole tekstowe}]
 <div class="input-group">
 	<span class="input-group-label">Tytul</span>
          <%= f.text_field :title, type:"text", 
@@ -238,20 +242,23 @@ Gem należy dodać do pliku gemfile. Następnie utworzyć uploader za pomocą po
 rails generate uploader Avatar
 \end{lstlisting}
 które wygeneruje plik, w którym to możemy przeprowadzić konfigurację. Dodatkowo do swojego pełnego działania potrzebuje pakiet RMagick, który możemy zainstalować za pomocą polecenia: 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash, caption={Polecenie instalujące oprogramowanie RMagick}]
 sudo apt-get install imagemagick libmagickwand-dev
 \end{lstlisting}
 Przed przejściem do dalszych kroków należy mieć założone konto w serwisie Clodinary, z tego też serwisu po zalogowaniu pobieramy plik konfiguracyjny przygotowany dla aplikacji napisanych w Ruby, zapisujemy go w katalogu \texttt{/config}. Do każdego z plików uploadera, których należy dodać dwie linie 
-\begin{lstlisting}[language=ruby]
+\begin{lstlisting}[language=ruby, caption={Framgent zawartości pliku uploadera}]
 include CarrierWave::Rmagick
 include Cloudinary::CarrierWave.
 \end{lstlisting}
+
+\newpage
+
 W celu zachowania porządku na serwerze usługi Cloudinary w każdym pliku możemy dodać linię oznaczjacą tagiem każdy załadowany przez nas plik: 
-\begin{lstlisting}[language=ruby]
+\begin{lstlisting}[language=ruby, caption={Przykładowy tag dla pliku}]
 process :tags => ['random_tag']
 \end{lstlisting}
-Aby wyświetlić załadowany plik, na przykład obrazek należy dodać linię o treści: 
-\begin{lstlisting}[language=html]
+Aby wyświetlić załadowany plik, na przykład obraz należy dodać linię o treści: 
+\begin{lstlisting}[language=html, caption={Kod wyświetlający obraz}]
 <%= image_tag @article.image.url %>
 \end{lstlisting}
 
@@ -259,18 +266,21 @@ Aby wyświetlić załadowany plik, na przykład obrazek należy dodać linię o 
 CKEditor \cite{ckeditor} jest edytorem WYSIWYG\footnote{\textit{ang. what you see is what you get} skórt oznaczjący "to co widzisz, to otrzymasz", stosowany w technikach komputerowych do określenia rozwiązań pozwalających uzyskać już podczas produkcji tekstu wynik wielce zbliżony lub niemalże identyczny do finalnego efektu.}, który umożliwią łatwą i przyjemna edycje tekstu w oknie przeglądarki możliwościami zbliżonymi do edytora tekstu klasy Microsoft Word. Gem udostępniony jest na licencji MIT License. 
 
 W celu instalacji należy dodać gem do pliku gemfile. W drugim kroku dodać do pliku \texttt{config/initializers/ckeditor.rb} linie: 
-\begin{lstlisting}[language=ruby]
+\begin{lstlisting}[language=ruby, caption={Framgent zawartości pliku ckeditor.rb}]
 Ckeditor.setup do |config|
   config.cdn_url = 
 	"//cdn.ckeditor.com/4.6.1/basic/ckeditor.js"
 end
 \end{lstlisting}
+
+\newpage
+
 Następnie w pliku \texttt{/app/views/layouts/application.html.erb} linię o następującej treści:
-\begin{lstlisting}[language=html]
+\begin{lstlisting}[language=html, caption={Framgent zawartości pliku application.html.rb}]
 <%= javascript_include_tag "chartkick" %>
 \end{lstlisting}
 W miejscu, w którym chcemy użyć ten komponent dodajemy linię o treści:
-\begin{lstlisting}[language=html]
+\begin{lstlisting}[language=html, caption={Kod uruchamiajacy edytor}]
 <%= f.cktext_area :content, placeholder:"Content" %>
 \end{lstlisting}
 Rozwiązanie to ściśle współpracuje z przedstawionym wyżej rozwiązaniem publikacji załączników, na przykładzie artykułów, możemy nie tylko dodać główną ilustrację publikacji, ale także za pomocą CKEditora dodać kilka innych załączników, nie tylko obrazków, które także znajdą się na serwerze usługi Cloudinary. 
@@ -281,24 +291,20 @@ Rozwiązanie to ściśle współpracuje z przedstawionym wyżej rozwiązaniem pu
 Prawn \cite{prawn} jest gemem generującym pliki w formacie PDF. Udostępniano został na licencji GPL.
 
 Aby zainstalować gem w naszym projekcie, należy go dodać do pliku Gemfile. W celu utworzenia plików PDF należy utworzyć klasę w kontrolerze, która będzie dziedziczyła z klas gemu:
-\begin{lstlisting}[language=ruby]
+\begin{lstlisting}[language=ruby, caption={Deklaracja klasy generującej plik PDF}]
 class ArticleOnePdf < Prawn::Document
 \end{lstlisting}
 Wykorzystanie Prawn umożliwia bardzo precyzyjne, pod względem rozmieszczania poszczególnych elementów, projektowanie dokumentów. Do generowanych dokumentów możemy dodawać obrazy, tabelę  i wiele innych elementów. Podczas generowania precyzujemy rozmiar oraz orientację strony. 
-\begin{lstlisting}[language=ruby, title={Przykład kodu generujacego dokment zawierający ilustrację i wstęp do artykułu}]
+\begin{lstlisting}[language=ruby, caption={Kod generujacy dokment zawierający ilustrację i wstęp do artykułu}]
 class ArticleOnePdf < Prawn::Document
   def initialize(article)
     super()
     @article = article    
-    article_image
-    article_intro   
-  end
-  def article_image
+
     move_down 10
     photo = "#{Rails.root}/public#{@article.image.url}"
     image photo, :width => 400
-  end
-  def article_intro
+
     move_down 10
     font("SourceSansPro-Bold.ttf", size: 14) do
       text "#{remove_html(@article.intro)}"
@@ -312,22 +318,25 @@ end
 Chartkick \cite{chartkick} jest gemem, który z pewnością wzbogaci wizualnie każdy projekt w którym się znajdzie. Głównym zadaniem gema jest generowanie wykresów. Pierwszy raz został opublikowany w 2013 i teraz udostępniany jest na licencji \mbox{MIT License. }
 
 W celu zainstalowania gema należy dodać go do pliku Gemfile, następnie w pliku \texttt{application.js} dodać linię 
-\begin{lstlisting}[language=html]
+\begin{lstlisting}[language=html, caption={Framgent zawartości pliku application.js}]
 //= require chartkick
 \end{lstlisting}
 natomiast w pliku \texttt{layouts/application.html.erb} dodać linię:
-\begin{lstlisting}[language=html]
+\begin{lstlisting}[language=html, caption={Framgent zawartości pliku application.html.rb}]
 <%= javascript_include_tag "//www.google.com/jsapi", 
 "chartkick" %>
 \end{lstlisting}
+
+\newpage
+
 Bardzo ciekawym wykresem jest wykres o nazwie \texttt{pie\_chart}. Można go umieścić w następujący sposób:
-\begin{lstlisting}[language=html]
+\begin{lstlisting}[language=html, caption={Kod uruchamiający wykres kołowy}]
 <%= pie_chart Article.group(:title).sum(:visit) %>
 \end{lstlisting}
 Generuje on bardzo przejrzysty obrazek z wykresem:
 \begin{figure}[!tbh]
 \centering
-\includegraphics[width=.7\linewidth]{fig/chartkick}
+\includegraphics[width=.5\linewidth]{fig/chartkick}
 \caption{Wykres kołowy.\label{RYS.6}}
 \source{Opracowanie własne}
 \end{figure}
@@ -394,6 +403,9 @@ Treść załącznika dwa.
 
 % spis rysunków (jeżeli jest potrzebny):
 \listoffigures
+
+\lstlistoflistings
+\addcontentsline{toc}{chapter}{Spis kodów źródłowych}%
 
 \oswiadczenie
 
