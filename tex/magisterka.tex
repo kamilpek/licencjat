@@ -19,7 +19,7 @@
 \nralbumu {231\,050}
 \email    {kpek@sigma.ug.edu.pl}
 
-\title    {TrainCMS --- System zarządzania treścią witryny internetowej}
+\title    {TrainCMS --- system zarządzania treścią witryny internetowej}
 \date     {2017}
 \miejsce  {Gdańsk}
 
@@ -38,11 +38,15 @@
 
 % streszczenie
 \begin{abstract}
-W pracy przedstawiono wersję beta systemu zarządzania treścią witryny internetowej „TrainCMS”. W trakcie pracy zaimplementowano publikowanie artykułów, kategoryzację, wyświetlanie listy kategorii na pasku nawigacji. Stworzono User Interface, który wyświetla wszystkie artykuły na stronie głównej, niezależnie od kategorii w kolejności malejącej od daty dodania oraz kalendarz wydarzeń. Do artykułów i wydarzeń w kalendarzu zaimplementowano możliwość załączania ilustracji oraz dodawania komentarzy.
+W pracy przedstawiono wersję deweloperską systemu zarządzania treścią witryny internetowej „TrainCMS”. W trakcie pracy zaimplementowano publikowanie artykułów, kategoryzację, wyświetlanie listy kategorii na pasku nawigacji. Stworzono User Interface, który wyświetla wszystkie artykuły na stronie głównej, niezależnie od kategorii w kolejności malejącej od daty dodania oraz kalendarz wydarzeń. Do artykułów i wydarzeń w kalendarzu zaimplementowano możliwość załączania ilustracji oraz dodawania komentarzy.
 
 Zaimplementowano panel administratora do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkownikami i kalendarzem oraz do podglądu statystyk.
 
 Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundation, jQuery Turbolinks, Plataformatec Devise, CarrierWave, RMagick, reCAPTCHA, CKEditor, Chartkick, Prawn.
+
+\mbox{Projekt wdrożono w serwisie\, \\\texttt{heroku.com} i jest dostępny pod adresem:} \\\texttt{\url{https://traincms.herokuapp.com/}}.
+
+\mbox{Kod źródłowy dostępny jest w serwisie\, \\\texttt{github.com} pod adresem:} \\\texttt{\url{https://github.com/kamilpek/traincms/}}.
 \end{abstract}
 
 % słowa kluczowe
@@ -74,6 +78,15 @@ TrainCMS posiada także inne możliwości, których nie oferuję Joomla w wersji
 
 Znajdziemy także w Joomli takie funkcję, których nie posiada mój system. Jednym z takich rozwiązań jest tworzenie zagnieżdżonej struktury menu w formie drzewiastej. Kolejnym rozwiązaniem jest możliwość zmiany szablonu frontu strony i szablonu zaplecza witryny. Główną funkcjonalnością Joomli jest możliwość łatwego rozszerzania możliwości strony za pomocą pluginów i komponentów. Podczas porównywania obu systemów należy pamiętać, że Joomla jest produktem z wieloletnim doświadczeniem na rynku, tworzonym przez zespół programistów z całego świata. Rozwiązania oparte na Joomli znajdują zastosowanie głównie przy dużych witrynach.
 
+\newpage
+
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=\linewidth]{fig/joomla}
+\caption{Przykładowa strona wykonana w Joomla!.}
+\source{commons.wikimedia.org}
+\end{figure}
+
 \subsection{WordPress}
 
 WordPress jest systemem zarządzania treścią napisanym w języku PHP, wykorzystujący systemem zarządzania bazą danych MySQL i jest dystrybuowany na licencji GPL i dostępny bezpłatnie. 
@@ -83,6 +96,15 @@ System WordPress jest zdecydowanie mniej rozbudowany w porównaniu do Joomli. Of
 W TrainCMS znajdziemy także inne możliwości, których nie oferuję WordPress w wersji podstawowej, jest to kalendarz wydarzeń, dodawanie załączników, generowanie dokumentów pdf zawierających artykuły oraz karuzela ilustracji wyróżnionych artykułów. Natomiast niektóre z rozwiązań zostały rozszerzone względem Joomli są to komentarze, które w projekcie TrainCMS rejestrują adres IP komentującego. 
 
 Należy w tym miejscu wspomnieć, że główną funkcjonalnością WordPress jest łatwość instalacji i zmiany wielu dostępnych szablonów strony. WordPress jest produktem z utartą pozycja na rynku systemów zarządzania treścią, który podobnie jak Joomla jest tworzony przez zespół programistów z całego świata. Witryny obsługiwane przez WordPress to głównie blogi.
+
+\newpage
+
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=\linewidth]{fig/wordpress}
+\caption{Przykładowa strona wykonana w WordPress.}
+\source{commons.wikimedia.org}
+\end{figure}
 
 \newpage
 
@@ -111,7 +133,7 @@ W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie fu
 \begin{figure}[!tbh]
 \centering
 \includegraphics[width=.8\linewidth]{fig/erd2}
-\caption{Diagram związków encji\label{RYS.1}}
+\caption{Diagram związków encji.}
 \source{Opracowanie własne}
 \end{figure}
 
@@ -119,7 +141,7 @@ W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie fu
 \begin{figure}[!tbh]
 \centering
 \includegraphics[width=.9\linewidth]{fig/controllers}
-\caption{Diagram kontrolera danych\label{RYS.2}}
+\caption{Diagram kontrolera danych.}
 \source{Opracowanie własne}
 \end{figure}
 
@@ -129,7 +151,7 @@ W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie fu
 \begin{figure}[!tbh]
 \centering
 \includegraphics[width=.9\linewidth]{fig/uc}
-\caption{Diagram Przypadków Użycia.\label{RYS.6}}
+\caption{Diagram Przypadków Użycia.}
 \source{Opracowanie własne}
 \end{figure}
 
@@ -139,7 +161,7 @@ W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie fu
 \begin{figure}[!tbh]
 \centering
 \includegraphics[width=.9\linewidth]{fig/gui_admin}
-\caption{Projekt interfejsu użytkownika. Panel Administracyjny.\label{RYS.3}}
+\caption{Projekt interfejsu użytkownika. Panel Administracyjny.}
 \source{Opracowanie własne}
 \end{figure}
 
@@ -149,7 +171,7 @@ W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie fu
 \begin{figure}[!tbh]
 \centering
 \includegraphics[width=.9\linewidth]{fig/gui_editor}
-\caption{Projekt interfejsu użytkownika. Widok Redaktora.\label{RYS.4}}
+\caption{Projekt interfejsu użytkownika. Widok Redaktora.}
 \source{Opracowanie własne}
 \end{figure}
 
@@ -159,14 +181,14 @@ W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie fu
 \begin{figure}[!tbh]
 \centering
 \includegraphics[width=.9\linewidth]{fig/gui_guest}
-\caption{Projekt interfejsu użytkownika. Widok Gościa.\label{RYS.5}}
+\caption{Projekt interfejsu użytkownika. Widok Gościa.}
 \source{Opracowanie własne}
 \end{figure}
 
 \chapter{Implementacja}
 
 \section{Architektura rozwiązania - Ruby on Rails}
-Głównym rusztowaniem całego systemu jest framework Ruby On Rails \cite{ror} \cite{enterprise} \cite{wikibook}. Odpowiada on za całość frontendu i backendu. Do swojego działania używa bazy PostgreSQL. W dalszych podrozdziałach przybliżę jak wyglądała implementacja poszczególnych elementów systemu za pomocą Ruby On Rails.
+Głównym rusztowaniem całego systemu jest framework Ruby On Rails \cite{ror} \cite{enterprise} \cite{wikibook} \cite{guides}. Odpowiada on za całość frontendu i backendu. Do swojego działania używa bazy PostgreSQL. W dalszych podrozdziałach przybliżę jak wyglądała implementacja poszczególnych elementów systemu za pomocą Ruby On Rails.
 
 \subsection{Artykuły i Kategorie}
 Podstawą jednostką można na stronie jest artykuł, który zawsze zawiera się w którejś z uprzednio utworzonych kategorii. Artykuł posiada atrybuty takie jak tytuł, wstęp, treść główną, numer kategorii do której został przypisany, ilustrację, znacznik aktywności, znacznik wyróżnienia, znacznik komentarzy, liczbę wyświetleń oraz znaczniki czasowe – data i czas utworzenia i edycji. Chciałbym przybliżyć niektóre z atrybutów, pierwszym z nich będą znaczniki aktywności, wyróżnienia i komentarzy, które kolejno oznaczają informacje o tym, że artykuł jest aktywny co przekłada się na to, że będzie wyświetlony na stronie głównej oraz liście artykułów danej kategorii, kolejny atrybut determinuję to, że artykuł zostanie wyświetlony na karuzeli ilustracji na szczycie strony głównej, ostatni ze znaczników pozwala dezaktywować moduł komentarzy, tak jakbyśmy zachcieli, aby przy pewnym artykule nie miałoby być komentarzy. Liczba wyświetleń jest sumaryczną wartością wszystkich odsłon artykułu, polega to na pobraniu liczby wyświetleń z bazy danych następnie zwiększeniu jej o jeden oraz aktualizacji wartości w bazie danych. Znaczniki czasowe są automatycznie dodawane przez Rails. Zarówno na stronie głównej jak i na liście artykułów danej kategorii wyświetlany jest tytuł, wstęp do artykułu, ilustracja, autor, data utworzenia, liczba komentarzy. Po przejściu do artykułu zobaczymy pełną treść, w tym celu właśnie istnieją dwa oddzielne atrybuty. Treść oraz wstęp możemy podczas tworzenia artykułu edytować za pomocą edytora CKEditor, opublikowanego na wolnej licencji. Zaimplementowana został również wyszukiwarka artykułów, które możemy poszukiwać za pomocą treści tytułu. Algorytm ignoruje wielkość liter oraz pozwala szukać za pomocą fragmentów wyrazów. Artykuły mogą dodawać jedynie zalogowaniu użytkownicy. Po przejściu do artykułu możemy go wydrukować dzięki specjalnie do tego przygotowanej formatce optymalizującej miejsce na stronie. 
@@ -176,19 +198,46 @@ Kategoria posiada wymienione artykuły: tytuł, opis, znacznik aktywności, znac
 \subsection{Komentarze}
 Do każdego artykułu możemy dodawać nie długie komentarze. Ta funkcjonalność udostępniona jest dla gości odwiedzających stronę więc co za tym idzie nie jest wymagane logowanie, aby dodać komentarze. W celu dodania komentarza musimy podać swój adres e-mail, który jednak nie jest weryfikowany, jest to powszechnie stosowana praktyka. W bazie danych zapisywany jest także adres IP autora komentarza. Każdy komentarz można ocenić w skali plus/minus. Przy treści komentarza wyświetlana jest wartość oceny, która może być również ujemna. Jeden odwiedzający może ocenić jeden komentarz jeden raz, informacja o tym fakcie zapisywana jest w ciasteczkach.
 
+\newpage
+
 \subsection{Tagi}
 W celu dodatkowej kategoryzacji oraz łatwiejszego znajdowania poszukiwanych przez odwiedzających treści zaimplementowano tagi artykułów. Po utworzeniu artykułu możemy przejść do formularza dodawania tagów, w którym za pomocą listy rozwijanej wybieramy dopasowane tagi, w tym samym miejscu, jeżeli nie znajdziemy poszukiwanych przez nas tagów, możemy dodać swój tag i go przydzielić do artykułu.
 
 \subsection{Kalendarz Wydarzeń}
 Zaimplementowany został również kalendarz wydarzeń, który wyświetla dodane wydarzenia w formie klasycznego kalendarza ściennego podzielonego na miesiące. Każde wydarzenie, częściowo na wzór artykułu, posiada atrybuty takie jak tytuł, treść, termin wydarzenia, ilustrację, znacznik aktywności, znacznik wyróżnienia, liczbę wyświetleń oraz znaczniki czasowe – data i czas utworzenia i edycji. Podobnie jak w przypadku artykułów treść możemy podczas tworzenia  edytować za pomocą edytora CKEditor, opublikowanego na wolnej licencji. Znaczniki aktywności i wyróżnienia są odpowiedzialne odpowiednio za wyświetlanie się wydarzenia na kalendarzu oraz na liście po kalendarzem oraz wyświetlanie wydarzeń na karuzeli na szczycie strony głownej. 
 
-Goście odwiedzający stronę mogę się zapisywać do wybranego przez siebie wydarzenia, które polega na podaniu swojego imienia oraz adresu e-mail, ponadto w tle do bazy danych trafia również adres IP osoby się zapisującej. Wydarzenia mogą tworzyć jedynie zalogowaniu użytkownicy.
+Goście odwiedzający stronę mogę się zapisywać do wybranego przez siebie wydarzenia, które polega na podaniu swojego imienia oraz adresu e-mail, ponadto w tle do bazy danych trafia również adres IP osoby deklarującej dołączenie do wydarzenia. Wydarzenia mogą tworzyć jedynie zalogowaniu użytkownicy.
+
+\newpage
 
 \subsection{Zakładki}
 W celu uporządkowania statycznych informacji prezentowanych na stronie zaimplementowano zakładki. Za pomocą atrybutów przypisanych do danej zakładki możemy określać tytuł, treść, ilustrację, znacznik strony głównej, znacznik paska nawigacji oraz znaczniki czasowe – data i czas utworzenia i edycji. Znacznik strony głównej decyduje o tym, że dana zakładki będzie pełniła rolę właśnie strony głównej. Natomiast znacznik paska nawigacji determinuje fakt wyświetlenia odnośnika do zakładki na górnym pasku nawigacji. Aby zakładka została wyświetlona na stronie głównej konieczne jest zaznaczenie tylko jednej zakładki w przypadku, gdy zostaną więcej niż dwie to strona główna przybierze formę dynamiczną.
 
 \subsection{Strona główna}
 Strona główna może zostać skonfigurowana dwojako. Pierwszy sposób polega na wyświetlaniu listy artykułów oraz jej stronicowaniu za pomocą Gema o nazwie \texttt{will\_paginate}. Jak wcześniej wspomniałem na stronie głównej wyświetlone zostaną tylko artykuły aktywne z aktywnych kategorii. Na szczycie głównej witryny pojawi się również karuzela z wyróżnionymi artykułami a i wydarzeniami. Drugim sposobem aranżacji strony głównej jest jest statyczna wersja organizowana za pomocą wyżej opisanych zakładek. Na stronie głównej możemy umieszczać także komponenty, są to ramki z pewną treścią. Na stałe zostały osadzone cztery komponenty zawierające listę popularnych artykułów, listę najbliższych wydarzeń, listę najnowszych tagów oraz drobne statystyki. Komponenty za wzór innych modułów strony posiadają znacznik aktywności, który określa czy dany komponent będzie wyświetlony na stronie głównej. 
+
+\newpage
+
+\subsection{Nawigacja}
+Nawigacja po stronie zrealizowana jest za pomocą dwóch pasków nawigacji, górnego i dolnego. 
+
+Na górnym pasku znajdziemy odnośniki do strony głównej, wszystkich kategorii oznaczonych jako te, które mają się znaleźć na pasku, zakładek, które podobnie jak kategorie muszą być oznaczone jako dostępne z poziomu paska nawigacji. Znajduje się tam również odnośnik do kalendarza wydarzeń oraz wyszukiwarki artykułów.
+
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=\linewidth]{fig/navbar}
+\caption{Przykładowy górny pasek nawigacji.}
+\source{Opracowanie własne}
+\end{figure}
+
+Natomiast na dolnym pasku nawigacji zwanym stópką, znajduję się w widoku dla niezalogowanych użytkowników klauzula Copyright, odnośnik do planszy pod tytułem „o projekcie”, odnośnik do prostej pomocy oraz odnośnik do panelu logowania. Po zalogowaniu z uprawnieniami redaktora znajdziemy dodatkowo odnośnik do statystyk, natomiast po zalogowaniu z uprawnieniami administratora zyskamy odnośnik do zaplecza. Dla wszystkich zalogowanych na prawym końcu dolnego paska nawigacji znajduje się odnośnik do panelu zmiany hasła oraz przycisk wylogowania.
+
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=\linewidth]{fig/footbar}
+\caption{Przykładowy dolny pasek nawigacji.}
+\source{Opracowanie własne}
+\end{figure}
 
 \newpage
 
@@ -230,6 +279,23 @@ która powoduje wyświetlanie treści na białym eleganckim prostokącie z ostry
 </div>
 \end{lstlisting}
 która pozwala na wyświetlanie etykiety pola i samego w jednej linii oszczędzając miejsce i prezentując stronę jeszcze bardziej czytelniejszą. 
+
+\subsection{Ikony}
+Bardzo ciekawą funkcjonalnością frameworku Foundation jest możliwość dodawania ikon w kodzie strony. Polega to na zainstalowaniu Gemu o nazwie Foundation Icon Fonts on SASS for Rails \cite{icons}, potrzebne do tego będzie dodanie wpisu do pliku Gemfile, dodania linii kodu do pliku \texttt{application.css.scss} znajdującego się w katalogu \texttt{app/assets/stylesheets/}:
+\begin{lstlisting}[language=html, caption={Przykładowe pole tekstowe}]
+@import 'foundation-icons';
+\end{lstlisting} 
+Na koniec w celu wyświetlenia ikony na stronie należy dodać kod, którego wynikiem będzie ikona kalendarza wielkości 24 punktów: 
+\begin{lstlisting}[language=html, caption={Przykładowe pole tekstowe}]
+<font size="24"><i class="fi-calendar"></i></font>.
+\end{lstlisting}
+
+\begin{figure}[!tbh]
+\centering
+\includegraphics{fig/icon}
+\caption{Ikona kalendarza ze zbioru ZURB Foundation Icons.}
+\source{Opracowanie własne}
+\end{figure}
 
 \newpage
 
@@ -285,6 +351,13 @@ W miejscu, w którym chcemy użyć ten komponent dodajemy linię o treści:
 \end{lstlisting}
 Rozwiązanie to ściśle współpracuje z przedstawionym wyżej rozwiązaniem publikacji załączników, na przykładzie artykułów, możemy nie tylko dodać główną ilustrację publikacji, ale także za pomocą CKEditora dodać kilka innych załączników, nie tylko obrazków, które także znajdą się na serwerze usługi Cloudinary. 
 
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=\linewidth]{fig/ckeditor}
+\caption{Edytor CKEditor.}
+\source{Opracowanie własne}
+\end{figure}
+
 \newpage
 
 \section{Prawn}
@@ -337,7 +410,33 @@ Generuje on bardzo przejrzysty obrazek z wykresem:
 \begin{figure}[!tbh]
 \centering
 \includegraphics[width=.5\linewidth]{fig/chartkick}
-\caption{Wykres kołowy.\label{RYS.6}}
+\caption{Wykres kołowy.}
+\source{Opracowanie własne}
+\end{figure}
+
+\section{reCAPTCHA}
+
+W celu rozwiązania problemu zabezpieczenia systemu wdrożonych w ogólnodostępnej sieci Internet przed różnymi formami złośliwego oprogramowania, a szczególnie robotów spamujących za pomocą formularzy zawartych na stronach internetowych wdrożyłem rozwiązanie o nazwie reCAPTCHA produkcji Google za pomocą Gemu o tej samej nazwie \cite{recaptcha} dystrybuowanego na licencji MIT license. 
+
+\newpage
+
+Instalacja polega na dodaniu wpisu do pliku Gemfile, zarejestrowaniu strony na serwerach Google w celu pobrania kodu strony i kodu sekretnego, które to należy dodać do pliku \texttt{/config/initializers/recaptcha.rb}. Następnie dodaniu do formalarza linii kodu:
+\begin{lstlisting}[language=ruby, caption={Kod wyświetlający formularz reCAPTCHA}]
+<%= recaptcha_tags %> 
+\end{lstlisting}
+Na koniec należy dodać do pliku kontrolera poniższy fragment kodu: 
+\begin{lstlisting}[language=ruby, caption={Kod kontrolera weryfikujący reCAPTCHA}]
+if verify_recaptcha(model: @user) && @user.save
+  redirect_to @user
+else
+  render 'new'
+end
+\end{lstlisting}
+
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=.6\linewidth]{fig/captcha}
+\caption{Formularz weryfikacyjny reCAPTCHA.}
 \source{Opracowanie własne}
 \end{figure}
 
@@ -358,38 +457,47 @@ Użytkownicy Wikibooks.
 Wikibooks; 1 edition (February 17, 2008).
 
 \bibitem{guides} 
-Ruby on Rails. Dokumentacja.
-\\\texttt{\url{http://guides.rubyonrails.org/}}
+Oficjalna dokumentacja frameworku Ruby on Rails.
+\\\texttt{\url{http://guides.rubyonrails.org/}} (dostęp 23.04.2017)
 
 \bibitem{api} 
-Ruby on Rails API. Dokumentacja.
-\\\texttt{\url{http://api.rubyonrails.org/}}
+Oficjalny opis API Ruby on Rails. 
+\\\texttt{\url{http://api.rubyonrails.org/}} (dostęp 23.04.2017)
 
 \bibitem{foundation} 
-Foundation for Sites. Dokumentacja.
-\\\texttt{\url{http://foundation.zurb.com/sites/docs/}}
+Oficjalna dokumentacja frameworku Foundation for Sites. 
+\\\texttt{\url{http://foundation.zurb.com/sites/docs/}} (dostęp 23.04.2017)
+
+\bibitem{icons} 
+Oficjalna dokumentacja Gemu Foundation Icon.
+\\\texttt{\url{http://www.rubydoc.info/gems/foundation-icons-sass-rails/}} (dostęp 23.04.2017)
 
 \bibitem{carrierwave} 
-CarrierWave. Dokumentacja.
-\\\texttt{\url{https://github.com/carrierwaveuploader/carrierwave/wiki}}
+Oficjalna dokumentacja Gemu CarrierWave.
+\\\texttt{\url{https://github.com/carrierwaveuploader/carrierwave/wiki}} (dostęp 23.04.2017)
 
 \bibitem{ckeditor} 
-CKEditor for Rails. Dokumentacja.
-\\\texttt{\url{https://github.com/galetahub/ckeditor/}}
+Oficjalna dokumentacja Gemu CKEditor for Rails.
+\\\texttt{\url{https://github.com/galetahub/ckeditor/}} (dostęp 23.04.2017)
 
 \bibitem{prawn} 
-PrawnPDF. Dokumentacja.
-\\\texttt{\url{http://prawnpdf.org/api-docs/2.0/}}
+Oficjalna dokumentacja Gemu PrawnPDF.
+\\\texttt{\url{http://prawnpdf.org/api-docs/2.0/}} (dostęp 23.04.2017)
 
 \bibitem{chartkick} 
-Chartkick. Dokumentacja.
-\\\texttt{\url{https://github.com/ankane/chartkick/}}
+Oficjalna dokumentacja Gemu Chartkick.
+\\\texttt{\url{https://github.com/ankane/chartkick/}} (dostęp 23.04.2017)
+
+\bibitem{recaptcha} 
+Oficjalna dokumentacja Gemu reCAPTCHA.
+\\\texttt{\url{https://github.com/ambethia/recaptcha/}} (dostęp 23.04.2017)
+
 \end{thebibliography}
 
 
 % zakończenie
 \summary
-to do
+Podczas pracy nad projektem zrealizowałem wszystkie założone wcześniej cele. Dzięki okazji jaką dało mi opracowanie pracy licencjackiej zyskałem duże doświadczenie w pracy nad średniej wielkości projektami informatycznymi. Jedyną niedoskonałością jest nie osiągniecie pełnej responsywności w zakresie widoku kalendarza wydarzeń. Do pracy wykorzystałem niemalże wszystkie nabyte w trakcie trwania studiów umiejętności.
 
 % załączniki (opcjonalnie):
 \appendix
