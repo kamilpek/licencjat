@@ -1,4 +1,4 @@
-# TrainCMS — System zarządzania treścią witryny internetowej
+# TrainCMS — system zarządzania treścią witryny internetowej
 
 ## keywords
 cms, ruby on rails, calendar, comments, tags
