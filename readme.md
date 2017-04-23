@@ -6,22 +6,21 @@ cms, ruby on rails, calendar, comments, tags
 ## Autor
 Kamil Pek, numer albumu 231050, [github.com/kamilpek](https://github.com/kamilpek)
 
-## Wdrożenie
-[traincms.herokuapp.com](http://traincms.herokuapp.com/)
-
-## Kod aplikacji
-[github.com/kamilpek/traincms](https://github.com/kamilpek/traincms)
-
 ## Streszczenie
-W pracy przedstawiono wersję beta systemu zarządzania treścią witryny internetowej „TrainCMS”. W trakcie pracy zaimplementowano publikowanie artykułów, kategoryzację, wyświetlanie listy kategorii na pasku nawigacji. Stworzono User Interface, który wyświetla wszystkie artykuły na stronie głównej, niezależnie od kategorii w kolejności malejącej od daty dodania oraz kalendarz wydarzeń. Do artykułów i wydarzeń w kalendarzu zaimplementowano możliwość załączania ilustracji oraz dodawania komentarzy.
+W pracy przedstawiono wersję deweloperską systemu zarządzania treścią witryny internetowej „TrainCMS”. W trakcie pracy zaimplementowano publikowanie artykułów, kategoryzację, wyświetlanie listy kategorii na pasku nawigacji. Stworzono User Interface, który wyświetla wszystkie artykuły na stronie głównej, niezależnie od kategorii w kolejności malejącej od daty dodania oraz kalendarz wydarzeń. Do artykułów i wydarzeń w kalendarzu zaimplementowano możliwość załączania ilustracji oraz dodawania komentarzy.
 
 Zaimplementowano panel administratora do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkownikami i kalendarzem oraz do podglądu statystyk.
 
 Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundation, jQuery Turbolinks, Plataformatec Devise, CarrierWave, RMagick, reCAPTCHA, CKEditor, Chartkick, Prawn.
 
+Projekt wdrożono w serwisie, heroku.com i jest dostępny pod adresem: [https://traincms.herokuapp.com/](https://traincms.herokuapp.com/).
+
+Kod źródłowy dostępny jest w serwisie github.com pod adresem: [https://github.com/kamilpek/traincms/](https://github.com/kamilpek/traincms/).
+
 ## Spis treści
+1. Wprowadzenie
 1. Wstęp i opis problemu
-   1. Porównanie dostępnych rozwiązań
+   1. Porównanie dostępnych rozwiązań z systemem TrainCMS
       1. Joomla
       1. WordPress
    1. Możliwości zastosowania praktycznego
@@ -31,37 +30,53 @@ Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundati
 1. Projekt i analiza
    1. Diagram związków encji
    1. Diagram kontrolera danych
+   1. Diagram przypadków użycia
    1. Projekt interfejsu użytkownika
-	1. Panel Administracyjny
-	1. Widok Redaktora
-	1. Widok Gościa
+    1. Panel Administratora
+    1. Widok Redaktora
+    1. Widok Gościa
 1. Implementacja
    1. Architektura rozwiązania - Ruby on Rails
+    1. Artykuły i Kategorie
+    1. Komentarze
+    1. Tagi
+    1. Kalendarz wydarzeń
+    1. Zakładki
+    1. Strona Główna
+    1. Nawigacja
    1. ZURB Foundation
-   1. CarrierWave
+    1. Instalacja
+    1. Użycie
+    1. Ikony
+   1. CarrierWave, CKEditor, Cloudinary
+    1. CKEditor i Cloudinary
+    1. CarrierWave
    1. Prawn
+   1. Chartkick
+   1. reCAPTCHA
 1. Bibliografia
-    1. książki
-    1. artykuły w Internecie
-    1. materiały dostępne na GitHub.com
+1. Zakończenie
+1. Spis rysunków
+1. Spis kodów źródłowych
+1. Oświadczenie
 
 ## Wstęp
-Podczas kilkuletniej pracy z najpopularniejszymi aplikacjami w tej kategorii, takimi jak Joomla i WordPress nabyłem doświadczenie oraz swój pogląd na to jak ma wyglądać system zarządzania treścią (ang. _Content Managment System_, CMS). Naturalnym stało się więc stworzenie własnego systemu, przy okazji prezentując jak najszerszą część umiejętności nabytych w trakcie trwania studiów.
+Podczas kilkuletniej pracy z najpopularniejszymi aplikacjami w tej kategorii, takimi jak Joomla i WordPress nabyłem doświadczenie oraz swój pogląd na to jak ma wyglądać system zarządzania treścią (ang. __Content Managment System__, CMS). Naturalnym stało się więc stworzenie własnego systemu, przy okazji prezentując jak najszerszą część umiejętności nabytych w trakcie trwania studiów.
 
 Istniejące systemy są często wybierane przez między innymi lokalne serwisy informacyjne, przedsiębiorstwa i instytucje, dlatego w swoim systemie zawarłem funkcjonalności, które na pewno przydadzą się różnym podmiotom w skutecznym zaistnieniu w Internecie.
 
 Podczas tworzenia interfejsu użytkownika i administratora, kierowałem się głównie ergonomią użytkowania i przedstawieniem możliwości jakie prezentuje system w jak najbardziej przystępny sposób tak, aby początkujący użytkownik mógł poruszać się w sposób intuicyjny po aplikacji.
 
 ## Literatura
-1. [guides.rubyonrails.org](http://guides.rubyonrails.org/)
-1. [api.rubyonrails.org](http://api.rubyonrails.org/)
-1. [rubygems.org](https://rubygems.org/)
-1. [foundation.zurb.com/sites/docs](http://foundation.zurb.com/sites/docs/)
-1. [github.com/plataformatec/devise/wiki](https://github.com/plataformatec/devise/wiki)
-1. [github.com/mislav/will_paginate](https://github.com/mislav/will_paginate)
-1. [github.com/carrierwaveuploader/carrierwave/wiki](https://github.com/carrierwaveuploader/carrierwave/wiki)
-1. [github.com/rmagick/rmagick](https://github.com/rmagick/rmagick)
-1. [github.com/ambethia/recaptcha](https://github.com/ambethia/recaptcha)
-1. [github.com/galetahub/ckeditor](https://github.com/galetahub/ckeditor)
-1. [github.com/ankane/chartkick](https://github.com/ankane/chartkick)
-1. [prawnpdf.org/api-docs/2.0/](http://prawnpdf.org/api-docs/2.0/)
+1. John Elder. Learn Ruby On Rails For Web Development: Learn Rails The Fast And Easy Way!. Codemy.com; 1 edition (January 19, 2015)
+1. Dan Chak. Enterprise Rails. O’Reilly Media; 1 edition (November 3, 2008)
+1. Użytkownicy Wikibooks. Ruby. Wikibooks; 1 edition (February 17, 2008)
+1. Oficjalna dokumentacja frameworku Ruby on Rails. [guides.rubyonrails.org](http://guides.rubyonrails.org/)(dostęp 23.04.2017)
+1. Oficjalny opis API Ruby on Rails. [api.rubyonrails.org](http://api.rubyonrails.org/)(dostęp 23.04.2017)
+1. Oficjalna dokumentacja frameworku Foundation for Sites. [foundation.zurb.com/sites/docs](http://foundation.zurb.com/sites/docs/)(dostęp 23.04.2017)
+1. Oficjalna dokumentacja Gemu Foundation Icon. [http://www.rubydoc.info/gems/foundation-icons-sass-rails/](http://www.rubydoc.info/gems/foundation-icons-sass-rails/)
+1. Oficjalna dokumentacja Gemu CarrierWave [github.com/carrierwaveuploader/carrierwave/wiki](https://github.com/carrierwaveuploader/carrierwave/wiki)(dostęp 23.04.2017)
+1. Oficjalna dokumentacja Gemu reCAPTCHA. [github.com/ambethia/recaptcha](https://github.com/ambethia/recaptcha)(dostęp 23.04.2017)
+1. Oficjalna dokumentacja Gemu CKEditor for Rails. [github.com/galetahub/ckeditor](https://github.com/galetahub/ckeditor)(dostęp 23.04.2017)
+1. Oficjalna dokumentacja Gemu Chartkick. [github.com/ankane/chartkick](https://github.com/ankane/chartkick)(dostęp 23.04.2017)
+1. Oficjalna dokumentacja Gemu PrawnPDF. [prawnpdf.org/api-docs/2.0/](http://prawnpdf.org/api-docs/2.0/)(dostęp 23.04.2017)
