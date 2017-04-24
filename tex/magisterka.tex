@@ -31,8 +31,7 @@
 %\definecolor{topic}{cmyk}{0.98,0.13,0,0.43} % MidnightBlue
 
 \usepackage{listings}
-\renewcommand{\lstlistingname}{kodów źródłowych}
-\renewcommand{\lstlistlistingname}{Spis \lstlistingname}
+\renewcommand{\lstlistlistingname}{Spis kodów źródłowych}
 
 \begin{document}
 
@@ -238,6 +237,30 @@ Natomiast na dolnym pasku nawigacji zwanym stópką, znajduję się w widoku dla
 \caption{Przykładowy dolny pasek nawigacji.}
 \source{Opracowanie własne}
 \end{figure}
+
+\newpage
+
+\subsection{Kanał RSS}
+Kolejną zaimplementowaną w systemie funkcjonalnością jest agregator kanału RSS. Dzięki temu fani witryny mogą dodać sobie link rss do swojego czytnika i mieć dostęp do najnowszych informacja publikowanych na stronie zawsze pod ręką. 
+
+Implementacja polegała na stworzeniu dwóch plików, jednego w standardzie Atom i jednego w standardzie RSS. Następnie wypełnieniu ich kodem wyświetlającym tytuł artykułu, nagłówek, autora oraz odnośnik do pełnej treści artykułu. Oba pliki zostały zwalidowane i są w pełni zgodne z obowiązującymi wersjami obu standardów.
+
+\begin{lstlisting}[language=ruby, caption={Kod generatora spływu wiadmości w standardzie Atom}]
+atom_feed do |feed|
+  feed.title "TrainCMS - Artykuły"
+  feed.updated @articles.maximum(:updated_at)
+  @articles.order("created_at desc").each do |article|
+    feed.entry article do |entry|
+      entry.title article.title
+      entry.content sanitize(article.intro, :tags => {})
+      entry.author do |author|
+        author.name 
+	User.where(id:article.user_id).pluck(:email).last
+      end
+    end
+  end
+end
+\end{lstlisting} 
 
 \newpage
 
@@ -497,7 +520,7 @@ Oficjalna dokumentacja Gemu reCAPTCHA.
 
 % zakończenie
 \summary
-Podczas pracy nad projektem zrealizowałem wszystkie założone wcześniej cele. Dzięki okazji jaką dało mi opracowanie pracy licencjackiej zyskałem duże doświadczenie w pracy nad średniej wielkości projektami informatycznymi. Jedyną niedoskonałością jest nie osiągniecie pełnej responsywności w zakresie widoku kalendarza wydarzeń. Do pracy wykorzystałem niemalże wszystkie nabyte w trakcie trwania studiów umiejętności.
+Podczas pracy nad projektem zrealizowałem wszystkie założone wcześniej cele, jedynie nie udało się osiągnąć pełnej responsywności w zakresie widoku kalendarza wydarzeń. Dzięki temu zyskałem duże doświadczenie w pracy nad średniej wielkości projektami informatycznymi. Do pracy wykorzystałem niemalże wszystkie nabyte w trakcie trwania studiów umiejętności. Koncepcja na rozwój projektu obejmuje rozszerzenie funkcjonalności systemu o możliwość dodawania komponentów z biblioteki Polymer. 
 
 % załączniki (opcjonalnie):
 \appendix
