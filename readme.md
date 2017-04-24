@@ -32,25 +32,25 @@ Kod źródłowy dostępny jest w serwisie github.com pod adresem: [https://githu
    1. Diagram kontrolera danych
    1. Diagram przypadków użycia
    1. Projekt interfejsu użytkownika
-    1. Panel Administratora
-    1. Widok Redaktora
-    1. Widok Gościa
+      1. Panel Administratora
+      1. Widok Redaktora
+      1. Widok Gościa
 1. Implementacja
    1. Architektura rozwiązania - Ruby on Rails
-    1. Artykuły i Kategorie
-    1. Komentarze
-    1. Tagi
-    1. Kalendarz wydarzeń
-    1. Zakładki
-    1. Strona Główna
-    1. Nawigacja
+      1. Artykuły i Kategorie
+      1. Komentarze
+      1. Tagi
+      1. Kalendarz wydarzeń
+      1. Zakładki
+      1. Strona Główna
+      1. Nawigacja
    1. ZURB Foundation
-    1. Instalacja
-    1. Użycie
-    1. Ikony
+      1. Instalacja
+      1. Użycie
+      1. Ikony
    1. CarrierWave, CKEditor, Cloudinary
-    1. CKEditor i Cloudinary
-    1. CarrierWave
+      1. CKEditor i Cloudinary
+      1. CarrierWave
    1. Prawn
    1. Chartkick
    1. reCAPTCHA
