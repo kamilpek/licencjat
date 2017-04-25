@@ -33,6 +33,18 @@
 \usepackage{listings}
 \renewcommand{\lstlistlistingname}{Spis kodów źródłowych}
 
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ % 
+  basicstyle=\footnotesize, 
+  breaklines=true, 
+  captionpos=b, 
+  extendedchars=true,
+  keepspaces=true,
+}
+
 \begin{document}
 
 % streszczenie
@@ -367,7 +379,7 @@ end
 
 \newpage
 
-Następnie w pliku \texttt{/app/views/layouts/application.html.erb} linię o następującej treści:
+Następnie w pliku \texttt{/app/views/layouts/application.html.html} linię o następującej treści:
 \begin{lstlisting}[language=html, caption={Framgent zawartości pliku application.html.rb}]
 <%= javascript_include_tag "chartkick" %>
 \end{lstlisting}
@@ -420,7 +432,7 @@ Aby zainstalować Gem należy dodać go do pliku Gemfile, następnie w pliku \te
 \begin{lstlisting}[language=html, caption={Framgent zawartości pliku application.js}]
 //= require chartkick
 \end{lstlisting}
-natomiast w pliku \texttt{layouts/application.html.erb} dodać linię:
+natomiast w pliku \texttt{layouts/application.html.html} dodać linię:
 \begin{lstlisting}[language=html, caption={Framgent zawartości pliku application.html.rb}]
 <%= javascript_include_tag "//www.google.com/jsapi", 
 "chartkick" %>
