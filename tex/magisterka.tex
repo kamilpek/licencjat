@@ -37,11 +37,11 @@
 
 % streszczenie
 \begin{abstract}
-W pracy przedstawiono wersję deweloperską systemu zarządzania treścią witryny internetowej „TrainCMS”. W trakcie pracy zaimplementowano publikowanie artykułów, kategoryzację, wyświetlanie listy kategorii na pasku nawigacji. Stworzono User Interface, który wyświetla wszystkie artykuły na stronie głównej, niezależnie od kategorii w kolejności malejącej od daty dodania oraz kalendarz wydarzeń. Do artykułów i wydarzeń w kalendarzu zaimplementowano możliwość załączania ilustracji oraz dodawania komentarzy.
+W pracy przedstawiono wersję deweloperską systemu zarządzania treścią witryny internetowej „TrainCMS”. W trakcie pracy zaimplementowano publikowanie artykułów, kategoryzację, wyświetlanie listy kategorii na pasku nawigacji, kalendarz wydarzeń oraz kanał RSS. Stworzono User Interface, który wyświetla wszystkie artykuły na stronie głównej, niezależnie od kategorii w kolejności malejącej od daty dodania oraz kalendarz wydarzeń. Do artykułów i wydarzeń w kalendarzu zaimplementowano możliwość załączania ilustracji oraz dodawania komentarzy.
 
-Zaimplementowano panel administratora do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkownikami i kalendarzem oraz do podglądu statystyk.
+Zaimplementowano panel administratora do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkownikami i kalendarzem, zakładkami, komponentami strony głównej oraz do podglądu statystyk.
 
-Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundation, jQuery Turbolinks, Plataformatec Devise, CarrierWave, RMagick, reCAPTCHA, CKEditor, Chartkick, Prawn.
+Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundation, jQuery Turbolinks, Plataformatec Devise, CarrierWave, RMagick, reCAPTCHA, CKEditor, Chartkick, Prawn, RSS.
 
 \mbox{Projekt wdrożono w serwisie\, \\\texttt{heroku.com} i jest dostępny pod adresem:} \\\texttt{\url{https://traincms.herokuapp.com/}}.
 
@@ -49,7 +49,7 @@ Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundati
 \end{abstract}
 
 % słowa kluczowe
-\keywords{cms, ruby on rails, calendar, comments, tags}
+\keywords{cms, ruby on rails, calendar, comments, tags, rss}
 
 % tytuł i spis treści
 \maketitle
@@ -58,7 +58,7 @@ Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundati
 \introduction
 Podczas kilkuletniej pracy z najpopularniejszymi aplikacjami w tej kategorii, takimi jak Joomla i WordPress nabyłem doświadczenie oraz swój pogląd na to jak ma wyglądać system zarządzania treścią (ang. Content Managment System, CMS). Naturalnym stało się więc stworzenie własnego systemu, przy okazji prezentując jak najszerszą część umiejętności nabytych w trakcie trwania studiów.
 
-Istniejące systemy są często wybierane przez między innymi lokalne serwisy informacyjne, przedsiębiorstwa i instytucje, dlatego w swoim systemie zawarłem funkcjonalności, które na pewno przydadzą się różnym podmiotom w skutecznym zaistnieniu w Internecie.
+Istniejące systemy są często wybierane między innymi przez lokalne serwisy informacyjne, przedsiębiorstwa i instytucje, dlatego w swoim systemie zawarłem funkcjonalności, które na pewno przydadzą się różnym podmiotom w skutecznym zaistnieniu w Internecie.
 
 Podczas tworzenia interfejsu użytkownika i administratora, kierowałem się głównie ergonomią użytkowania i przedstawieniem możliwości jakie prezentuje system w jak najbardziej przystępny sposób tak, aby początkujący użytkownik mógł poruszać się w sposób intuicyjny po aplikacji.
 
@@ -66,16 +66,19 @@ Podczas tworzenia interfejsu użytkownika i administratora, kierowałem się gł
 
 \section{Porównanie dostępnych rozwiązań z systemem TrainCMS}
 
-Na rynku systemów zarządzania treścią znajdziemy sporo różnych rozwiązań. W~dalszej części rozdziału przybliżę dwa najbardziej popularne produkty, będzie to Joomla i WordPress\footnote{Istnieje jeszcze jeden bardzo popularny system zarządzania treścią - Drupal. Podobnie jak oba opisane wyżej systemy, wyprodukowany został w technologii języka PHP i jest udostępniony na otwartej licencji.}. Systemy różnią się od siebie pod wieloma względami. Rozwiązanie przedstawione przeze mnie jakim jest TrainCMS różni się  przede wszystkim technologią wykonania, gdyż oba wcześniej wymienione systemy wyprodukowane są technologii języka PHP i bazy danych MySQL, gdzie mój system opiera się na frameworku Ruby On Rails i bazie danych PostgreSQL.
+Na rynku systemów zarządzania treścią znajdziemy sporo różnych rozwiązań. W~dalszej części rozdziału przybliżę i porównam z systemem TraincMS dwa najbardziej popularne produkty, będzie to Joomla i WordPress\footnote{Istnieje jeszcze jeden bardzo popularny system zarządzania treścią - Drupal. Podobnie jak oba opisane wyżej systemy, wyprodukowany został w technologii języka PHP i jest udostępniony na otwartej licencji.}. Systemy różnią się od siebie pod wieloma względami. Rozwiązanie przedstawione przeze mnie jakim jest TrainCMS różni się  przede wszystkim technologią wykonania, gdyż oba wcześniej wspomniane systemy wyprodukowane są technologii języka PHP i bazy danych MySQL, gdzie mój system opiera się na frameworku Ruby On Rails i bazie danych PostgreSQL.
 
 \subsection{Joomla!}
 
-Joomla jest to system zarządzania treścią, napisany w języku PHP, wykorzystujący do swojego działania system zarządzania bazą danych MySQL, rozpowszechniany na licencji GPL i jest dostępny bezpłatnie. Nazwa Joomla w języku suahili oznacza razem.   
+Joomla jest to system zarządzania treścią, napisany w języku PHP, wykorzystujący do swojego działania system zarządzania bazą danych MySQL, rozpowszechniana jest na licencji GPL. Nazwa Joomla w języku suahili oznacza razem.
+
 System ten oferuję obsługę wielu kont użytkownika, wyszukiwarkę zaimplementowaną w User Interface, tworzenie wydruków artykułów, dołączanie ilustracji do artykułu, komentowanie artykułów przez niezalogowanych użytkowników. Wymienione funkcjonalności pokrywają się z możliwościami stworzonego przeze mnie systemu. 
 
-TrainCMS posiada także inne możliwości, których nie oferuję Joomla w wersji podstawowej, jest to kalendarz wydarzeń, dodawanie załączników, generowanie dokumentów pdf zawierających artykuły, przedstawienie statystyk w formie graficznej, karuzela ilustracji wyróżnionych artykułów. Natomiast niektóre z rozwiązań zostały rozszerzone względem Joomli są to komentarze, które w projekcie TrainCMS rejestrują adres IP komentującego. 
+\newpage
 
-Znajdziemy także w Joomli takie funkcję, których nie posiada mój system. Jednym z takich rozwiązań jest tworzenie zagnieżdżonej struktury menu w formie drzewiastej. Kolejnym rozwiązaniem jest możliwość zmiany szablonu frontu strony i szablonu zaplecza witryny. Główną funkcjonalnością Joomli jest możliwość łatwego rozszerzania możliwości strony za pomocą pluginów i komponentów. Podczas porównywania obu systemów należy pamiętać, że Joomla jest produktem z wieloletnim doświadczeniem na rynku, tworzonym przez zespół programistów z całego świata. Rozwiązania oparte na Joomli znajdują zastosowanie głównie przy dużych witrynach.
+TrainCMS posiada także inne możliwości, których nie oferuję Joomla w wersji podstawowej, jest to kalendarz wydarzeń, dodawanie załączników, generowanie dokumentów pdf zawierających artykuły, przedstawienie statystyk w formie graficznej, karuzela ilustracji wyróżnionych artykułów. Natomiast niektóre z rozwiązań zostały rozszerzone względem Joomli są to komentarze, które w projekcie TrainCMS rejestrują adres IP autora komentarza. 
+
+Znajdziemy także w Joomli funkcje, których nie posiada mój system. Jednym z takich rozwiązań jest tworzenie struktury menu w formie drzewiastej. Kolejnym rozwiązaniem jest możliwość zmiany szablonu frontu strony i szablonu zaplecza witryny. Główną funkcjonalnością Joomli jest możliwość łatwego rozszerzania możliwości strony za pomocą pluginów i komponentów. Podczas porównywania obu systemów należy pamiętać, że Joomla jest produktem z wieloletnim doświadczeniem na rynku, tworzonym przez zespół programistów z całego świata. Rozwiązania oparte na Joomli znajdują zastosowanie głównie przy dużych witrynach.
 
 \newpage
 
@@ -88,13 +91,13 @@ Znajdziemy także w Joomli takie funkcję, których nie posiada mój system. Jed
 
 \subsection{WordPress}
 
-WordPress jest systemem zarządzania treścią napisanym w języku PHP, wykorzystujący systemem zarządzania bazą danych MySQL i jest dystrybuowany na licencji GPL i dostępny bezpłatnie. 
+WordPress jest systemem zarządzania treścią napisanym w języku PHP, wykorzystujący systemem zarządzania bazą danych MySQL i jest dystrybuowany na licencji GPL. 
 
 System WordPress jest zdecydowanie mniej rozbudowany w porównaniu do Joomli. Oferuje on takie funkcjonalności jak podstawową kategoryzację, tagowanie i komentowanie artykułów, obsługę wielu kont użytkownika, odrębny interfejs dla użytkownika gościa, zwykłego użytkownika i administratora oraz podgląd statystyk jest również w pełny responsywny. Wszystkie wymienione funkcjonalności pokrywają się z zaimplementowanymi w systemie TrainCMS.
 
-W TrainCMS znajdziemy także inne możliwości, których nie oferuję WordPress w wersji podstawowej, jest to kalendarz wydarzeń, dodawanie załączników, generowanie dokumentów pdf zawierających artykuły oraz karuzela ilustracji wyróżnionych artykułów. Natomiast niektóre z rozwiązań zostały rozszerzone względem Joomli są to komentarze, które w projekcie TrainCMS rejestrują adres IP komentującego. 
+W TrainCMS znajdziemy także inne możliwości, których nie oferuję WordPress w wersji podstawowej, jest to kalendarz wydarzeń, dodawanie załączników, generowanie dokumentów pdf zawierających artykuły oraz karuzela ilustracji wyróżnionych artykułów. Natomiast niektóre z rozwiązań zostały rozszerzone względem Joomli są to komentarze, które w projekcie TrainCMS rejestrują adres IP autora komentarza. 
 
-Należy w tym miejscu wspomnieć, że główną funkcjonalnością WordPress jest łatwość instalacji i zmiany wielu dostępnych szablonów strony. WordPress jest produktem z utartą pozycja na rynku systemów zarządzania treścią, który podobnie jak Joomla jest tworzony przez zespół programistów z całego świata. Witryny obsługiwane przez WordPress to głównie blogi.
+Należy w tym miejscu wspomnieć, że główną funkcjonalnością WordPress jest łatwość instalacji i zmiany wielu dostępnych szablonów strony. WordPress jest produktem z utartą pozycja na rynku systemów zarządzania treścią, który podobnie jak Joomla tworzony jest przez zespół programistów z całego świata. Witryny obsługiwane przez WordPress to głównie blogi.
 
 \newpage
 
@@ -109,7 +112,7 @@ Należy w tym miejscu wspomnieć, że główną funkcjonalnością WordPress jes
 
 \section{Możliwości zastosowania praktycznego}
 
-System TrainCMS został opracowany w taki sposób, aby sprostać wielu wymaganiom różnych użytkowników. Oferuje sporo możliwości, które przypadną do gustu każdemu i będą zarazem bardzo przydatne w codziennej pracy nad własna witryną Internetową. Reasumując możliwości serwisu ogranicza jedynie wyobraźnia administratora.
+System TrainCMS został opracowany w taki sposób, aby sprostać wielu wymaganiom różnych użytkowników. Oferuje sporo możliwości, które przypadną do gustu każdemu i będą zarazem bardzo przydatne w codziennej pracy nad własna witryną Internetową. Reasumując, możliwości serwisu ogranicza jedynie wyobraźnia administratora.
 
 \subsection{Strona wizytkówa}
 
@@ -117,11 +120,11 @@ W celu stworzenia optymalnej i efektownej strony wizytówki należałoby uruchom
 
 \subsection{Internetowe portfolio}
 
-Każda osoba tworząca w Internecie portfolio swojej działalności zamierza przyciągnąć w ten sposób jak największą liczbę nowy klientów. Aby skutecznie rozwiązać ten problem należy każde dzieło zaprezentować w osobnym artykule. Natomiast informacje, które klient chciałby, aby były zawsze łatwo dostępne, powinno sie umieścić w przygotowanych do tego zakładkach, do których to łącza będą wyswietlane na górnym pasku nawigacji. Można też przyjąć inne podejście do tego tematu, otóż ustawić stronę główna jako stronę statyczną, następnie utworzyć kategorię, do której łącze podobnie jak do zakładek ukaże się na górnym pasku nawigacji, w której to umiścimy dzieła swojej działalności. 
+Każda osoba tworząca w Internecie portfolio swojej działalności zamierza przyciągnąć w ten sposób jak największą liczbę nowych klientów. Aby skutecznie rozwiązać ten problem, proponuję, każde dzieło zaprezentować w osobnym artykule. Natomiast informacje, które autor chciałby, aby były zawsze łatwo dostępne, umieścić w przygotowanych do tego zakładkach, do których to łącza będą wyswietlane na górnym pasku nawigacji. Można też przyjąć inne podejście do tego tematu, otóż ustawić stronę główną jako stronę statyczną, następnie utworzyć kategorię, do której łącze, podobnie jak do zakładek ukaże się na górnym pasku nawigacji, w której to umieścimy dzieła swojej działalności. 
 
 \subsection{Serwis informacyjny}
 
-W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie funkcjonalności. Większość rozwiązań została wyprofilowana właśnie na tego typu zastosowania. Głównym szkieletem w tym przypadku będzie możliwość tworzenia wielu kategorii, gdzie redaktor takiego serwisu będzie mógł z pełną łatwością organizować wszystkie tematy poruszane na portalu i jednocześnie wszystkie artykuły z każdej kategorii będą wyświetlane na stronie głównej. Gorące tematy będzie można oznaczać jako wyróżnione i tym sposobem będą przez cały widoczne na szczycie karuzeli. Gość odwiedzający serwis z łatwością wejdzie w interakcję ze stroną poprzez system komentarzy, operator serwisu będzie mógł korzystać z przejrzystych statystyk i za ich pomocą wyciągać wnioski na temat pracy portalu i planować dalszy jego rozwój. Z pomocą dla nowych gości przyjdą tagi, dzięki którym będzie można szybko wyszukać artykuły poruszające dany temat. Łatwiejsze stanie się planowanie różnego rodzaju imprez za pomocą wbudowanego kalendarza wydarzeń. Autor piszący artykuły dla serwisu nie będzie musiał zagłębiać się w panel zaplecza, na stronie głównej po zalogowaniu znajdzie skróty do najważniejszych funkcji takich jak nowy artykuł, lista własnych artykułów oraz lista komentarzy pod tymi artykułami. Jeżeli autor zeche to ma możlwiość wyłączenia komentarzy. Jeżeli nadejdzie taka potrzeba, mozęmy skorzystać z zaimplemenotwanego mechanizmu zakładek, które to po utworzeniu wyśweitlane będą na górnym pasku nawigacji.
+W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie funkcjonalności. Większość rozwiązań została wyprofilowana właśnie na tego typu zastosowania. Głównym szkieletem jest w tym przypadku możliwość tworzenia wielu kategorii, gdzie redaktor takiego serwisu, będzie mógł z pełną łatwością organizować wszystkie tematy poruszane na portalu i jednocześnie wszystkie artykuły z każdej kategorii będą wyświetlane na stronie głównej. Gorące tematy będzie można oznaczać jako wyróżnione i tym sposobem będą przez cały widoczne na szczycie karuzeli. Gość odwiedzający serwis z łatwością wejdzie w interakcję ze stroną poprzez system komentarzy, operator serwisu będzie mógł korzystać z przejrzystych statystyk i za ich pomocą analizować pracę portalu oraz planować dalszy jego rozwój. Z pomocą dla nowych gości przyjdą tagi, dzięki którym będzie można szybko wyszukać artykuły poruszające dany temat. Łatwiejsze stanie się planowanie różnego rodzaju imprez za pomocą wbudowanego kalendarza wydarzeń. Autor piszący artykuły dla serwisu nie będzie musiał zagłębiać się w panel zaplecza, na stronie głównej po zalogowaniu znajdzie skróty do najważniejszych funkcji takich jak nowy artykuł, lista własnych artykułów oraz lista komentarzy pod tymi artykułami. Jeżeli autor zechce,  ma możlwiość wyłączenia komentarzy. Jeżeli nadejdzie taka potrzeba, możemy skorzystać z zaimplemenotwanego mechanizmu zakładek, które to, po utworzeniu wyświetlone będą na górnym pasku nawigacji.
 
 \chapter{Projekt i analiza}
 
@@ -133,7 +136,7 @@ W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie fu
 \centering
 \includegraphics[width=.8\linewidth]{fig/erd2}
 \caption{Diagram związków encji.}
-\source{Opracowanie własne}
+\source{Opracowanie własne za pomocą Gemu RailRoady \cite{railroady}.}
 \end{figure}
 
 \section{Diagram kontrolera danych}
@@ -141,7 +144,7 @@ W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie fu
 \centering
 \includegraphics[width=.9\linewidth]{fig/controllers}
 \caption{Diagram kontrolera danych.}
-\source{Opracowanie własne}
+\source{Opracowanie własne  za pomocą Gemu RailRoady.}
 \end{figure}
 
 \newpage
@@ -151,7 +154,7 @@ W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie fu
 \centering
 \includegraphics[width=.9\linewidth]{fig/uc}
 \caption{Diagram Przypadków Użycia.}
-\source{Opracowanie własne}
+\source{Opracowanie własne za pomocą programu Astah \cite{astah}.}
 \end{figure}
 
 \section{Projekt interfejsu użytkownika}
@@ -190,30 +193,30 @@ W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie fu
 Głównym rusztowaniem całego systemu jest framework Ruby On Rails \cite{ror} \cite{enterprise} \cite{wikibook} \cite{guides}. Odpowiada on za całość frontendu i backendu. Do swojego działania używa bazy PostgreSQL. W dalszych podrozdziałach przybliżę jak wyglądała implementacja poszczególnych elementów systemu za pomocą Ruby On Rails.
 
 \subsection{Artykuły i Kategorie}
-Podstawą jednostką można na stronie jest artykuł, który zawsze zawiera się w którejś z uprzednio utworzonych kategorii. Artykuł posiada atrybuty takie jak tytuł, wstęp, treść główną, numer kategorii do której został przypisany, ilustrację, znacznik aktywności, znacznik wyróżnienia, znacznik komentarzy, liczbę wyświetleń oraz znaczniki czasowe – data i czas utworzenia i edycji. Chciałbym przybliżyć niektóre z atrybutów, pierwszym z nich będą znaczniki aktywności, wyróżnienia i komentarzy, które kolejno oznaczają informacje o tym, że artykuł jest aktywny co przekłada się na to, że będzie wyświetlony na stronie głównej oraz liście artykułów danej kategorii, kolejny atrybut determinuję to, że artykuł zostanie wyświetlony na karuzeli ilustracji na szczycie strony głównej, ostatni ze znaczników pozwala dezaktywować moduł komentarzy, tak jakbyśmy zachcieli, aby przy pewnym artykule nie miałoby być komentarzy. Liczba wyświetleń jest sumaryczną wartością wszystkich odsłon artykułu, polega to na pobraniu liczby wyświetleń z bazy danych następnie zwiększeniu jej o jeden oraz aktualizacji wartości w bazie danych. Znaczniki czasowe są automatycznie dodawane przez Rails. Zarówno na stronie głównej jak i na liście artykułów danej kategorii wyświetlany jest tytuł, wstęp do artykułu, ilustracja, autor, data utworzenia, liczba komentarzy. Po przejściu do artykułu zobaczymy pełną treść, w tym celu właśnie istnieją dwa oddzielne atrybuty. Treść oraz wstęp możemy podczas tworzenia artykułu edytować za pomocą edytora CKEditor, opublikowanego na wolnej licencji. Zaimplementowana został również wyszukiwarka artykułów, które możemy poszukiwać za pomocą treści tytułu. Algorytm ignoruje wielkość liter oraz pozwala szukać za pomocą fragmentów wyrazów. Artykuły mogą dodawać jedynie zalogowaniu użytkownicy. Po przejściu do artykułu możemy go wydrukować dzięki specjalnie do tego przygotowanej formatce optymalizującej miejsce na stronie. 
+Podstawą jednostką na stronie jest artykuł, który zawsze zawiera się w jednej z uprzednio utworzonych kategorii. Artykuł posiada atrybuty takie jak tytuł, wstęp, treść główną, numer kategorii do której został przypisany, ilustrację, znacznik aktywności, znacznik wyróżnienia, znacznik komentarzy, liczbę wyświetleń oraz znaczniki czasowe – data, czas utworzenia i edycji. Chciałbym przybliżyć niektóre z atrybutów, pierwszym z nich będą znaczniki aktywności, wyróżnienia i komentarzy, które kolejno oznaczają informacje o tym, czy artykuł jest aktywny co przekłada się na to, że będzie wyświetlony na stronie głównej oraz spisie artykułów danej kategorii, kolejny atrybut determinuję to, czy artykuł zostanie wyświetlony na karuzeli ilustracji na szczycie strony głównej, ostatni ze znaczników pozwala dezaktywować moduł komentarzy w przypadku, gdyby zaszła konieczność, aby przy pewnym artykule nie miałoby być komentarzy. Liczba wyświetleń jest sumaryczną wartością wszystkich odsłon artykułu, obliczanie polega na pobraniu liczby wyświetleń z bazy danych, następnie zwiększeniu jej o jeden oraz aktualizacji wartości w bazie danych. Znaczniki czasowe są automatycznie dodawane przez Rails. Zarówno na stronie głównej, jak i na liście artykułów danej kategorii wyświetlany jest tytuł, wstęp do artykułu, ilustracja, autor, data utworzenia, liczba komentarzy. Po przejściu do artykułu zobaczymy pełną treść, w tym celu właśnie zostały zaimplementowane dwa oddzielne atrybuty. Zaimplementowana została również wyszukiwarka artykułów, gdzei słowem kluczowym wyszukiwania jest tytuł artykułu. Algorytm wyszukiwania ignoruje wielkość liter oraz pozwala szukać za pomocą fragmentów wyrazów. Artykuły mogą dodawać jedynie zalogowaniu użytkownicy. Po przejściu do artykułu możemy go wydrukować dzięki specjalnie do tego przygotowanej formatce optymalizującej miejsce na stronie kartki papieru.
 
-Kategoria posiada wymienione artykuły: tytuł, opis, znacznik aktywności, znacznik strony głównej oraz znaczniki czasowe – data i czas utworzenia i edycji. Wszystkie kategorie oznaczone jako aktywne wyświetlane są na górnym pasku nawigacji, po przejściu w link danej kategorii zobaczymy opis kategorii oraz listę wszystkich artykułów przypisanych do danej kategorii. Istnieje również taki atrybut jak znacznik strony głównej który określa to czy artykuły przypisane do kategorii będą wyświetlane na stronie głównej. Do strony głównej może być przypisane kilka kategorii. 
+Kategoria natomiast posiada atrybuty takie jak: tytuł, opis, znacznik aktywności, znacznik strony głównej oraz znaczniki czasowe – data, czas utworzenia i edycji. Wszystkie kategorie oznaczone jako aktywne wyświetlane są na górnym pasku nawigacji, po przejściu w odnośnik do danej kategorii zobaczymy opis kategorii oraz listę wszystkich artykułów przypisanych do tejże kategorii. Istnieje również taki atrybut jak znacznik strony głównej, który określa to czy artykuły przypisane do kategorii będą wyświetlane na stronie głównej. Do strony głównej może być przypisane kilka kategorii. 
 
 \subsection{Komentarze}
-Do każdego artykułu możemy dodawać nie długie komentarze. Ta funkcjonalność udostępniona jest dla gości odwiedzających stronę więc co za tym idzie nie jest wymagane logowanie, aby dodać komentarze. W celu dodania komentarza musimy podać swój adres e-mail, który jednak nie jest weryfikowany, jest to powszechnie stosowana praktyka. W bazie danych zapisywany jest także adres IP autora komentarza. Każdy komentarz można ocenić w skali plus/minus. Przy treści komentarza wyświetlana jest wartość oceny, która może być również ujemna. Jeden odwiedzający może ocenić jeden komentarz jeden raz, informacja o tym fakcie zapisywana jest w ciasteczkach.
+Do każdego artykułu możemy dodawać komentarze. Ta funkcjonalność udostępniona jest dla gości odwiedzających stronę, a co za tym idzie, aby dodać komentarz nie jest wymagane logowanie. W celu dodania komentarza musimy podać swój adres e-mail, który jednak nie będzie weryfikowany, jest to powszechnie stosowana praktyka. W bazie danych zapisywany jest także adres IP autora komentarza. Każdy komentarz można ocenić w skali plus/minus. Obok treści komentarza wyświetlana jest wartość oceny, która może być również ujemna. Jeden odwiedzający może ocenić jeden komentarz jeden raz, informacja o tym fakcie zapisywana jest w ciasteczkach.
 
 \newpage
 
 \subsection{Tagi}
-W celu dodatkowej kategoryzacji oraz łatwiejszego znajdowania poszukiwanych przez odwiedzających treści zaimplementowano tagi artykułów. Po utworzeniu artykułu możemy przejść do formularza dodawania tagów, w którym za pomocą listy rozwijanej wybieramy dopasowane tagi, w tym samym miejscu, jeżeli nie znajdziemy poszukiwanych przez nas tagów, możemy dodać swój tag i go przydzielić do artykułu.
+W celu dodatkowej kategoryzacji oraz łatwiejszego znajdowania poszukiwanych przez odwiedzających treści, zaimplementowano tagi artykułów. Po utworzeniu artykułu, możemy przejść do formularza dodawania tagów, w którym za pomocą listy rozwijanej wybieramy dopasowane tagi, w tym samym miejscu, jeżeli nie znajdziemy poszukiwanych przez siebie tagów, możemy dodać swój tag i przypisać go do artykułu.
 
 \subsection{Kalendarz Wydarzeń}
-Zaimplementowany został również kalendarz wydarzeń, który wyświetla dodane wydarzenia w formie klasycznego kalendarza ściennego podzielonego na miesiące. Każde wydarzenie, częściowo na wzór artykułu, posiada atrybuty takie jak tytuł, treść, termin wydarzenia, ilustrację, znacznik aktywności, znacznik wyróżnienia, liczbę wyświetleń oraz znaczniki czasowe – data i czas utworzenia i edycji. Podobnie jak w przypadku artykułów treść możemy podczas tworzenia  edytować za pomocą edytora CKEditor, opublikowanego na wolnej licencji. Znaczniki aktywności i wyróżnienia są odpowiedzialne odpowiednio za wyświetlanie się wydarzenia na kalendarzu oraz na liście po kalendarzem oraz wyświetlanie wydarzeń na karuzeli na szczycie strony głownej. 
+Zaimplementowany został również kalendarz wydarzeń, który wyświetla dodane wydarzenia w formie klasycznego kalendarza ściennego, podzielonego na pojedyncze miesiące. Każde wydarzenie, na wzór artykułu, posiada atrybuty takie jak tytuł, treść, termin wydarzenia, ilustrację, znacznik aktywności, znacznik wyróżnienia, liczbę wyświetleń oraz znaczniki czasowe – data, czas utworzenia i edycji. Znaczniki aktywności i wyróżnienia są odpowiedzialne odpowiednio za wyświetlanie wydarzenia na kalendarzu oraz na liście pod kalendarzem. 
 
-Goście odwiedzający stronę mogę się zapisywać do wybranego przez siebie wydarzenia, które polega na podaniu swojego imienia oraz adresu e-mail, ponadto w tle do bazy danych trafia również adres IP osoby deklarującej dołączenie do wydarzenia. Wydarzenia mogą tworzyć jedynie zalogowaniu użytkownicy.
+Goście odwiedzający stronę mogę zapisywać się do wybranego przez siebie wydarzenia, polega to na podaniu swojego imienia oraz adresu e-mail, ponadto w tle do bazy danych trafia również adres IP osoby deklarującej dołączenie do wydarzenia. Wydarzenia mogą tworzyć jedynie zalogowani użytkownicy.
 
 \newpage
 
 \subsection{Zakładki}
-W celu uporządkowania statycznych informacji prezentowanych na stronie zaimplementowano zakładki. Za pomocą atrybutów przypisanych do danej zakładki możemy określać tytuł, treść, ilustrację, znacznik strony głównej, znacznik paska nawigacji oraz znaczniki czasowe – data i czas utworzenia i edycji. Znacznik strony głównej decyduje o tym, że dana zakładki będzie pełniła rolę właśnie strony głównej. Natomiast znacznik paska nawigacji determinuje fakt wyświetlenia odnośnika do zakładki na górnym pasku nawigacji. Aby zakładka została wyświetlona na stronie głównej konieczne jest zaznaczenie tylko jednej zakładki w przypadku, gdy zostaną więcej niż dwie to strona główna przybierze formę dynamiczną.
+W celu uporządkowania statycznych informacji prezentowanych na stronie, zaimplementowano zakładki. Za pomocą atrybutów przypisanych do każdej zakładki możemy określać tytuł, treść, ilustrację, znacznik strony głównej, znacznik paska nawigacji oraz znaczniki czasowe – data, czas utworzenia i edycji. Znacznik strony głównej decyduje o tym, czy dana zakładka będzie pełniła rolę strony głównej. Natomiast znacznik paska nawigacji determinuje fakt wyświetlenia odnośnika do zakładki na górnym pasku nawigacji. Aby zakładka została wyświetlona na stronie głównej konieczne jest zaznaczenie tylko jednej zakładki w przypadku, gdy zostaną więcej niż dwie, wtedy strona główna przybierze formę dynamiczną.
 
 \subsection{Strona główna}
-Strona główna może zostać skonfigurowana dwojako. Pierwszy sposób polega na wyświetlaniu listy artykułów oraz jej stronicowaniu za pomocą Gema o nazwie \texttt{will\_paginate}. Jak wcześniej wspomniałem na stronie głównej wyświetlone zostaną tylko artykuły aktywne z aktywnych kategorii. Na szczycie głównej witryny pojawi się również karuzela z wyróżnionymi artykułami a i wydarzeniami. Drugim sposobem aranżacji strony głównej jest jest statyczna wersja organizowana za pomocą wyżej opisanych zakładek. Na stronie głównej możemy umieszczać także komponenty, są to ramki z pewną treścią. Na stałe zostały osadzone cztery komponenty zawierające listę popularnych artykułów, listę najbliższych wydarzeń, listę najnowszych tagów oraz drobne statystyki. Komponenty za wzór innych modułów strony posiadają znacznik aktywności, który określa czy dany komponent będzie wyświetlony na stronie głównej. 
+Strona główna może zostać skonfigurowana dwojako. Pierwszy sposób polega na wyświetlaniu listy artykułów oraz jej stronicowaniu za pomocą Gema o nazwie \texttt{will\_paginate}\cite{willpaginate}. Jak wcześniej wspomniałem na stronie głównej wyświetlone zostaną tylko artykuły aktywne z aktywnych kategorii. Na szczycie głównej witryny pojawi się również karuzela z wyróżnionymi artykułami a i wydarzeniami. Drugim sposobem aranżacji strony głównej jest jest statyczna wersja organizowana za pomocą wyżej opisanych zakładek. Na stronie głównej możemy umieszczać także komponenty, są to ramki z pewną treścią. Na stałe zostały osadzone cztery komponenty zawierające listę popularnych artykułów, listę najbliższych wydarzeń, listę najnowszych tagów oraz drobne statystyki. Komponenty za wzór innych modułów strony posiadają znacznik aktywności, który określa czy dany komponent będzie wyświetlony na stronie głównej. 
 
 \newpage
 
@@ -229,7 +232,7 @@ Na górnym pasku znajdziemy odnośniki do strony głównej, wszystkich kategorii
 \source{Opracowanie własne}
 \end{figure}
 
-Natomiast na dolnym pasku nawigacji zwanym stópką, znajduję się w widoku dla niezalogowanych użytkowników klauzula Copyright, odnośnik do planszy pod tytułem „o projekcie”, odnośnik do prostej pomocy oraz odnośnik do panelu logowania. Po zalogowaniu z uprawnieniami redaktora znajdziemy dodatkowo odnośnik do statystyk, natomiast po zalogowaniu z uprawnieniami administratora zyskamy odnośnik do zaplecza. Dla wszystkich zalogowanych na prawym końcu dolnego paska nawigacji znajduje się odnośnik do panelu zmiany hasła oraz przycisk wylogowania.
+Natomiast na dolnym pasku nawigacji zwanym stópką, znajduję się w widoku dla niezalogowanych użytkowników klauzula Copyright, odnośnik do planszy pod tytułem „o projekcie”, odnośnik do prostej pomocy oraz odnośnik do panelu logowania. Po zalogowaniu z uprawnieniami redaktora znajdziemy dodatkowo odnośnik do statystyk, natomiast po zalogowaniu z uprawnieniami administratora zyskamy odnośnik do zaplecza. Dla wszystkich zalogowanych użytkowników na prawym końcu dolnego paska nawigacji znajduje się odnośnik do panelu zmiany hasła oraz przycisk wylogowania.
 
 \begin{figure}[!tbh]
 \centering
@@ -241,7 +244,7 @@ Natomiast na dolnym pasku nawigacji zwanym stópką, znajduję się w widoku dla
 \newpage
 
 \subsection{Kanał RSS}
-Kolejną zaimplementowaną w systemie funkcjonalnością jest agregator kanału RSS. Dzięki temu fani witryny mogą dodać sobie link rss do swojego czytnika i mieć dostęp do najnowszych informacja publikowanych na stronie zawsze pod ręką. 
+Kolejną zaimplementowaną w systemie funkcjonalnością jest agregator kanału RSS. Dzięki niemu fani witryny mogą dodać sobie link RSS do swojego czytnika i mieć zawsze dostęp do najnowszych informacja publikowanych na stronie. 
 
 Implementacja polegała na stworzeniu dwóch plików, jednego w standardzie Atom i jednego w standardzie RSS. Następnie wypełnieniu ich kodem wyświetlającym tytuł artykułu, nagłówek, autora oraz odnośnik do pełnej treści artykułu. Oba pliki zostały zwalidowane i są w pełni zgodne z obowiązującymi wersjami obu standardów.
 
@@ -284,16 +287,16 @@ która odpowiedzialna jest za wyświetlanie tabeli w mobilnym widoku jako stos k
 <%= link_to 'odnosnik', odnosnik_path, 
 	class:'button' %>
 \end{lstlisting}
-co pozwala na wyświetlania każdego odnośnika w formie prostokątnego z ostrymi rogami przycisku. Jednakże wszystkie odnośniki nie są przyciskami o tej samej wielkości, odnośniki zawarte w tabeli mają dodatkową klasę 
-\begin{lstlisting}[language=html, caption={Przykładowy przycisk}]
+co pozwala na wyświetlania każdego odnośnika w formie prostokątnego przycisku. Wszystkie odnośniki nie są przyciskami o tej samej wielkości, odnośniki zawarte w tabeli mają dodatkową klasę 
+\begin{lstlisting}[language=html, caption={Przykładowy mały przycisk}]
 <%= link_to 'maly odnosnik', maly_odnosnik_path, 
 	class:'tiny button' %>
 \end{lstlisting}
-dzięki której przycisk staję bardzo mały i w elegancki sposób wkomponowuje się w wiersze tabeli. Również do nawigacji po stronicowaniu wykorzystano metodę renderowania w stylu Foundation. Ogólna konwencja graficzna opiera się na siatce, opisanej za pomocą znaczników \texttt{div}. Każda sekcja wszystkich stron poszczególnych modułów całego systemu zapisana jest w znaczniku \texttt{div}, który otrzymuje za każdym razem klasę 
+dzięki której przycisk staję bardzo mały i w elegancki sposób wkomponowuje się w wiersze tabeli. Również do nawigacji podczas stronicowania wykorzystano metodę renderowania w stylu Foundation. Ogólna konwencja graficzna opiera się na siatce, opisanej za pomocą znaczników \texttt{div}. Każda sekcja wszystkich stron poszczególnych modułów całego systemu zapisana jest w znaczniku \texttt{div}, który otrzymuje za każdym razem klasę 
 \begin{lstlisting}[language=html, caption={Przykładowy div}]
 <div class="callout"></div>
 \end{lstlisting}
-która powoduje wyświetlanie treści na białym eleganckim prostokącie z ostrymi rogami. Strona główna została podzielona za pomocą siatki znaczników \texttt{div} na kilka sekcji. Formularze wprowadzania danych wykorzystują klasę \texttt{div} 
+Dzięki, której treść wyświetlana jest na białym eleganckim prostokącie z ostrymi rogami. Strona główna została podzielona za pomocą siatki znaczników \texttt{div} na kilka sekcji. Formularze wprowadzania danych wykorzystują klasę \texttt{div} 
 \begin{lstlisting}[language=html, caption={Przykładowe pole tekstowe}]
 <div class="input-group">
 	<span class="input-group-label">Tytul</span>
@@ -301,14 +304,14 @@ która powoduje wyświetlanie treści na białym eleganckim prostokącie z ostry
 		class:"input-group-field" %>
 </div>
 \end{lstlisting}
-która pozwala na wyświetlanie etykiety pola i samego w jednej linii oszczędzając miejsce i prezentując stronę jeszcze bardziej czytelniejszą. 
+która pozwala na wyświetlanie etykiety i samego pola w jednej linii, oszczędzając tym samym miejsce, prezentując stronę w jeszcze bardziej czytelny sposób.
 
 \subsection{Ikony}
-Bardzo ciekawą funkcjonalnością frameworku Foundation jest możliwość dodawania ikon w kodzie strony. Polega to na zainstalowaniu Gemu o nazwie Foundation Icon Fonts on SASS for Rails \cite{icons}, potrzebne do tego będzie dodanie wpisu do pliku Gemfile, dodania linii kodu do pliku \texttt{application.css.scss} znajdującego się w katalogu \texttt{app/assets/stylesheets/}:
+Bardzo ciekawą funkcjonalnością frameworku Foundation jest możliwość dodawania ikon w kodzie strony. Polega to na zainstalowaniu Gemu o nazwie Foundation Icon Fonts on SASS for Rails \cite{icons}, potrzebne do tego będzie dodanie wpisu do pliku Gemfile oraz dodania linii kodu do pliku \texttt{application.css.scss} znajdującego się w katalogu \texttt{app/assets/stylesheets/}:
 \begin{lstlisting}[language=html, caption={Przykładowe pole tekstowe}]
 @import 'foundation-icons';
 \end{lstlisting} 
-Na koniec w celu wyświetlenia ikony na stronie należy dodać kod, którego wynikiem będzie ikona kalendarza wielkości 24 punktów: 
+Na koniec w celu wyświetlenia ikony na stronie, należy dodać kod, którego wynikiem będzie ikona kalendarza wielkości 24 punktów: 
 \begin{lstlisting}[language=html, caption={Przykładowe pole tekstowe}]
 <font size="24"><i class="fi-calendar"></i></font>.
 \end{lstlisting}
@@ -324,17 +327,17 @@ Na koniec w celu wyświetlenia ikony na stronie należy dodać kod, którego wyn
 
 \section{CarrierWave, CKEditor, Cloudinary}
 \subsection{CarrierWave i Cloudinary}
-CarrierWave \cite{carrierwave} jest to Gem usprawniający obsługę plików różnych rozszerzeń dla aplikacji w Rubym, natomiast Cloudinary jest to usługa oferująca na umieszczanie plików na bezpłatnym serwerze hostingowym, dodatkowo o tej samej nazwie istnieje Gem, który obsługują całą tę funkcjonalność z poziomu aplikacji Ruby. Oba rozwiązania są ze ściśle sobą powiązane, ale mogą też działać samodzielnie. Gemy udostępnione są na licencji MIT License. 
+CarrierWave \cite{carrierwave} jest to Gem usprawniający obsługę plików o różnych rozszerzeniach dla aplikacji w Ruby, natomiast Cloudinary jest to usługa oferująca przechowywanie plików na bezpłatnym serwerze hostingowym, dodatkowo o tej samej nazwie istnieje Gem, który obsługuje całą tę funkcjonalność z poziomu aplikacji Ruby. Oba rozwiązania są ze ściśle sobą powiązane, ale mogą też działać samodzielnie. Gemy udostępnione są na licencji MIT License. 
 
 Gem należy dodać do pliku gemfile. Następnie utworzyć uploader za pomocą polecenia: 
 \begin{lstlisting}[language=bash]
 rails generate uploader Avatar
 \end{lstlisting}
-które wygeneruje plik, w którym to możemy przeprowadzić konfigurację. Dodatkowo do swojego pełnego działania potrzebuje pakiet RMagick, który możemy zainstalować za pomocą polecenia: 
+które wygeneruje plik, w którym to możemy przeprowadzić konfigurację. Dodatkowo do swojego pełnego działania potrzebuje pakiet RMagick, który możemy zainstalować za pomocą polecenia systemowego:
 \begin{lstlisting}[language=bash, caption={Polecenie instalujące oprogramowanie RMagick}]
 sudo apt-get install imagemagick libmagickwand-dev
 \end{lstlisting}
-Przed przejściem do dalszych kroków należy mieć założone konto w serwisie Clodinary, z tego też serwisu po zalogowaniu pobieramy plik konfiguracyjny przygotowany dla aplikacji napisanych w Ruby, zapisujemy go w katalogu \texttt{/config}. Do każdego z plików uploadera, których należy dodać dwie linie 
+Przed przejściem do dalszych kroków, potrebne będzie konto w serwisie Clodinary, z tego też serwisu po zalogowaniu pobieramy plik konfiguracyjny przygotowany dla aplikacji napisanych w Ruby, zapisujemy go w katalogu \texttt{/config}. Do każdego z plików uploadera, należy dodać dwie linie 
 \begin{lstlisting}[language=ruby, caption={Framgent zawartości pliku uploadera}]
 include CarrierWave::Rmagick
 include Cloudinary::CarrierWave.
@@ -342,7 +345,7 @@ include Cloudinary::CarrierWave.
 
 \newpage
 
-W celu zachowania porządku na serwerze usługi Cloudinary w każdym pliku możemy dodać linię oznaczjacą tagiem każdy załadowany przez nas plik: 
+W celu zachowania porządku na serwerze usługi Cloudinary w każdym pliku uploadera możemy dodać linię, która oznacza tagiem każdy załadowany przez nas plik: 
 \begin{lstlisting}[language=ruby, caption={Przykładowy tag dla pliku}]
 process :tags => ['random_tag']
 \end{lstlisting}
@@ -352,9 +355,9 @@ Aby wyświetlić załadowany plik, na przykład obraz należy dodać linię o tr
 \end{lstlisting}
 
 \subsection{CKEditor}
-CKEditor \cite{ckeditor} jest edytorem WYSIWYG\footnote{\textit{ang. what you see is what you get} skórt oznaczjący "to co widzisz, to otrzymasz", stosowany w technikach komputerowych do określenia rozwiązań pozwalających uzyskać już podczas produkcji tekstu wynik wielce zbliżony lub niemalże identyczny do finalnego efektu.}, który umożliwią łatwą i przyjemna edycje tekstu w oknie przeglądarki możliwościami zbliżonymi do edytora tekstu klasy Microsoft Word. Gem udostępniony jest na licencji MIT License. 
+CKEditor \cite{ckeditor} jest edytorem WYSIWYG\footnote{\textit{ang. what you see is what you get} skórt oznaczjący "to co widzisz, to otrzymasz", stosowany w technikach komputerowych do określenia rozwiązań pozwalających uzyskać już podczas produkcji tekstu wynik wielce zbliżony lub niemalże identyczny do finalnego efektu.}, który umożliwia łatwą i przejrzystą edycję tekstu w oknie przeglądarki, możliwościami zbliżonymi do edytora tekstu klasy Microsoft Word. Gem udostępniony jest na licencji MIT License. 
 
-W celu instalacji należy dodać gem do pliku gemfile. W drugim kroku dodać do pliku \texttt{config/initializers/ckeditor.rb} linie: 
+W celu instalacji należy dodać gem do pliku gemfile. W drugim kroku należy dodać do pliku \texttt{config/initializers/ckeditor.rb} linie: 
 \begin{lstlisting}[language=ruby, caption={Framgent zawartości pliku ckeditor.rb}]
 Ckeditor.setup do |config|
   config.cdn_url = 
@@ -372,7 +375,7 @@ W miejscu, w którym chcemy użyć ten komponent dodajemy linię o treści:
 \begin{lstlisting}[language=html, caption={Kod uruchamiajacy edytor}]
 <%= f.cktext_area :content, placeholder:"Content" %>
 \end{lstlisting}
-Rozwiązanie to ściśle współpracuje z przedstawionym wyżej rozwiązaniem publikacji załączników, na przykładzie artykułów, możemy nie tylko dodać główną ilustrację publikacji, ale także za pomocą CKEditora dodać kilka innych załączników, nie tylko obrazków, które także znajdą się na serwerze usługi Cloudinary. 
+Rozwiązanie to ściśle współpracuje z przedstawionym wyżej rozwiązaniem publikacji załączników, na przykładzie artykułów, możemy nie tylko dodać główną ilustrację publikacji, ale także za pomocą CKEditor dodać kilka innych załączników, nie tylko obrazków, które także znajdą się na serwerze usługi Cloudinary. 
 
 \begin{figure}[!tbh]
 \centering
@@ -384,9 +387,9 @@ Rozwiązanie to ściśle współpracuje z przedstawionym wyżej rozwiązaniem pu
 \newpage
 
 \section{Prawn}
-Prawn \cite{prawn} jest gemem generującym pliki w formacie PDF. Udostępniano został na licencji GPL.
+Prawn \cite{prawn} jest to Gem generujący pliki w formacie PDF. Udostępniano został na licencji GPL.
 
-Aby zainstalować gem w naszym projekcie, należy go dodać do pliku Gemfile. W celu utworzenia plików PDF należy utworzyć klasę w kontrolerze, która będzie dziedziczyła z klas gemu:
+Aby zainstalować Gem w naszym projekcie, należy go dodać do pliku Gemfile. W celu utworzenia plików PDF należy utworzyć klasę w kontrolerze, która będzie dziedziczyła z klas komponentu:
 \begin{lstlisting}[language=ruby, caption={Deklaracja klasy generującej plik PDF}]
 class ArticleOnePdf < Prawn::Document
 \end{lstlisting}
@@ -411,9 +414,9 @@ end
 \newpage
 
 \section{Chartkick}
-Chartkick \cite{chartkick} jest gemem, który z pewnością wzbogaci wizualnie każdy projekt w którym się znajdzie. Głównym zadaniem gema jest generowanie wykresów. Pierwszy raz został opublikowany w 2013 i teraz udostępniany jest na licencji \mbox{MIT License. }
+Chartkick \cite{chartkick} jest gemem, który z pewnością wzbogaci wizualnie każdy projekt, w którym się znajdzie. Głównym zadaniem gema jest generowanie wykresów. Pierwszy raz został opublikowany w 2013 i teraz udostępniany jest na licencji \mbox{MIT License. }
 
-W celu zainstalowania gema należy dodać go do pliku Gemfile, następnie w pliku \texttt{application.js} dodać linię 
+Aby zainstalować Gem należy dodać go do pliku Gemfile, następnie w pliku \texttt{application.js} dodać linię 
 \begin{lstlisting}[language=html, caption={Framgent zawartości pliku application.js}]
 //= require chartkick
 \end{lstlisting}
@@ -429,7 +432,7 @@ Bardzo ciekawym wykresem jest wykres o nazwie \texttt{pie\_chart}. Można go umi
 \begin{lstlisting}[language=html, caption={Kod uruchamiający wykres kołowy}]
 <%= pie_chart Article.group(:title).sum(:visit) %>
 \end{lstlisting}
-Generuje on bardzo przejrzysty obrazek z wykresem:
+Generuje on bardzo przejrzysty obrazek z wykresem kołowym:
 \begin{figure}[!tbh]
 \centering
 \includegraphics[width=.5\linewidth]{fig/chartkick}
@@ -439,7 +442,7 @@ Generuje on bardzo przejrzysty obrazek z wykresem:
 
 \section{reCAPTCHA}
 
-W celu rozwiązania problemu zabezpieczenia systemu wdrożonych w ogólnodostępnej sieci Internet przed różnymi formami złośliwego oprogramowania, a szczególnie robotów spamujących za pomocą formularzy zawartych na stronach internetowych wdrożyłem rozwiązanie o nazwie reCAPTCHA produkcji Google za pomocą Gemu o tej samej nazwie \cite{recaptcha} dystrybuowanego na licencji MIT license. 
+W celu rozwiązania problemu zabezpieczenia systemów wdrożonych w ogólnodostępnej sieci Internet przed różnymi formami złośliwego oprogramowania, a szczególnie robotów spamujących za pomocą formularzy zawartych na stronach internetowych, wdrożyłem rozwiązanie o nazwie reCAPTCHA produkcji Google za pomocą Gemu o tej samej nazwie \cite{recaptcha} dystrybuowanego na licencji MIT license. 
 
 \newpage
 
@@ -479,43 +482,55 @@ Użytkownicy Wikibooks.
 \textit{Ruby}. 
 Wikibooks; 1 edition (February 17, 2008).
 
+\bibitem{railroady} 
+Oficjalna dokumentacja - Gem RailRoady.
+\\\texttt{\url{http://railroady.prestonlee.com/}} (dostęp 23.04.2017)
+
+\bibitem{astah} 
+Oficjalna dokumentacja Aplikacji Astah.
+\\\texttt{\url{http://astah.net/tutorials}} (dostęp 23.04.2017)
+
 \bibitem{guides} 
 Oficjalna dokumentacja frameworku Ruby on Rails.
 \\\texttt{\url{http://guides.rubyonrails.org/}} (dostęp 23.04.2017)
 
 \bibitem{api} 
-Oficjalny opis API Ruby on Rails. 
+Oficjalna dokumentacja API Ruby on Rails. 
 \\\texttt{\url{http://api.rubyonrails.org/}} (dostęp 23.04.2017)
+
+\bibitem{willpaginate} 
+Oficjalny opis - Gem will\_pagintate. 
+\\\texttt{\url{http://www.rubydoc.info/gems/will_paginate/}} (dostęp 23.04.2017)
 
 \bibitem{foundation} 
 Oficjalna dokumentacja frameworku Foundation for Sites. 
 \\\texttt{\url{http://foundation.zurb.com/sites/docs/}} (dostęp 23.04.2017)
 
 \bibitem{icons} 
-Oficjalna dokumentacja Gemu Foundation Icon.
+Oficjalna dokumentacja - Gem Foundation Icon.
 \\\texttt{\url{http://www.rubydoc.info/gems/foundation-icons-sass-rails/}} (dostęp 23.04.2017)
 
 \bibitem{carrierwave} 
-Oficjalna dokumentacja Gemu CarrierWave.
+Oficjalna dokumentacja - Gem CarrierWave.
 \\\texttt{\url{https://github.com/carrierwaveuploader/carrierwave/wiki}} (dostęp 23.04.2017)
 
 \bibitem{ckeditor} 
-Oficjalna dokumentacja Gemu CKEditor for Rails.
+Oficjalna dokumentacja - Gem CKEditor for Rails.
 \\\texttt{\url{https://github.com/galetahub/ckeditor/}} (dostęp 23.04.2017)
 
 \bibitem{prawn} 
-Oficjalna dokumentacja Gemu PrawnPDF.
+Oficjalna dokumentacja - Gem PrawnPDF.
 \\\texttt{\url{http://prawnpdf.org/api-docs/2.0/}} (dostęp 23.04.2017)
 
 \bibitem{chartkick} 
-Oficjalna dokumentacja Gemu Chartkick.
+Oficjalna dokumentacja - Gem Chartkick.
 \\\texttt{\url{https://github.com/ankane/chartkick/}} (dostęp 23.04.2017)
 
 \bibitem{recaptcha} 
-Oficjalna dokumentacja Gemu reCAPTCHA.
+Oficjalna dokumentacja - Gem reCAPTCHA.
 \\\texttt{\url{https://github.com/ambethia/recaptcha/}} (dostęp 23.04.2017)
 
-\end{thebibliography}
+\end{thebibliography} 
 
 
 % zakończenie
