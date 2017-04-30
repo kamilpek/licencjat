@@ -202,7 +202,7 @@ W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie fu
 \chapter{Implementacja}
 
 \section{Architektura rozwiązania - Ruby on Rails}
-Głównym rusztowaniem całego systemu jest framework Ruby On Rails \cite{ror} \cite{enterprise} \cite{wikibook} \cite{guides}. Odpowiada on za całość frontendu i backendu. Do swojego działania używa bazy PostgreSQL. W dalszych podrozdziałach przybliżę jak wyglądała implementacja poszczególnych elementów systemu za pomocą Ruby On Rails.
+Głównym rusztowaniem całego systemu jest framework Ruby On Rails \cite{ror} \cite{enterprise} \cite{wikibook} \cite{guides}. Odpowiada on za całość frontendu i backendu. Do swojego działania używa bazy PostgreSQL. W dalszych podrozdziałach przybliżę jak wyglądała implementacja poszczególnych elementów systemu za pomocą Ruby On Rails. Framework dystrybuowany jest na licencji MIT License\footnote{MIT License - Jest to jedna z najmniej rozbudowanych licencji oprogramowania i zarazem jest jedna z najbardziej liberalnych. Umożliwia nieograniczone prawo do użytkowania, kopiowania, modyfikowania i publikacji, również sprzedaży wersji pierwotnej bądź zmodyfikowanej oprogramowania. Jedynym wymaganiem jest umieszczenie informacji o autorze i licencji.}.
 
 \subsection{Artykuły i Kategorie}
 Podstawą jednostką na stronie jest artykuł, który zawsze zawiera się w jednej z uprzednio utworzonych kategorii. Artykuł posiada atrybuty takie jak tytuł, wstęp, treść główną, numer kategorii do której został przypisany, ilustrację, znacznik aktywności, znacznik wyróżnienia, znacznik komentarzy, liczbę wyświetleń oraz znaczniki czasowe – data, czas utworzenia i edycji. Chciałbym przybliżyć niektóre z atrybutów, pierwszym z nich będą znaczniki aktywności, wyróżnienia i komentarzy, które kolejno oznaczają informacje o tym, czy artykuł jest aktywny co przekłada się na to, że będzie wyświetlony na stronie głównej oraz spisie artykułów danej kategorii, kolejny atrybut determinuję to, czy artykuł zostanie wyświetlony na karuzeli ilustracji na szczycie strony głównej, ostatni ze znaczników pozwala dezaktywować moduł komentarzy w przypadku, gdyby zaszła konieczność, aby przy pewnym artykule nie miałoby być komentarzy. Liczba wyświetleń jest sumaryczną wartością wszystkich odsłon artykułu, obliczanie polega na pobraniu liczby wyświetleń z bazy danych, następnie zwiększeniu jej o jeden oraz aktualizacji wartości w bazie danych. Znaczniki czasowe są automatycznie dodawane przez Rails. Zarówno na stronie głównej, jak i na liście artykułów danej kategorii wyświetlany jest tytuł, wstęp do artykułu, ilustracja, autor, data utworzenia, liczba komentarzy. Po przejściu do artykułu zobaczymy pełną treść, w tym celu właśnie zostały zaimplementowane dwa oddzielne atrybuty. Zaimplementowana została również wyszukiwarka artykułów, gdzei słowem kluczowym wyszukiwania jest tytuł artykułu. Algorytm wyszukiwania ignoruje wielkość liter oraz pozwala szukać za pomocą fragmentów wyrazów. Artykuły mogą dodawać jedynie zalogowaniu użytkownicy. Po przejściu do artykułu możemy go wydrukować dzięki specjalnie do tego przygotowanej formatce optymalizującej miejsce na stronie kartki papieru.
@@ -343,11 +343,11 @@ CarrierWave \cite{carrierwave} jest to Gem usprawniający obsługę plików o r�
 
 Gem należy dodać do pliku gemfile. Następnie utworzyć uploader za pomocą polecenia: 
 \begin{lstlisting}[language=bash]
-rails generate uploader Avatar
+$ rails generate uploader Avatar
 \end{lstlisting}
 które wygeneruje plik, w którym to możemy przeprowadzić konfigurację. Dodatkowo do swojego pełnego działania potrzebuje pakiet RMagick, który możemy zainstalować za pomocą polecenia systemowego:
 \begin{lstlisting}[language=bash, caption={Polecenie instalujące oprogramowanie RMagick}]
-sudo apt-get install imagemagick libmagickwand-dev
+$ sudo apt-get install imagemagick libmagickwand-dev
 \end{lstlisting}
 Przed przejściem do dalszych kroków, potrebne będzie konto w serwisie Clodinary, z tego też serwisu po zalogowaniu pobieramy plik konfiguracyjny przygotowany dla aplikacji napisanych w Ruby, zapisujemy go w katalogu \texttt{/config}. Do każdego z plików uploadera, należy dodać dwie linie 
 \begin{lstlisting}[language=ruby, caption={Framgent zawartości pliku uploadera}]
@@ -454,7 +454,7 @@ Generuje on bardzo przejrzysty obrazek z wykresem kołowym:
 
 \section{reCAPTCHA}
 
-W celu rozwiązania problemu zabezpieczenia systemów wdrożonych w ogólnodostępnej sieci Internet przed różnymi formami złośliwego oprogramowania, a szczególnie robotów spamujących za pomocą formularzy zawartych na stronach internetowych, wdrożyłem rozwiązanie o nazwie reCAPTCHA produkcji Google za pomocą Gemu o tej samej nazwie \cite{recaptcha} dystrybuowanego na licencji MIT license. 
+W celu rozwiązania problemu zabezpieczenia systemów wdrożonych w ogólnodostępnej sieci Internet przed różnymi formami złośliwego oprogramowania, a szczególnie robotów spamujących za pomocą formularzy zawartych na stronach internetowych, wdrożyłem rozwiązanie o nazwie reCAPTCHA produkcji Google za pomocą Gemu o tej samej nazwie \cite{recaptcha} dystrybuowanego na licencji MIT License. 
 
 \newpage
 
@@ -477,6 +477,21 @@ end
 \caption{Formularz weryfikacyjny reCAPTCHA.}
 \source{Opracowanie własne}
 \end{figure}
+
+\newpage
+
+\section{Deivse}
+W celu organizacji uprawnień i dostępu elementów strony przez upoważnione osoby zaimplementowano obsługę użytkowników. Całość polega na tym, aby dodać do naszego projektu Gem Devise\cite{devise}, który jest udostępniony na licencji MIT License. Natomiast jego instalacja polega na dodaniu go do pliku Gemfile, następnie użyciu generatora wbudowanego w Gem za pomocą polecenia powłoki: 
+\begin{lstlisting}[language=bash, caption={Polecenie instalujące Gem Devise w naszym projekcie}]
+$ rails generate devise:install
+\end{lstlisting}
+Kolejnym krokiem jest wygenerowanie modelu za pomocą następnego polecenia powłoki: 
+\begin{lstlisting}[language=bash, caption={Polecenie generujące modeul użytkowników w naszym projekcie}]
+$ rails generate devise users
+\end{lstlisting}
+Na koniec instalacji należy wykonać migracje bazy danych.
+
+W przypadku TrainCMS, na tym nie zakończyła się implementacja obsługi użytkowników. Wprowadzono uprawnienia administratora, polegało to na stworzeniu metody w kontrolerze użytkowników, która to modyfikuje pole w bazie danych. Następnie w miejscach do których ma mieć dostęp tylko administrator, dane pole jest sprawdzane pod kątem występowania twierdzenia, wówczas użytkownik otrzymuje dostęp. Stworzono dodatkową podstronę w panelu administratora w celu zarządzania użytkownikami, na tejże stronie możemy usunąć danego użytkownika, nadać mu uprawnienia administratora, przejść do edycji jego danych oraz przejść do formularza dodawania użytkowników. W tym miejscu należy wspomnieć o założenie, które twierdzi, że tylko administrator może dodawać użytkowników, nikt nie może się sam zarejestrować.
 
 \begin{thebibliography}{9}
 \bibitem{ror} 
@@ -541,6 +556,10 @@ Oficjalna dokumentacja - Gem Chartkick.
 \bibitem{recaptcha} 
 Oficjalna dokumentacja - Gem reCAPTCHA.
 \\\texttt{\url{https://github.com/ambethia/recaptcha/}} (dostęp 23.04.2017)
+
+\bibitem{devise} 
+Oficjalna dokumentacja - Gem devise.
+\\\texttt{\url{https://github.com/plataformatec/devise/}} (dostęp 23.04.2017)
 
 \end{thebibliography} 
 

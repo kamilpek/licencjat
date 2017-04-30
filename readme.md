@@ -80,3 +80,4 @@ Podczas tworzenia interfejsu użytkownika i administratora, kierowałem się gł
 1. Oficjalna dokumentacja Gemu CKEditor for Rails. [github.com/galetahub/ckeditor](https://github.com/galetahub/ckeditor)(dostęp 23.04.2017)
 1. Oficjalna dokumentacja Gemu Chartkick. [github.com/ankane/chartkick](https://github.com/ankane/chartkick)(dostęp 23.04.2017)
 1. Oficjalna dokumentacja Gemu PrawnPDF. [prawnpdf.org/api-docs/2.0/](http://prawnpdf.org/api-docs/2.0/)(dostęp 23.04.2017)
+1. Oficjalna dokumentacja - Gem devise. [github.com/plataformatec/devise/][https://github.com/plataformatec/devise/](dostęp 23.04.2017)
