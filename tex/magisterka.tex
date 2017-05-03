@@ -320,11 +320,11 @@ która pozwala na wyświetlanie etykiety i samego pola w jednej linii, oszczędz
 
 \subsection{Ikony}
 Bardzo ciekawą funkcjonalnością frameworku Foundation jest możliwość dodawania ikon w kodzie strony. Polega to na zainstalowaniu Gemu o nazwie Foundation Icon Fonts on SASS for Rails \cite{icons}, potrzebne do tego będzie dodanie wpisu do pliku Gemfile oraz dodania linii kodu do pliku \texttt{application.css.scss} znajdującego się w katalogu \texttt{app/assets/stylesheets/}:
-\begin{lstlisting}[language=html, caption={Przykładowe pole tekstowe}]
+\begin{lstlisting}[language=html, caption={Kod dołączający zbiór ikon Foundation Icons do aplikacji}]
 @import 'foundation-icons';
 \end{lstlisting} 
 Na koniec w celu wyświetlenia ikony na stronie, należy dodać kod, którego wynikiem będzie ikona kalendarza wielkości 24 punktów: 
-\begin{lstlisting}[language=html, caption={Przykładowe pole tekstowe}]
+\begin{lstlisting}[language=html, caption={Przykładowa ikona ze zbioru ikon Foundation Icons}]
 <font size="24"><i class="fi-calendar"></i></font>.
 \end{lstlisting}
 
@@ -342,7 +342,7 @@ Na koniec w celu wyświetlenia ikony na stronie, należy dodać kod, którego wy
 CarrierWave \cite{carrierwave} jest to Gem usprawniający obsługę plików o różnych rozszerzeniach dla aplikacji w Ruby, natomiast Cloudinary jest to usługa oferująca przechowywanie plików na bezpłatnym serwerze hostingowym, dodatkowo o tej samej nazwie istnieje Gem, który obsługuje całą tę funkcjonalność z poziomu aplikacji Ruby. Oba rozwiązania są ze ściśle sobą powiązane, ale mogą też działać samodzielnie. Gemy udostępnione są na licencji MIT License. 
 
 Gem należy dodać do pliku gemfile. Następnie utworzyć uploader za pomocą polecenia: 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash, caption={Polecenie generujące plik uploadera}]
 $ rails generate uploader Avatar
 \end{lstlisting}
 które wygeneruje plik, w którym to możemy przeprowadzić konfigurację. Dodatkowo do swojego pełnego działania potrzebuje pakiet RMagick, który możemy zainstalować za pomocą polecenia systemowego:
@@ -441,7 +441,7 @@ natomiast w pliku \texttt{layouts/application.html.html} dodać linię:
 \newpage
 
 Bardzo ciekawym wykresem jest wykres o nazwie \texttt{pie\_chart}. Można go umieścić w następujący sposób:
-\begin{lstlisting}[language=html, caption={Kod uruchamiający wykres kołowy}]
+\begin{lstlisting}[language=html, caption={Kod generujący wykres kołowy}]
 <%= pie_chart Article.group(:title).sum(:visit) %>
 \end{lstlisting}
 Generuje on bardzo przejrzysty obrazek z wykresem kołowym:
@@ -570,13 +570,13 @@ Podczas pracy nad projektem zrealizowałem wszystkie założone wcześniej cele,
 
 % załączniki (opcjonalnie):
 \appendix
-\chapter{Tytuł załącznika jeden}
+\chapter{Płyta CD z kodem projektu}
 
-Treść załącznika jeden.
+Płyta CD
 
-\chapter{Tytuł załącznika dwa}
+\chapter{Płyta CD z plikami pracy licencjackiej}
 
-Treść załącznika dwa.
+Płyta CD
 
 % spis rysunków (jeżeli jest potrzebny):
 \listoffigures

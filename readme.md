@@ -54,6 +54,7 @@ Kod źródłowy dostępny jest w serwisie github.com pod adresem: [https://githu
    1. Prawn
    1. Chartkick
    1. reCAPTCHA
+   1. deivse
 1. Bibliografia
 1. Zakończenie
 1. Spis rysunków
