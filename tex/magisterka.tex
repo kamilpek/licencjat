@@ -493,6 +493,44 @@ Na koniec instalacji należy wykonać migracje bazy danych.
 
 W przypadku TrainCMS, na tym nie zakończyła się implementacja obsługi użytkowników. Wprowadzono uprawnienia administratora, polegało to na stworzeniu metody w kontrolerze użytkowników, która to modyfikuje pole w bazie danych. Następnie w miejscach do których ma mieć dostęp tylko administrator, dane pole jest sprawdzane pod kątem występowania twierdzenia, wówczas użytkownik otrzymuje dostęp. Stworzono dodatkową podstronę w panelu administratora w celu zarządzania użytkownikami, na tejże stronie możemy usunąć danego użytkownika, nadać mu uprawnienia administratora, przejść do edycji jego danych oraz przejść do formularza dodawania użytkowników. W tym miejscu należy wspomnieć o założenie, które twierdzi, że tylko administrator może dodawać użytkowników, nikt nie może się sam zarejestrować.
 
+\newpage
+
+\section{rQRcode i Prawn/QRCode}
+Aby ułatwić promocję strony zaimplementowana została funkcjonalność generowania kodów QR, w tym celu z pomocą przychodzi Gem rQRcode\cite{rqrcode} i Gem Prawn/QRCode\cite{prawnqr}. Pierwszy Gem jest głównym silnikiem kodów QR w naszym projekcie, natomiast drugi Gem odpowiada za poprawne osadzanie kodu w dokumencie PDF. Instalacja polega na dodaniu obu dodatków do pliku Gemfile. Następnie należy dodać do pliku  \texttt{app/helpers/application.rb} linię:
+\begin{lstlisting}[language=ruby, caption={Kod generujący kod QR}]
+require 'rqrcode'
+\end{lstlisting}
+Generowanie kodu QR polega na wywołaniu w kodzie strony polecenia:
+\begin{lstlisting}[language=ruby, caption={Kod generujący kod QR}]
+qrcode = RQRCode::QRCode.new( ‘random text’ )
+\end{lstlisting}
+
+W systemie TrainCMS kody QR odpowiadają za prezentację odnośnika do strony danego artykułu. Umieszczone są one na wydruku artykłu oraz w pliku PDF z artykułem. 
+
+W celu wyświetlenia wygenerowanego kodu QR należy go skonwertować do formatu PNG za pomocą metody \texttt{as\_png}:
+\begin{lstlisting}[language=ruby, caption={Kod konwertujący kod QR}]
+qrimage = qrcode.as_png
+\end{lstlisting}
+Następnie wyświetleniu go na stronie za pomocą polecenia:
+\begin{lstlisting}[language=html, caption={Kod wyświetlający kod QR na stronie HTML}]
+<img src="<%=@qrimage.to_data_url %>"/>
+\end{lstlisting}
+Aby umieścić kod QR w dokumencie PDF nalży dodać linię:
+\begin{lstlisting}[language=ruby, caption={Kod wyświetlający kod QR w dokumencie PDF}]
+render_qr_code(qrcode)
+\end{lstlisting}
+
+\newpage
+
+Wygenerowany kod QR.
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=.6\linewidth]{fig/kodqr}
+\caption{Wygenerowany kod QR.}
+\source{Opracowanie własne}
+\end{figure}
+
+
 \begin{thebibliography}{9}
 \bibitem{ror} 
 John Elder.
@@ -560,6 +598,14 @@ Oficjalna dokumentacja - Gem reCAPTCHA.
 \bibitem{devise} 
 Oficjalna dokumentacja - Gem devise.
 \\\texttt{\url{https://github.com/plataformatec/devise/}} (dostęp 23.04.2017)
+
+\bibitem{rqrcode} 
+Oficjalna dokumentacja - Gem rQRcode.
+\\\texttt{\url{http://www.rubydoc.info/gems/rqrcode/}} (dostęp 23.04.2017)
+
+\bibitem{prawnqr} 
+Oficjalna dokumentacja - Gem Prawn/QRCode.
+\\\texttt{\url{http://www.rubydoc.info/gems/prawn-qrcode/}} (dostęp 23.04.2017)
 
 \end{thebibliography} 
 
