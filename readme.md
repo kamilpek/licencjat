@@ -55,6 +55,7 @@ Kod źródłowy dostępny jest w serwisie github.com pod adresem: [https://githu
    1. Chartkick
    1. reCAPTCHA
    1. deivse
+   1. rQRcode i Prawn/QRCode
 1. Bibliografia
 1. Zakończenie
 1. Spis rysunków
@@ -81,4 +82,6 @@ Podczas tworzenia interfejsu użytkownika i administratora, kierowałem się gł
 1. Oficjalna dokumentacja Gemu CKEditor for Rails. [github.com/galetahub/ckeditor](https://github.com/galetahub/ckeditor)(dostęp 23.04.2017)
 1. Oficjalna dokumentacja Gemu Chartkick. [github.com/ankane/chartkick](https://github.com/ankane/chartkick)(dostęp 23.04.2017)
 1. Oficjalna dokumentacja Gemu PrawnPDF. [prawnpdf.org/api-docs/2.0/](http://prawnpdf.org/api-docs/2.0/)(dostęp 23.04.2017)
-1. Oficjalna dokumentacja - Gem devise. [github.com/plataformatec/devise/][https://github.com/plataformatec/devise/](dostęp 23.04.2017)
+1. Oficjalna dokumentacja - Gem devise. [github.com/plataformatec/devise/](https://github.com/plataformatec/devise/)(dostęp 23.04.2017)
+1. Oficjalna dokumentacja - Gem rQRcode. [rubydoc.info/gems/rqrcode/](http://www.rubydoc.info/gems/rqrcode/)(dostęp 23.04.2017)
+1. Oficjalna dokumentacja - Gem Prawn/QRCode. [rubydoc.info/gems/prawn-qrcode/](http://www.rubydoc.info/gems/prawn-qrcode/)(dostęp 23.04.2017)
