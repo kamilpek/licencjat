@@ -530,6 +530,62 @@ Wygenerowany kod QR.
 \source{Opracowanie własne}
 \end{figure}
 
+\section{Geocoder}
+Kolejnym ciekawym dodatkiem do projektu jest Gem Geocoder\cite{geocoder}, udostępniany na licencji MIT license. Pozwala on na tak zwane geokodowanie, czyli ustalanie za pomocą na przykład adresu  urzędowego współrzędnych geograficznych, tyczy się to również adresów IP z którymi radzi sobie nieco gorzej aniżeli z urzędowymi adresami. 
+
+Instalacja polega na dodaniu wpisów do pliku Gemfile. Każdy model, który ma zostać poddany geokodowaniu musi posiadać kolumny przeznaczone na przechowywanie długości i szerokości geograficznej. Następnie w pliku danego modelu dodajemy dwie linie kodu: 
+\begin{lstlisting}[language=ruby, caption={Kod odpowiadający za geokodowanie}]
+geocoded_by :adress 
+after_validation :geocode
+\end{lstlisting}
+Aby wyświetlić zlokalizowane koordynaty korzystamy z poleceń:
+\begin{lstlisting}[language=ruby, caption={Kod wyświetlający koordynaty}]
+<%= @event.latitude %>, <%= @event.longitude %> 
+\end{lstlisting}
+Funkcjonalność geokodowania została wdrożona przy kalendarzu wydarzeń, podczas tworzenia wydarzenia podajemy jego adres, a Gem ustala jego koordynaty, następnie w podglądzie danego wydarzenia uzyskujemy odnośnik do mapy z zaznaczoną pozycją geograficzną.
+
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=\linewidth]{fig/geocoder-events}
+\caption{Adres, koordynaty i odnośnik do mapy przy wydarzeniu}
+\source{Opracowanie własne}
+\end{figure}
+
+Innym miejscem wdrożenia geokodowania jest moduł komentarzy. Gem na podstawie adresu IP ustala przybliżone współrzędne geograficzne, jednak należy pamiętać, że jest to tylko informacja o sugerowanym położeniu w rzeczywistości zgadza się tylko kraj co i tak nie jest wiążące zwłaszcza kiedy użytkownik korzysta z usług VPN.
+
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=\linewidth]{fig/geocoder-comments}
+\caption{Koordynaty jako odnośnik do mapy przy komentarzach}
+\source{Opracowanie własne}
+\end{figure}
+
+\newpage
+
+\section{cookies\_eu}
+Zgodnie z nowelizacja Prawa Telekomunikacyjnego uchwalonego dnia 16 listopada 2012 każdy operator strony internetowej zobowiązany jest do umieszczenia stosownej informacji o przechowywaniu i operowaniu na plikach cookies, potocznie zwanymi ciasteczkami. Z pomocą w wykonaniu tych obostrzeń przychodzi Gem cookies\_eu\cite{cookies}, udostępniany na licencji MIT license. 
+
+Instalacja polega na dodaniu wpisu do pliku Gemfile, następnie dodaniu do pliku app/assets/javascripts/application.js jednej linii kodu o następującej treści:
+\begin{lstlisting}[language=ruby, caption={Kod odpowiadający dodanie bibliotek javascript}]
+//= require cookies_eu
+\end{lstlisting}
+Natomiast do pliku app/asstes/stylesheets/aplication.css linii kodu o treści:
+\begin{lstlisting}[language=ruby, caption={Kod odpowiadający dodanie bibliotek kaskadowych arkuszy stylów}]
+*= require cookies_eu
+\end{lstlisting}
+Na koniec dodajemy linię, która będzie odpowiadać za renderowania paska ze stosowną informacją na dole strony:
+\begin{lstlisting}[language=ruby, caption={Kod renderujący pasek z informacją o ciasteczkach}]
+<%= render 'cookies_eu/consent_banner' %>
+\end{lstlisting}
+
+Wynik końcowy prezentuje się w następujący sposób:
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=\linewidth]{fig/cookies}
+\caption{Belka informująca o plikach cookies.}
+\source{Opracowanie własne}
+\end{figure}
+
 
 \begin{thebibliography}{9}
 \bibitem{ror} 
@@ -606,6 +662,14 @@ Oficjalna dokumentacja - Gem rQRcode.
 \bibitem{prawnqr} 
 Oficjalna dokumentacja - Gem Prawn/QRCode.
 \\\texttt{\url{http://www.rubydoc.info/gems/prawn-qrcode/}} (dostęp 23.04.2017)
+
+\bibitem{geocoder} 
+Oficjalna dokumentacja - Gem Geocoder.
+\\\texttt{\url{http://www.rubydoc.info/gems/geocoder/}} (dostęp 23.04.2017)
+
+\bibitem{cookies} 
+Oficjalna dokumentacja - Gem cookies\_eu.
+\\\texttt{\url{http://www.rubydoc.info/gems/cookies_eu/}} (dostęp 23.04.2017)
 
 \end{thebibliography} 
 

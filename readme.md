@@ -56,6 +56,8 @@ Kod źródłowy dostępny jest w serwisie github.com pod adresem: [https://githu
    1. reCAPTCHA
    1. deivse
    1. rQRcode i Prawn/QRCode
+   1. geocoder
+   1. cookies_eu
 1. Bibliografia
 1. Zakończenie
 1. Spis rysunków
