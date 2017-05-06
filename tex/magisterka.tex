@@ -34,7 +34,6 @@
 \renewcommand{\listoflistingscaption}{Spis kodów źródłowych}
 \usepackage{listings}
 \renewcommand{\lstlistlistingname}{Spis kodów źródłowych}
-\usepackage{caption}
 
 \lstdefinelanguage{bashes}{%
   language = bash,
@@ -43,7 +42,7 @@
 
 \lstdefinelanguage{ruby2}{%
   language = ruby,
-  morekeywords = {require, import, include, process, image_tag, f.cktext_area, javascript_include_tag },
+  morekeywords = {require, @import, include, process, render },
 }
 
 \lstset{morekeywords={include}}
@@ -248,21 +247,26 @@ Do każdego artykułu możemy dodawać komentarze. Ta funkcjonalność udostępn
 
 \newpage
 
-\subsection{Tagi}
-W celu dodatkowej kategoryzacji oraz łatwiejszego znajdowania poszukiwanych przez odwiedzających treści, zaimplementowano tagi artykułów. Po utworzeniu artykułu, możemy przejść do formularza dodawania tagów, w którym za pomocą listy rozwijanej wybieramy dopasowane tagi, w tym samym miejscu, jeżeli nie znajdziemy poszukiwanych przez siebie tagów, możemy dodać swój tag i przypisać go do artykułu.
-
 \subsection{Kalendarz Wydarzeń}
 Zaimplementowany został również kalendarz wydarzeń, który wyświetla dodane wydarzenia w formie klasycznego kalendarza ściennego, podzielonego na pojedyncze miesiące. Każde wydarzenie, na wzór artykułu, posiada atrybuty takie jak tytuł, treść, termin wydarzenia, ilustrację, znacznik aktywności, znacznik wyróżnienia, liczbę wyświetleń oraz znaczniki czasowe – data, czas utworzenia i edycji. Znaczniki aktywności i wyróżnienia są odpowiedzialne odpowiednio za wyświetlanie wydarzenia na kalendarzu oraz na liście pod kalendarzem. 
 
 Goście odwiedzający stronę mogę zapisywać się do wybranego przez siebie wydarzenia, polega to na podaniu swojego imienia oraz adresu e-mail, ponadto w tle do bazy danych trafia również adres IP osoby deklarującej dołączenie do wydarzenia. Wydarzenia mogą tworzyć jedynie zalogowani użytkownicy.
 
-\newpage
-
-\subsection{Zakładki}
-W celu uporządkowania statycznych informacji prezentowanych na stronie, zaimplementowano zakładki. Za pomocą atrybutów przypisanych do każdej zakładki możemy określać tytuł, treść, ilustrację, znacznik strony głównej, znacznik paska nawigacji oraz znaczniki czasowe – data, czas utworzenia i edycji. Znacznik strony głównej decyduje o tym, czy dana zakładka będzie pełniła rolę strony głównej. Natomiast znacznik paska nawigacji determinuje fakt wyświetlenia odnośnika do zakładki na górnym pasku nawigacji. Aby zakładka została wyświetlona na stronie głównej konieczne jest zaznaczenie tylko jednej zakładki w przypadku, gdy zostaną więcej niż dwie, wtedy strona główna przybierze formę dynamiczną.
+\begin{figure}[!tbh]
+\centering
+\includegraphics[width=\linewidth]{fig/events}
+\caption{Widok kalendarza wydarzeń.}
+\source{Opracowanie własne}
+\end{figure}
 
 \subsection{Strona główna}
 Strona główna może zostać skonfigurowana dwojako. Pierwszy sposób polega na wyświetlaniu listy artykułów oraz jej stronicowaniu za pomocą Gema o nazwie \texttt{will\_paginate}\cite{willpaginate}. Jak wcześniej wspomniałem na stronie głównej wyświetlone zostaną tylko artykuły aktywne z aktywnych kategorii. Na szczycie głównej witryny pojawi się również karuzela z wyróżnionymi artykułami a i wydarzeniami. Drugim sposobem aranżacji strony głównej jest jest statyczna wersja organizowana za pomocą wyżej opisanych zakładek. Na stronie głównej możemy umieszczać także komponenty, są to ramki z pewną treścią. Na stałe zostały osadzone cztery komponenty zawierające listę popularnych artykułów, listę najbliższych wydarzeń, listę najnowszych tagów oraz drobne statystyki. Komponenty za wzór innych modułów strony posiadają znacznik aktywności, który określa czy dany komponent będzie wyświetlony na stronie głównej. 
+
+\subsection{Tagi}
+W celu dodatkowej kategoryzacji oraz łatwiejszego znajdowania poszukiwanych przez odwiedzających treści, zaimplementowano tagi artykułów. Po utworzeniu artykułu, możemy przejść do formularza dodawania tagów, w którym za pomocą listy rozwijanej wybieramy dopasowane tagi, w tym samym miejscu, jeżeli nie znajdziemy poszukiwanych przez siebie tagów, możemy dodać swój tag i przypisać go do artykułu.
+
+\subsection{Zakładki}
+W celu uporządkowania statycznych informacji prezentowanych na stronie, zaimplementowano zakładki. Za pomocą atrybutów przypisanych do każdej zakładki możemy określać tytuł, treść, ilustrację, znacznik strony głównej, znacznik paska nawigacji oraz znaczniki czasowe – data, czas utworzenia i edycji. Znacznik strony głównej decyduje o tym, czy dana zakładka będzie pełniła rolę strony głównej. Natomiast znacznik paska nawigacji determinuje fakt wyświetlenia odnośnika do zakładki na górnym pasku nawigacji. Aby zakładka została wyświetlona na stronie głównej konieczne jest zaznaczenie tylko jednej zakładki w przypadku, gdy zostaną więcej niż dwie, wtedy strona główna przybierze formę dynamiczną.
 
 \newpage
 
@@ -355,7 +359,7 @@ która pozwala na wyświetlanie etykiety i samego pola w jednej linii, oszczędz
 
 \subsection{Ikony}
 Bardzo ciekawą funkcjonalnością frameworku Foundation jest możliwość dodawania ikon w kodzie strony. Polega to na zainstalowaniu Gemu o nazwie Foundation Icon Fonts on SASS for Rails \cite{icons}, potrzebne do tego będzie dodanie wpisu do pliku Gemfile oraz dodania linii kodu do pliku \texttt{application.css.scss} znajdującego się w katalogu \texttt{app/assets/stylesheets/}:
-\begin{lstlisting}[language=html, caption={Kod dołączający zbiór ikon Foundation Icons do aplikacji}]
+\begin{lstlisting}[language=ruby2, caption={Kod dołączający zbiór ikon Foundation Icons do aplikacji}]
 @import 'foundation-icons';
 \end{lstlisting} 
 Na koniec w celu wyświetlenia ikony na stronie, należy dodać kod, którego wynikiem będzie ikona kalendarza wielkości 24 punktów: 
@@ -483,7 +487,7 @@ Bardzo ciekawym wykresem jest wykres o nazwie \texttt{pie\_chart}. Można go umi
 Generuje on bardzo przejrzysty obrazek z wykresem kołowym:
 \begin{figure}[!tbh]
 \centering
-\includegraphics[width=.5\linewidth]{fig/chartkick}
+\includegraphics[width=.8\linewidth]{fig/chartkick}
 \caption{Wykres kołowy.}
 \source{Opracowanie własne}
 \end{figure}
