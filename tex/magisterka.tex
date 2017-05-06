@@ -30,12 +30,41 @@
 %\definecolor{stress}{cmyk}{0,1,0.13,0} % RubineRed
 %\definecolor{topic}{cmyk}{0.98,0.13,0,0.43} % MidnightBlue
 
+\usepackage{minted}
+\renewcommand{\listoflistingscaption}{Spis kodów źródłowych}
 \usepackage{listings}
 \renewcommand{\lstlistlistingname}{Spis kodów źródłowych}
+\usepackage{caption}
 
-\definecolor{mygreen}{rgb}{0,0.6,0}
-\definecolor{mygray}{rgb}{0.5,0.5,0.5}
-\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\lstdefinelanguage{bashes}{%
+  language = bash,
+  morekeywords = {rails, generate, uploader, sudo, apt-get},
+}
+
+\lstdefinelanguage{ruby2}{%
+  language = ruby,
+  morekeywords = {require, import, include, process, image_tag, f.cktext_area, javascript_include_tag },
+}
+
+\lstset{morekeywords={include}}
+
+\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{redstrings}{rgb}{0.9,0,0}
+\lstset{ %
+captionpos=b,
+frame=lines,
+showspaces=false,
+showtabs=false,
+breaklines=true,
+showstringspaces=false,
+breakatwhitespace=true,
+escapeinside={(*@}{@*)},
+commentstyle=\color{greencomments},
+keywordstyle=\color{bluekeywords},
+stringstyle=\color{redstrings},
+basicstyle=\ttfamily\small,
+}
 
 \lstset{ % 
   basicstyle=\footnotesize, 
@@ -43,6 +72,9 @@
   captionpos=b, 
   extendedchars=true,
   keepspaces=true,
+  numbers=left,
+  stepnumber=1,
+  numberstyle=\tiny,
 }
 
 \begin{document}
@@ -53,7 +85,7 @@ W pracy przedstawiono wersję deweloperską systemu zarządzania treścią witry
 
 Zaimplementowano panel administratora do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkownikami i kalendarzem, zakładkami, komponentami strony głównej oraz do podglądu statystyk.
 
-Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundation, jQuery Turbolinks, Plataformatec Devise, CarrierWave, RMagick, reCAPTCHA, CKEditor, Chartkick, Prawn, RSS.
+Przy implementacji użyto technologie najnowszych wersji Ruby, Ruby on Rails, ZURB Foundation, jQuery Turbolinks, Plataformatec Devise, CarrierWave, RMagick, reCAPTCHA, CKEditor, Chartkick, Prawn, RSS.
 
 \mbox{Projekt wdrożono w serwisie\, \\\texttt{heroku.com} i jest dostępny pod adresem:} \\\texttt{\url{https://traincms.herokuapp.com/}}.
 
@@ -78,7 +110,7 @@ Podczas tworzenia interfejsu użytkownika i administratora, kierowałem się gł
 
 \section{Porównanie dostępnych rozwiązań z systemem TrainCMS}
 
-Na rynku systemów zarządzania treścią znajdziemy sporo różnych rozwiązań. W~dalszej części rozdziału przybliżę i porównam z systemem TraincMS dwa najbardziej popularne produkty, będzie to Joomla i WordPress\footnote{Istnieje jeszcze jeden bardzo popularny system zarządzania treścią - Drupal. Podobnie jak oba opisane wyżej systemy, wyprodukowany został w technologii języka PHP i jest udostępniony na otwartej licencji.}. Systemy różnią się od siebie pod wieloma względami. Rozwiązanie przedstawione przeze mnie jakim jest TrainCMS różni się  przede wszystkim technologią wykonania, gdyż oba wcześniej wspomniane systemy wyprodukowane są technologii języka PHP i bazy danych MySQL, gdzie mój system opiera się na frameworku Ruby On Rails i bazie danych PostgreSQL.
+Na rynku systemów zarządzania treścią znajdziemy sporo różnych rozwiązań. W~dalszej części rozdziału przybliżę i porównam z systemem TraincMS dwa najbardziej popularne produkty, będzie to Joomla i WordPress\footnote{Istnieje jeszcze jeden bardzo popularny system zarządzania treścią -- Drupal. Podobnie jak oba opisane wyżej systemy, wyprodukowany został w technologii języka PHP i jest udostępniony na otwartej licencji.}. Systemy różnią się od siebie pod wieloma względami. Rozwiązanie przedstawione przeze mnie jakim jest TrainCMS różni się  przede wszystkim technologią wykonania, gdyż oba wcześniej wspomniane systemy wyprodukowane są technologii języka PHP i bazy danych MySQL, gdzie mój system opiera się na frameworku Ruby On Rails i bazie danych PostgreSQL.
 
 \subsection{Joomla!}
 
@@ -100,6 +132,8 @@ Znajdziemy także w Joomli funkcje, których nie posiada mój system. Jednym z t
 \caption{Przykładowa strona wykonana w Joomla!.}
 \source{commons.wikimedia.org}
 \end{figure}
+
+\newpage
 
 \subsection{WordPress}
 
@@ -126,7 +160,7 @@ Należy w tym miejscu wspomnieć, że główną funkcjonalnością WordPress jes
 
 System TrainCMS został opracowany w taki sposób, aby sprostać wielu wymaganiom różnych użytkowników. Oferuje sporo możliwości, które przypadną do gustu każdemu i będą zarazem bardzo przydatne w codziennej pracy nad własna witryną Internetową. Reasumując, możliwości serwisu ogranicza jedynie wyobraźnia administratora.
 
-\subsection{Strona wizytkówa}
+\subsection{Strona wizytówka}
 
 W celu stworzenia optymalnej i efektownej strony wizytówki należałoby uruchomić tryb statycznej strony głównej. W tymże celu utworzymy zakładkę, którą oznaczymy jako strona główna. Ilość pozostałych zakładek jest dowolna. Może się też zdarzyć potrzeba prowadzenia minibloga lub prostych aktualności firmy, tutaj posłużymy się kategoriami i artykułami. Łącza do kategorii będą wyswietlona na górnym pasku nawigacji co ułatwi poruszanie się po stronie.  Po odpowiednim według operatora strony rozmieszczeniu informacji, możemy przejść do podglądu statystyk, które w tym przypadku mogą wyświetlić informację na przykład o tym, która sekcji informacji jest najbardziej popularna. 
 
@@ -201,8 +235,8 @@ W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie fu
 
 \chapter{Implementacja}
 
-\section{Architektura rozwiązania - Ruby on Rails}
-Głównym rusztowaniem całego systemu jest framework Ruby On Rails \cite{ror} \cite{enterprise} \cite{wikibook} \cite{guides}. Odpowiada on za całość frontendu i backendu. Do swojego działania używa bazy PostgreSQL. W dalszych podrozdziałach przybliżę jak wyglądała implementacja poszczególnych elementów systemu za pomocą Ruby On Rails. Framework dystrybuowany jest na licencji MIT License\footnote{MIT License - Jest to jedna z najmniej rozbudowanych licencji oprogramowania i zarazem jest jedna z najbardziej liberalnych. Umożliwia nieograniczone prawo do użytkowania, kopiowania, modyfikowania i publikacji, również sprzedaży wersji pierwotnej bądź zmodyfikowanej oprogramowania. Jedynym wymaganiem jest umieszczenie informacji o autorze i licencji.}.
+\section{Architektura rozwiązania -- Ruby on Rails}
+Głównym rusztowaniem całego systemu jest framework Ruby On Rails \cite{ror} \cite{enterprise} \cite{wikibook} \cite{guides}. Odpowiada on za całość frontendu i backendu. Do swojego działania używa bazy PostgreSQL. W dalszych podrozdziałach przybliżę jak wyglądała implementacja poszczególnych elementów systemu za pomocą Ruby On Rails. Framework dystrybuowany jest na licencji MIT License\footnote{MIT License -- Jest to jedna z najmniej rozbudowanych licencji oprogramowania i zarazem jest jedna z najbardziej liberalnych. Umożliwia nieograniczone prawo do użytkowania, kopiowania, modyfikowania i publikacji, również sprzedaży wersji pierwotnej bądź zmodyfikowanej oprogramowania. Jedynym wymaganiem jest umieszczenie informacji o autorze i licencji.}.
 
 \subsection{Artykuły i Kategorie}
 Podstawą jednostką na stronie jest artykuł, który zawsze zawiera się w jednej z uprzednio utworzonych kategorii. Artykuł posiada atrybuty takie jak tytuł, wstęp, treść główną, numer kategorii do której został przypisany, ilustrację, znacznik aktywności, znacznik wyróżnienia, znacznik komentarzy, liczbę wyświetleń oraz znaczniki czasowe – data, czas utworzenia i edycji. Chciałbym przybliżyć niektóre z atrybutów, pierwszym z nich będą znaczniki aktywności, wyróżnienia i komentarzy, które kolejno oznaczają informacje o tym, czy artykuł jest aktywny co przekłada się na to, że będzie wyświetlony na stronie głównej oraz spisie artykułów danej kategorii, kolejny atrybut determinuję to, czy artykuł zostanie wyświetlony na karuzeli ilustracji na szczycie strony głównej, ostatni ze znaczników pozwala dezaktywować moduł komentarzy w przypadku, gdyby zaszła konieczność, aby przy pewnym artykule nie miałoby być komentarzy. Liczba wyświetleń jest sumaryczną wartością wszystkich odsłon artykułu, obliczanie polega na pobraniu liczby wyświetleń z bazy danych, następnie zwiększeniu jej o jeden oraz aktualizacji wartości w bazie danych. Znaczniki czasowe są automatycznie dodawane przez Rails. Zarówno na stronie głównej, jak i na liście artykułów danej kategorii wyświetlany jest tytuł, wstęp do artykułu, ilustracja, autor, data utworzenia, liczba komentarzy. Po przejściu do artykułu zobaczymy pełną treść, w tym celu właśnie zostały zaimplementowane dwa oddzielne atrybuty. Zaimplementowana została również wyszukiwarka artykułów, gdzei słowem kluczowym wyszukiwania jest tytuł artykułu. Algorytm wyszukiwania ignoruje wielkość liter oraz pozwala szukać za pomocą fragmentów wyrazów. Artykuły mogą dodawać jedynie zalogowaniu użytkownicy. Po przejściu do artykułu możemy go wydrukować dzięki specjalnie do tego przygotowanej formatce optymalizującej miejsce na stronie kartki papieru.
@@ -259,10 +293,11 @@ Natomiast na dolnym pasku nawigacji zwanym stópką, znajduję się w widoku dla
 Kolejną zaimplementowaną w systemie funkcjonalnością jest agregator kanału RSS. Dzięki niemu fani witryny mogą dodać sobie link RSS do swojego czytnika i mieć zawsze dostęp do najnowszych informacja publikowanych na stronie. 
 
 Implementacja polegała na stworzeniu dwóch plików, jednego w standardzie Atom i jednego w standardzie RSS. Następnie wypełnieniu ich kodem wyświetlającym tytuł artykułu, nagłówek, autora oraz odnośnik do pełnej treści artykułu. Oba pliki zostały zwalidowane i są w pełni zgodne z obowiązującymi wersjami obu standardów.
+Kod generatora spływu wiadmości w standardzie Atom
 
-\begin{lstlisting}[language=ruby, caption={Kod generatora spływu wiadmości w standardzie Atom}]
+\begin{lstlisting}[language=ruby2, caption={Kod generatora spływu wiadmości w standardzie Atom}]
 atom_feed do |feed|
-  feed.title "TrainCMS - Artykuły"
+  feed.title "TrainCMS - Artykuly"
   feed.updated @articles.maximum(:updated_at)
   @articles.order("created_at desc").each do |article|
     feed.entry article do |entry|
@@ -275,7 +310,7 @@ atom_feed do |feed|
     end
   end
 end
-\end{lstlisting} 
+\end{lstlisting}
 
 \newpage
 
@@ -284,9 +319,9 @@ ZURB Foundation \cite{foundation} jest responsywnym frameworkiem frontendu. Zost
 
 \subsection{Instalacja}
 Dołączenie Foundation do projektu Ruby On Rails polega na zainstalowaniu Gema o nazwie \texttt{foundation-rails}. Następnie przeprowadzeniu automatycznej instalacji za pomocą polecenia 
-\begin{lstlisting}[language=bash, caption={Polecenie instalujące Foundation w naszym projekcie}]
-$ rails g foundation:install 
-\end{lstlisting} 
+\begin{lstlisting}[language=html, caption={Przykładowa tabela}]
+<table class="stack"></table>
+\end{lstlisting}
 oraz dodaniu odpowiednich zapisów w plikach kaskadowych arkuszy stylów i plikach skryptów JavaScript.
 
 \subsection{Użycie}
@@ -342,15 +377,15 @@ Na koniec w celu wyświetlenia ikony na stronie, należy dodać kod, którego wy
 CarrierWave \cite{carrierwave} jest to Gem usprawniający obsługę plików o różnych rozszerzeniach dla aplikacji w Ruby, natomiast Cloudinary jest to usługa oferująca przechowywanie plików na bezpłatnym serwerze hostingowym, dodatkowo o tej samej nazwie istnieje Gem, który obsługuje całą tę funkcjonalność z poziomu aplikacji Ruby. Oba rozwiązania są ze ściśle sobą powiązane, ale mogą też działać samodzielnie. Gemy udostępnione są na licencji MIT License. 
 
 Gem należy dodać do pliku gemfile. Następnie utworzyć uploader za pomocą polecenia: 
-\begin{lstlisting}[language=bash, caption={Polecenie generujące plik uploadera}]
+\begin{lstlisting}[language=bashes, caption={Polecenie generujące plik uploadera}]
 $ rails generate uploader Avatar
 \end{lstlisting}
 które wygeneruje plik, w którym to możemy przeprowadzić konfigurację. Dodatkowo do swojego pełnego działania potrzebuje pakiet RMagick, który możemy zainstalować za pomocą polecenia systemowego:
-\begin{lstlisting}[language=bash, caption={Polecenie instalujące oprogramowanie RMagick}]
+\begin{lstlisting}[language=bashes, caption={Polecenie instalujące oprogramowanie RMagick}]
 $ sudo apt-get install imagemagick libmagickwand-dev
 \end{lstlisting}
 Przed przejściem do dalszych kroków, potrebne będzie konto w serwisie Clodinary, z tego też serwisu po zalogowaniu pobieramy plik konfiguracyjny przygotowany dla aplikacji napisanych w Ruby, zapisujemy go w katalogu \texttt{/config}. Do każdego z plików uploadera, należy dodać dwie linie 
-\begin{lstlisting}[language=ruby, caption={Framgent zawartości pliku uploadera}]
+\begin{lstlisting}[language=ruby2, caption={Framgent zawartości pliku uploadera}]
 include CarrierWave::Rmagick
 include Cloudinary::CarrierWave.
 \end{lstlisting}
@@ -358,19 +393,19 @@ include Cloudinary::CarrierWave.
 \newpage
 
 W celu zachowania porządku na serwerze usługi Cloudinary w każdym pliku uploadera możemy dodać linię, która oznacza tagiem każdy załadowany przez nas plik: 
-\begin{lstlisting}[language=ruby, caption={Przykładowy tag dla pliku}]
+\begin{lstlisting}[language=ruby2, caption={Przykładowy tag dla pliku}]
 process :tags => ['random_tag']
 \end{lstlisting}
 Aby wyświetlić załadowany plik, na przykład obraz należy dodać linię o treści: 
-\begin{lstlisting}[language=html, caption={Kod wyświetlający obraz}]
+\begin{lstlisting}[language=ruby2, caption={Kod wyświetlający obraz}]
 <%= image_tag @article.image.url %>
 \end{lstlisting}
 
 \subsection{CKEditor}
-CKEditor \cite{ckeditor} jest edytorem WYSIWYG\footnote{\textit{ang. what you see is what you get} skórt oznaczjący "to co widzisz, to otrzymasz", stosowany w technikach komputerowych do określenia rozwiązań pozwalających uzyskać już podczas produkcji tekstu wynik wielce zbliżony lub niemalże identyczny do finalnego efektu.}, który umożliwia łatwą i przejrzystą edycję tekstu w oknie przeglądarki, możliwościami zbliżonymi do edytora tekstu klasy Microsoft Word. Gem udostępniony jest na licencji MIT License. 
+CKEditor \cite{ckeditor} jest edytorem WYSIWYG\footnote{\textit{ang. what you see is what you get} skrót oznaczjący ,,to co widzisz, to otrzymasz", stosowany w technikach komputerowych do określenia rozwiązań pozwalających uzyskać już podczas produkcji tekstu wynik wielce zbliżony lub niemalże identyczny do finalnego efektu.}, który umożliwia łatwą i przejrzystą edycję tekstu w oknie przeglądarki, możliwościami zbliżonymi do edytora tekstu klasy Microsoft Word. Gem udostępniony jest na licencji MIT License. 
 
 W celu instalacji należy dodać gem do pliku gemfile. W drugim kroku należy dodać do pliku \texttt{config/initializers/ckeditor.rb} linie: 
-\begin{lstlisting}[language=ruby, caption={Framgent zawartości pliku ckeditor.rb}]
+\begin{lstlisting}[language=ruby2, caption={Framgent zawartości pliku ckeditor.rb}]
 Ckeditor.setup do |config|
   config.cdn_url = 
 	"//cdn.ckeditor.com/4.6.1/basic/ckeditor.js"
@@ -380,11 +415,11 @@ end
 \newpage
 
 Następnie w pliku \texttt{/app/views/layouts/application.html.html} linię o następującej treści:
-\begin{lstlisting}[language=html, caption={Framgent zawartości pliku application.html.rb}]
+\begin{lstlisting}[language=ruby2, caption={Framgent zawartości pliku application.html.rb}]
 <%= javascript_include_tag "chartkick" %>
 \end{lstlisting}
 W miejscu, w którym chcemy użyć ten komponent dodajemy linię o treści:
-\begin{lstlisting}[language=html, caption={Kod uruchamiajacy edytor}]
+\begin{lstlisting}[language=ruby2, caption={Kod uruchamiajacy edytor}]
 <%= f.cktext_area :content, placeholder:"Content" %>
 \end{lstlisting}
 Rozwiązanie to ściśle współpracuje z przedstawionym wyżej rozwiązaniem publikacji załączników, na przykładzie artykułów, możemy nie tylko dodać główną ilustrację publikacji, ale także za pomocą CKEditor dodać kilka innych załączników, nie tylko obrazków, które także znajdą się na serwerze usługi Cloudinary. 
@@ -402,11 +437,11 @@ Rozwiązanie to ściśle współpracuje z przedstawionym wyżej rozwiązaniem pu
 Prawn \cite{prawn} jest to Gem generujący pliki w formacie PDF. Udostępniano został na licencji GPL.
 
 Aby zainstalować Gem w naszym projekcie, należy go dodać do pliku Gemfile. W celu utworzenia plików PDF należy utworzyć klasę w kontrolerze, która będzie dziedziczyła z klas komponentu:
-\begin{lstlisting}[language=ruby, caption={Deklaracja klasy generującej plik PDF}]
+\begin{lstlisting}[language=ruby2, caption={Deklaracja klasy generującej plik PDF}]
 class ArticleOnePdf < Prawn::Document
 \end{lstlisting}
 Wykorzystanie Prawn umożliwia bardzo precyzyjne, pod względem rozmieszczania poszczególnych elementów, projektowanie dokumentów. Do generowanych dokumentów możemy dodawać obrazy, tabelę  i wiele innych elementów. Podczas generowania precyzujemy rozmiar oraz orientację strony. 
-\begin{lstlisting}[language=ruby, caption={Kod generujacy dokment zawierający ilustrację i wstęp do artykułu}]
+\begin{lstlisting}[language=ruby2, caption={Kod generujacy dokment zawierający ilustrację i wstęp do artykułu}]
 class ArticleOnePdf < Prawn::Document
   def initialize(article)
     super()
@@ -429,21 +464,22 @@ end
 Chartkick \cite{chartkick} jest gemem, który z pewnością wzbogaci wizualnie każdy projekt, w którym się znajdzie. Głównym zadaniem gema jest generowanie wykresów. Pierwszy raz został opublikowany w 2013 i teraz udostępniany jest na licencji \mbox{MIT License. }
 
 Aby zainstalować Gem należy dodać go do pliku Gemfile, następnie w pliku \texttt{application.js} dodać linię 
-\begin{lstlisting}[language=html, caption={Framgent zawartości pliku application.js}]
+\begin{lstlisting}[language=ruby2, caption={Framgent zawartości pliku application.js}]
 //= require chartkick
 \end{lstlisting}
-natomiast w pliku \texttt{layouts/application.html.html} dodać linię:
+natomiast w pliku \texttt{layouts/application.html} dodać linię:
 \begin{lstlisting}[language=html, caption={Framgent zawartości pliku application.html.rb}]
 <%= javascript_include_tag "//www.google.com/jsapi", 
 "chartkick" %>
 \end{lstlisting}
 
-\newpage
-
 Bardzo ciekawym wykresem jest wykres o nazwie \texttt{pie\_chart}. Można go umieścić w następujący sposób:
 \begin{lstlisting}[language=html, caption={Kod generujący wykres kołowy}]
 <%= pie_chart Article.group(:title).sum(:visit) %>
 \end{lstlisting}
+
+\newpage
+
 Generuje on bardzo przejrzysty obrazek z wykresem kołowym:
 \begin{figure}[!tbh]
 \centering
@@ -459,11 +495,11 @@ W celu rozwiązania problemu zabezpieczenia systemów wdrożonych w ogólnodost�
 \newpage
 
 Instalacja polega na dodaniu wpisu do pliku Gemfile, zarejestrowaniu strony na serwerach Google w celu pobrania kodu strony i kodu sekretnego, które to należy dodać do pliku \texttt{/config/initializers/recaptcha.rb}. Następnie dodaniu do formalarza linii kodu:
-\begin{lstlisting}[language=ruby, caption={Kod wyświetlający formularz reCAPTCHA}]
+\begin{lstlisting}[language=ruby2, caption={Kod wyświetlający formularz reCAPTCHA}]
 <%= recaptcha_tags %> 
 \end{lstlisting}
 Na koniec należy dodać do pliku kontrolera poniższy fragment kodu: 
-\begin{lstlisting}[language=ruby, caption={Kod kontrolera weryfikujący reCAPTCHA}]
+\begin{lstlisting}[language=ruby2, caption={Kod kontrolera weryfikujący reCAPTCHA}]
 if verify_recaptcha(model: @user) && @user.save
   redirect_to @user
 else
@@ -480,13 +516,13 @@ end
 
 \newpage
 
-\section{Deivse}
+\section{Devise}
 W celu organizacji uprawnień i dostępu elementów strony przez upoważnione osoby zaimplementowano obsługę użytkowników. Całość polega na tym, aby dodać do naszego projektu Gem Devise\cite{devise}, który jest udostępniony na licencji MIT License. Natomiast jego instalacja polega na dodaniu go do pliku Gemfile, następnie użyciu generatora wbudowanego w Gem za pomocą polecenia powłoki: 
-\begin{lstlisting}[language=bash, caption={Polecenie instalujące Gem Devise w naszym projekcie}]
+\begin{lstlisting}[language=bashes, caption={Polecenie instalujące Gem Devise w naszym projekcie}]
 $ rails generate devise:install
 \end{lstlisting}
 Kolejnym krokiem jest wygenerowanie modelu za pomocą następnego polecenia powłoki: 
-\begin{lstlisting}[language=bash, caption={Polecenie generujące modeul użytkowników w naszym projekcie}]
+\begin{lstlisting}[language=bashes, caption={Polecenie generujące modeul użytkowników w naszym projekcie}]
 $ rails generate devise users
 \end{lstlisting}
 Na koniec instalacji należy wykonać migracje bazy danych.
@@ -497,18 +533,18 @@ W przypadku TrainCMS, na tym nie zakończyła się implementacja obsługi użytk
 
 \section{rQRcode i Prawn/QRCode}
 Aby ułatwić promocję strony zaimplementowana została funkcjonalność generowania kodów QR, w tym celu z pomocą przychodzi Gem rQRcode\cite{rqrcode} i Gem Prawn/QRCode\cite{prawnqr}. Pierwszy Gem jest głównym silnikiem kodów QR w naszym projekcie, natomiast drugi Gem odpowiada za poprawne osadzanie kodu w dokumencie PDF. Instalacja polega na dodaniu obu dodatków do pliku Gemfile. Następnie należy dodać do pliku  \texttt{app/helpers/application.rb} linię:
-\begin{lstlisting}[language=ruby, caption={Kod generujący kod QR}]
+\begin{lstlisting}[language=ruby2, caption={Kod generujący kod QR}]
 require 'rqrcode'
 \end{lstlisting}
 Generowanie kodu QR polega na wywołaniu w kodzie strony polecenia:
-\begin{lstlisting}[language=ruby, caption={Kod generujący kod QR}]
+\begin{lstlisting}[language=ruby2, caption={Kod generujący kod QR}]
 qrcode = RQRCode::QRCode.new( ‘random text’ )
 \end{lstlisting}
 
 W systemie TrainCMS kody QR odpowiadają za prezentację odnośnika do strony danego artykułu. Umieszczone są one na wydruku artykłu oraz w pliku PDF z artykułem. 
 
 W celu wyświetlenia wygenerowanego kodu QR należy go skonwertować do formatu PNG za pomocą metody \texttt{as\_png}:
-\begin{lstlisting}[language=ruby, caption={Kod konwertujący kod QR}]
+\begin{lstlisting}[language=ruby2, caption={Kod konwertujący kod QR}]
 qrimage = qrcode.as_png
 \end{lstlisting}
 Następnie wyświetleniu go na stronie za pomocą polecenia:
@@ -516,7 +552,7 @@ Następnie wyświetleniu go na stronie za pomocą polecenia:
 <img src="<%=@qrimage.to_data_url %>"/>
 \end{lstlisting}
 Aby umieścić kod QR w dokumencie PDF nalży dodać linię:
-\begin{lstlisting}[language=ruby, caption={Kod wyświetlający kod QR w dokumencie PDF}]
+\begin{lstlisting}[language=ruby2, caption={Kod wyświetlający kod QR w dokumencie PDF}]
 render_qr_code(qrcode)
 \end{lstlisting}
 
@@ -534,12 +570,12 @@ Wygenerowany kod QR.
 Kolejnym ciekawym dodatkiem do projektu jest Gem Geocoder\cite{geocoder}, udostępniany na licencji MIT license. Pozwala on na tak zwane geokodowanie, czyli ustalanie za pomocą na przykład adresu  urzędowego współrzędnych geograficznych, tyczy się to również adresów IP z którymi radzi sobie nieco gorzej aniżeli z urzędowymi adresami. 
 
 Instalacja polega na dodaniu wpisów do pliku Gemfile. Każdy model, który ma zostać poddany geokodowaniu musi posiadać kolumny przeznaczone na przechowywanie długości i szerokości geograficznej. Następnie w pliku danego modelu dodajemy dwie linie kodu: 
-\begin{lstlisting}[language=ruby, caption={Kod odpowiadający za geokodowanie}]
+\begin{lstlisting}[language=ruby2, caption={Kod odpowiadający za geokodowanie}]
 geocoded_by :adress 
 after_validation :geocode
 \end{lstlisting}
 Aby wyświetlić zlokalizowane koordynaty korzystamy z poleceń:
-\begin{lstlisting}[language=ruby, caption={Kod wyświetlający koordynaty}]
+\begin{lstlisting}[language=ruby2, caption={Kod wyświetlający koordynaty}]
 <%= @event.latitude %>, <%= @event.longitude %> 
 \end{lstlisting}
 Funkcjonalność geokodowania została wdrożona przy kalendarzu wydarzeń, podczas tworzenia wydarzenia podajemy jego adres, a Gem ustala jego koordynaty, następnie w podglądzie danego wydarzenia uzyskujemy odnośnik do mapy z zaznaczoną pozycją geograficzną.
@@ -566,15 +602,15 @@ Innym miejscem wdrożenia geokodowania jest moduł komentarzy. Gem na podstawie 
 Zgodnie z nowelizacja Prawa Telekomunikacyjnego uchwalonego dnia 16 listopada 2012 każdy operator strony internetowej zobowiązany jest do umieszczenia stosownej informacji o przechowywaniu i operowaniu na plikach cookies, potocznie zwanymi ciasteczkami. Z pomocą w wykonaniu tych obostrzeń przychodzi Gem cookies\_eu\cite{cookies}, udostępniany na licencji MIT license. 
 
 Instalacja polega na dodaniu wpisu do pliku Gemfile, następnie dodaniu do pliku app/assets/javascripts/application.js jednej linii kodu o następującej treści:
-\begin{lstlisting}[language=ruby, caption={Kod odpowiadający dodanie bibliotek javascript}]
+\begin{lstlisting}[language=ruby2, caption={Kod odpowiadający dodanie bibliotek javascript}]
 //= require cookies_eu
 \end{lstlisting}
 Natomiast do pliku app/asstes/stylesheets/aplication.css linii kodu o treści:
-\begin{lstlisting}[language=ruby, caption={Kod odpowiadający dodanie bibliotek kaskadowych arkuszy stylów}]
+\begin{lstlisting}[language=ruby2, caption={Kod odpowiadający dodanie bibliotek kaskadowych arkuszy stylów}]
 *= require cookies_eu
 \end{lstlisting}
 Na koniec dodajemy linię, która będzie odpowiadać za renderowania paska ze stosowną informacją na dole strony:
-\begin{lstlisting}[language=ruby, caption={Kod renderujący pasek z informacją o ciasteczkach}]
+\begin{lstlisting}[language=ruby2, caption={Kod renderujący pasek z informacją o ciasteczkach}]
 <%= render 'cookies_eu/consent_banner' %>
 \end{lstlisting}
 
