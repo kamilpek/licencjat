@@ -89,4 +89,4 @@ Podczas tworzenia interfejsu użytkownika i administratora, kierowałem się gł
 1. Oficjalna dokumentacja - Gem rQRcode. [rubydoc.info/gems/rqrcode/](http://www.rubydoc.info/gems/rqrcode/)(dostęp 23.04.2017)
 1. Oficjalna dokumentacja - Gem Prawn/QRCode. [rubydoc.info/gems/prawn-qrcode/](http://www.rubydoc.info/gems/prawn-qrcode/)(dostęp 23.04.2017)
 1. Oficjalna dokumentacja - Gem Geocoder. [rubydoc.info/gems/geocoder/](http://www.rubydoc.info/gems/geocoder/)(dostęp 23.04.2017)
-1. Oficjalna dokumentacja - Gem cookies_eu. [rubydoc.info/gems/cookies_eu/](http://www.rubydoc.info/gems/cookies_eu/(dostęp 23.04.2017)
+1. Oficjalna dokumentacja - Gem cookies_eu. [rubydoc.info/gems/cookies_eu/](http://www.rubydoc.info/gems/cookies_eu/)(dostęp 23.04.2017)
