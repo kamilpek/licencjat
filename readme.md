@@ -40,10 +40,11 @@ Kod źródłowy dostępny jest w serwisie github.com pod adresem: [https://githu
       1. Artykuły i Kategorie
       1. Komentarze
       1. Tagi
-      1. Kalendarz wydarzeń
       1. Zakładki
       1. Strona Główna
+      1. Kalendarz wydarzeń            
       1. Nawigacja
+      1. Kanał RSS
    1. ZURB Foundation
       1. Instalacja
       1. Użycie
@@ -87,3 +88,5 @@ Podczas tworzenia interfejsu użytkownika i administratora, kierowałem się gł
 1. Oficjalna dokumentacja - Gem devise. [github.com/plataformatec/devise/](https://github.com/plataformatec/devise/)(dostęp 23.04.2017)
 1. Oficjalna dokumentacja - Gem rQRcode. [rubydoc.info/gems/rqrcode/](http://www.rubydoc.info/gems/rqrcode/)(dostęp 23.04.2017)
 1. Oficjalna dokumentacja - Gem Prawn/QRCode. [rubydoc.info/gems/prawn-qrcode/](http://www.rubydoc.info/gems/prawn-qrcode/)(dostęp 23.04.2017)
+1. Oficjalna dokumentacja - Gem Geocoder. [rubydoc.info/gems/geocoder/](http://www.rubydoc.info/gems/geocoder/)(dostęp 23.04.2017)
+1. Oficjalna dokumentacja - Gem cookies_eu. [rubydoc.info/gems/cookies_eu/](http://www.rubydoc.info/gems/cookies_eu/(dostęp 23.04.2017)
