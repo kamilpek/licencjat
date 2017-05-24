@@ -6,7 +6,7 @@ Promotor: dr W. Bzyl
 
 Streszczenie
 
-W pracy przedstawiono wersję deweloperską systemu zarządzania treścią witryny internetowej  „TrainCMS” opartą na technologii języka Ruby wraz z użyciem platformy programistycznej Ruby On Rails i pracuje jako aplikacja internetowa. Do roli systemu zarządzania bazą danych użyto PostgreSQL.
+W pracy przedstawiono wersję deweloperską systemu zarządzania treścią witryny internetowej „TrainCMS” opartą na technologii języka Ruby wraz z użyciem platformy programistycznej Ruby On Rails. Do roli systemu zarządzania bazą danych użyto PostgreSQL.
 Opracowana aplikacja pozwala uruchomić w niedługim czasie własną witrynę internetową w trzech możliwych konfiguracjach: strona wizytówka, katalog realizacji oraz serwis informacyjny.
 W części teoretycznej opisane zostały prace nad założeniami mającymi na celu stworzenie systemu zarządzania treścią oraz porównano stworzony projekt z potentatami na rynku tychże systemów. Zaprezentowano diagramy obrazujące schemat i architekturę całego systemu. Osadzono ilustracje projektów interfejsu dla administratora, redaktora oraz gościa.
 W części poświęconej szczegółom implementacji przedstawiono kolejne etapy integracji poszczególnych dodatków jakie oferuje framework Ruby On Rails. Opisano jak w trakcie pracy zaimplementowano publikowanie artykułów i ich kategoryzację, wyświetlanie listy kategorii artykułów na pasku nawigacji oraz kanał RSS. Zaimplementowany został kalendarz wydarzeń. Stworzono User Interface, który wyświetla wszystkie artykuły na stronie głównej, niezależnie od kategorii w kolejności malejącej od daty dodania. Do artykułów i wydarzeń w kalendarzu zaimplementowano możliwość załączania ilustracji oraz dodawania komentarzy i ich oceniania. Opisano implementację podglądu szczegółowych statystyk dostępnych dla zalogowanego użytkownika. Zaimplementowano panel administratora służący do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkownikami i kalendarzem wydarzeń oraz zakładkami i komponentami strony głównej.
@@ -36,7 +36,7 @@ Znajdziemy także w Joomli funkcje, których nie posiada mój system. Jednym z t
 
 WordPress
 WordPress jest systemem zarządzania treścią napisanym w języku PHP, wykorzystujący systemem zarządzania bazą danych MySQL i jest dystrybuowany na licencji GPL.
-System WordPress jest zdecydowanie mniej rozbudowany w porównaniu do Joomli. Oferuje on takie funkcjonalności jak podstawową kategoryzację, tagowanie i komentowanie artykułów, obsługę wielu kont użytkownika, odrębny interfejs dla użytkownika gościa, zwykłego użytkownika i administratora oraz podgląd statystyk jest również w pełny responsywny. Wszystkie wymienione funkcjonalności pokrywają się z zaimplementowanymi w systemie TrainCMS.
+System WordPress jest zdecydowanie mniej rozbudowany w porównaniu do Joomli. Oferuje on takie funkcjonalności jak podstawową kategoryzację, tagowanie i komentowanie artykułów, obsługę wielu kont użytkownika, odrębny interfejs dla użytkownika gościa, zwykłego użytkownika i administratora oraz podgląd statystyk, jest również w pełny responsywny. Wszystkie wymienione funkcjonalności pokrywają się z zaimplementowanymi w systemie TrainCMS.
 W TrainCMS znajdziemy także inne możliwości, których nie oferuję WordPress w wersji podstawowej, jest to kalendarz wydarzeń, dodawanie załączników, generowanie dokumentów PDF zawierających artykuły oraz karuzela ilustracji wyróżnionych artykułów. Natomiast niektóre z rozwiązań zostały rozszerzone względem Joomli są to komentarze, które w projekcie TrainCMS rejestrują adres IP autora komentarza.
 Należy w tym miejscu wspomnieć, że główną funkcjonalnością WordPress jest łatwość instalacji i zmiany wielu dostępnych szablonów strony. WordPress jest produktem z utartą pozycja na rynku systemów zarządzania treścią, który podobnie jak Joomla tworzony jest przez zespół programistów z całego świata. Witryny obsługiwane przez WordPress to głównie blogi.
 
@@ -118,10 +118,10 @@ end
 
 ZURB Foundation
 
-ZURB Foundation  to responsywny framework części wizualnejj. Został stworzony w 2011 roku i dystrybuowany jest na licencji MIT License.
+ZURB Foundation  to responsywny framework części wizualnej. Został stworzony w 2011 roku i dystrybuowany jest na licencji MIT License.
 
 Instalacja
-Aby dołączyć framework Foundation do projektu Ruby On Rails należy zainstalować Gem o nazwie foundation-rails. Następnie przeprowadzeniu automatycznej instalacji za pomocą polecenia
+Aby dołączyć framework Foundation do projektu Ruby On Rails należy zainstalować Gem o nazwie foundation-rails. Następnie zainstalować go za pomocą polecenia
 Kod instalujący Foundation w naszym projekcie
 $ rails g foundation:install
 oraz dodaniu odpowiednich zapisów w plikach kaskadowych arkuszy stylów i plikach skryptów JavaScript.
@@ -133,7 +133,7 @@ Przykładowa tabela
 która odpowiedzialna jest za wyświetlanie tabeli w mobilnym widoku jako stos kolumn, wiersze tabeli wyświetlane są na przemian kolor biały z kolorem grafitowym, tę funkcję również  zawdzięczamy Foundation. Wszystkie odnośniki posiadają klasę
 Przykładowy przycisk
 <%= link_to 'odnosnik', odnosnik_path, class:'button' %>
-co pozwala na wyświetlania każdego odnośnika w formie prostokątnego przycisku. Wszystkie odnośniki nie są przyciskami o tej samej wielkości, odnośniki zawarte w tabeli mają dodatkową klasę
+co pozwala na wyświetlanie każdego odnośnika w formie prostokątnego przycisku. Wszystkie odnośniki nie są przyciskami o tej samej wielkości, odnośniki zawarte na przykład w tabeli mają dodatkową klasę
 Przykładowy mały przycisk
 <%= link_to 'maly odnosnik', maly_odnosnik_path, class:'tiny button' %>
 dzięki której przycisk staję bardzo mały i w elegancki sposób wkomponowuje się w wiersze tabeli. Również do nawigacji podczas stronicowania wykorzystano metodę renderowania w stylu Foundation. Ogólna konwencja graficzna opiera się na siatce, opisanej za pomocą znaczników div. Każda sekcja wszystkich stron poszczególnych modułów całego systemu zapisana jest w znaczniku div, który otrzymuje za każdym razem klasę
@@ -155,7 +155,7 @@ Przykładowa ikona ze zbioru ikon Foundation Icons
 CarrierWave, CKEditor, Cloudinary
 
 CarrierWave i Cloudinary
-CarrierWave  jest to Gem usprawniający obsługę plików o różnych rozszerzeniach dla aplikacji w Ruby, natomiast Cloudinary jest to usługa oferująca przechowywanie plików na bezpłatnym serwerze hostingowym, dodatkowo o tej samej nazwie istnieje Gem, który obsługuje całą tę funkcjonalność z poziomu aplikacji Ruby. Oba rozwiązania są ze ściśle sobą powiązane, ale mogą też działać samodzielnie. Oba dodatki udostępnione są na licencji MIT License.
+CarrierWave jest to Gem usprawniający obsługę plików o różnych rozszerzeniach dla aplikacji w Ruby, natomiast Cloudinary jest to usługa oferująca przechowywanie plików na bezpłatnym serwerze hostingowym, dodatkowo o tej samej nazwie istnieje Gem, który obsługuje całą tę funkcjonalność z poziomu aplikacji Ruby. Oba rozwiązania są ze ściśle sobą powiązane, ale mogą też działać samodzielnie. Oba dodatki udostępnione są na licencji MIT License.
 
 Gem należy dodać do pliku Gemfile. Następnie utworzyć plik uploader za pomocą polecenia:
 Polecenie generujące plik uploader
@@ -229,21 +229,27 @@ Generuje on bardzo przejrzysty obrazek z wykresem kołowym.
 
 reCAPTCHA
 
-W celu rozwiązania problemu zabezpieczenia systemów wdrożonych w ogólnodostępnej sieci Internet przed różnymi formami złośliwego oprogramowania, a szczególnie robotów spamujących za pomocą formularzy zawartych na stronach internetowych, wdrożyłem rozwiązanie o nazwie reCAPTCHA produkcji Google. W tym celu dodałem Gem o tej samej nazwie  dystrybuowanego na licencji MIT License.
+W celu rozwiązania problemu zabezpieczenia systemów wdrożonych w ogólnodostępnej sieci Internet przed różnymi formami złośliwego oprogramowania, a szczególnie robotów spamujących za pomocą formularzy zawartych na stronach internetowych, wdrożyłem rozwiązanie o nazwie reCAPTCHA produkcji Google. W tym celu dodałem Gem o tej samej nazwie dystrybuowany na licencji MIT License.
 Instalacja polega na dodaniu wpisu do pliku Gemfile, zarejestrowaniu strony na serwerach Google w celu pobrania kodu strony i kodu sekretnego, które to należy dodać do pliku /config/initializers/recaptcha.rb. Następnie dodaniu do formularza linii kodu:
 Kod wyświetlający formularz reCAPTCHA
 <%= recaptcha_tags %>
 Na koniec należy dodać do pliku kontrolera poniższy fragment kodu:
 Kod kontrolera weryfikujący reCAPTCHA
-if verify_recaptcha(model: @user) && @user.save
-  redirect_to @user
+if !verify_recaptcha
+     flash.delete :recaptcha_error
+     build_resource(comment_params)
+     resource.valid?
+     resource.errors.add(:base, "Proszę zaznaczyć Captcha.")
+     clean_up_passwords(resource)
+     respond_with_navigational(resource) { render :new }
 else
-  render 'new'
+      flash.delete :recaptcha_error
+      super
 end
 
 Devise
 
-W celu organizacji uprawnień i dostępu elementów strony przez upoważnione osoby zaimplementowano obsługę użytkowników. Całość polega na tym, aby dodać do naszego projektu Gem Devise, który jest udostępniony na licencji MIT License. Natomiast jego instalacja polega na dodaniu go do pliku Gemfile, następnie użyciu generatora wbudowanego w Gem za pomocą polecenia powłoki:
+W celu organizacji uprawnień i dostępu do elementów strony przez upoważnione osoby zaimplementowano obsługę użytkowników. Całość polega na tym, aby dodać do naszego projektu Gem Devise, który jest udostępniony na licencji MIT License. Natomiast jego instalacja polega na dodaniu go do pliku Gemfile, następnie użyciu generatora wbudowanego w Gem za pomocą polecenia powłoki:
 Polecenie instalujące Gem Devise w naszym projekcie
 $ rails generate devise:install
 Kolejnym krokiem jest wygenerowanie modelu za pomocą następnego polecenia powłoki:
@@ -288,7 +294,7 @@ Opisany Gem posiada jeszcze sporo innych ciekawych funkcjonalności. Jedna z nic
 
 cookieseu
 
-Zgodnie z nowelizacja Prawa Telekomunikacyjnego uchwalonego dnia 16 listopada 2012 każdy operator strony internetowej zobowiązany jest do umieszczenia stosownej informacji o przechowywaniu i operowaniu na plikach cookies, potocznie zwanymi ciasteczkami. Z pomocą w wykonaniu tych obostrzeń przychodzi Gem cookieseu, udostępniany na licencji MIT license.
+Zgodnie z nowelizacją Prawa Telekomunikacyjnego uchwaloną dnia 16 listopada 2012 każdy operator strony internetowej zobowiązany jest do umieszczenia stosownej informacji o przechowywaniu i operowaniu na plikach cookies, potocznie zwanymi ciasteczkami. Z pomocą w wykonaniu tych obostrzeń przychodzi Gem cookies, udostępniany na licencji MIT license.
 Instalacja polega na dodaniu wpisu do pliku Gemfile, następnie dodaniu do pliku app/assets/javascripts/application.js jednej linii kodu o następującej treści:
 Kod odpowiadający dodanie bibliotek javascript
 //= require cookies_eu
@@ -313,6 +319,7 @@ Oficjalna dokumentacja - Gem willpagintate. http://www.rubydoc.info/gems/will_pa
 Oficjalna dokumentacja frameworku Foundation for Sites. http://foundation.zurb.com/sites/docs/ (dostęp 22.05.2017)
 Oficjalna dokumentacja - Gem Foundation Icon. http://www.rubydoc.info/gems/foundation-icons-sass-rails/ (dostęp 22.05.2017)
 Oficjalna dokumentacja - Gem CarrierWave. https://github.com/carrierwaveuploader/carrierwave/wiki (dostęp 22.05.2017)
+Oficjalna dokumentacja - Gem Cloudinary. http://cloudinary.com/documentation/rails_integration/ (dostęp 22.05.2017)
 Oficjalna dokumentacja - Gem CKEditor for Rails. https://github.com/galetahub/ckeditor/ (dostęp 22.05.2017)
 Oficjalna dokumentacja - Gem PrawnPDF. http://prawnpdf.org/api-docs/2.0/ (dostęp 22.05.2017)
 Oficjalna dokumentacja - Gem Chartkick. https://github.com/ankane/chartkick/ (dostęp 22.05.2017)

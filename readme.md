@@ -7,9 +7,17 @@ cms, ruby on rails, calendar, comments, tags
 Kamil Pek, numer albumu 231050, [github.com/kamilpek](https://github.com/kamilpek)
 
 ## Streszczenie
-W pracy przedstawiono wersję deweloperską systemu zarządzania treścią witryny internetowej „TrainCMS”. W trakcie pracy zaimplementowano publikowanie artykułów, kategoryzację, wyświetlanie listy kategorii na pasku nawigacji. Stworzono User Interface, który wyświetla wszystkie artykuły na stronie głównej, niezależnie od kategorii w kolejności malejącej od daty dodania oraz kalendarz wydarzeń. Do artykułów i wydarzeń w kalendarzu zaimplementowano możliwość załączania ilustracji oraz dodawania komentarzy.
+W pracy przedstawiono wersję deweloperską systemu zarządzania treścią witryny internetowej  „TrainCMS” opartą na technologii języka Ruby wraz z użyciem platformy programistycznej Ruby On Rails. Do roli systemu zarządzania bazą danych użyto PostgreSQL.
 
-Zaimplementowano panel administratora do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkownikami i kalendarzem oraz do podglądu statystyk.
+Opracowana aplikacja pozwala uruchomić w niedługim czasie własną witrynę internetową w trzech możliwych konfiguracjach: strona wizytówka, katalog realizacji oraz serwis informacyjny.
+
+W części teoretycznej opisane zostały prace nad założeniami mającymi na celu stworzenie systemu zarządzania treścią oraz porównano stworzony projekt z potentatami na rynku tychże systemów. Zaprezentowano diagramy obrazujące schemat i architekturę całego systemu. Osadzono ilustracje projektów interfejsu dla administratora, redaktora oraz gościa.
+
+W części poświęconej szczegółom implementacji przedstawiono kolejne etapy integracji poszczególnych dodatków jakie oferuje framework Ruby On Rails. Opisano jak w trakcie pracy zaimplementowano publikowanie artykułów i ich kategoryzację, wyświetlanie listy kategorii artykułów na pasku nawigacji oraz kanał RSS. Opisano jak zaimplementowany został kalendarz wydarzeń, jak Stworzono User Interface, który wyświetla wszystkie artykuły na stronie głównej, niezależnie od kategorii w kolejności malejącej od daty dodania. Omówiono jak do artykułów i wydarzeń w kalendarzu zaimplementowano możliwość załączania ilustracji oraz dodawania komentarzy i ich oceniania. Opisano implementację podglądu szczegółowych statystyk dostępnych dla zalogowanego użytkownika. Zaimplementowano panel administratora służący do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkownikami i kalendarzem wydarzeń oraz zakładkami i komponentami strony głównej.
+
+W zakończeniu podsumowano wyniki prac oraz zaprezentowano możliwości rozwoju systemu.
+
+Przy implementacji użyto najnowsze wersje technologii Ruby, Ruby on Rails, PostgreSQL, ZURB Foundation, jQuery Turbolinks, Plataformatec Devise, CarrierWave, RMagick, reCAPTCHA, CKEditor, Chartkick, Prawn, RSS, rQRcode, Geocoder.
 
 Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundation, jQuery Turbolinks, Plataformatec Devise, CarrierWave, RMagick, reCAPTCHA, CKEditor, Chartkick, Prawn.
 
@@ -76,17 +84,18 @@ Podczas tworzenia interfejsu użytkownika i administratora, kierowałem się gł
 1. John Elder. Learn Ruby On Rails For Web Development: Learn Rails The Fast And Easy Way!. Codemy.com; 1 edition (January 19, 2015)
 1. Dan Chak. Enterprise Rails. O’Reilly Media; 1 edition (November 3, 2008)
 1. Użytkownicy Wikibooks. Ruby. Wikibooks; 1 edition (February 17, 2008)
-1. Oficjalna dokumentacja frameworku Ruby on Rails. [guides.rubyonrails.org](http://guides.rubyonrails.org/)(dostęp 23.04.2017)
-1. Oficjalny opis API Ruby on Rails. [api.rubyonrails.org](http://api.rubyonrails.org/)(dostęp 23.04.2017)
-1. Oficjalna dokumentacja frameworku Foundation for Sites. [foundation.zurb.com/sites/docs](http://foundation.zurb.com/sites/docs/)(dostęp 23.04.2017)
-1. Oficjalna dokumentacja Gemu Foundation Icon. [http://www.rubydoc.info/gems/foundation-icons-sass-rails/](http://www.rubydoc.info/gems/foundation-icons-sass-rails/)
-1. Oficjalna dokumentacja Gemu CarrierWave [github.com/carrierwaveuploader/carrierwave/wiki](https://github.com/carrierwaveuploader/carrierwave/wiki)(dostęp 23.04.2017)
-1. Oficjalna dokumentacja Gemu reCAPTCHA. [github.com/ambethia/recaptcha](https://github.com/ambethia/recaptcha)(dostęp 23.04.2017)
-1. Oficjalna dokumentacja Gemu CKEditor for Rails. [github.com/galetahub/ckeditor](https://github.com/galetahub/ckeditor)(dostęp 23.04.2017)
-1. Oficjalna dokumentacja Gemu Chartkick. [github.com/ankane/chartkick](https://github.com/ankane/chartkick)(dostęp 23.04.2017)
-1. Oficjalna dokumentacja Gemu PrawnPDF. [prawnpdf.org/api-docs/2.0/](http://prawnpdf.org/api-docs/2.0/)(dostęp 23.04.2017)
-1. Oficjalna dokumentacja - Gem devise. [github.com/plataformatec/devise/](https://github.com/plataformatec/devise/)(dostęp 23.04.2017)
-1. Oficjalna dokumentacja - Gem rQRcode. [rubydoc.info/gems/rqrcode/](http://www.rubydoc.info/gems/rqrcode/)(dostęp 23.04.2017)
-1. Oficjalna dokumentacja - Gem Prawn/QRCode. [rubydoc.info/gems/prawn-qrcode/](http://www.rubydoc.info/gems/prawn-qrcode/)(dostęp 23.04.2017)
-1. Oficjalna dokumentacja - Gem Geocoder. [rubydoc.info/gems/geocoder/](http://www.rubydoc.info/gems/geocoder/)(dostęp 23.04.2017)
-1. Oficjalna dokumentacja - Gem cookies_eu. [rubydoc.info/gems/cookies_eu/](http://www.rubydoc.info/gems/cookies_eu/)(dostęp 23.04.2017)
+1. Oficjalna dokumentacja frameworku Ruby on Rails. [guides.rubyonrails.org](http://guides.rubyonrails.org/)(dostęp 22.05.2017)
+1. Oficjalny opis API Ruby on Rails. [api.rubyonrails.org](http://api.rubyonrails.org/)(dostęp 22.05.2017)
+1. Oficjalna dokumentacja frameworku Foundation for Sites. [foundation.zurb.com/sites/docs](http://foundation.zurb.com/sites/docs/)(dostęp 22.05.2017)
+1. Oficjalna dokumentacja - Gem Foundation Icon. [http://www.rubydoc.info/gems/foundation-icons-sass-rails/](http://www.rubydoc.info/gems/foundation-icons-sass-rails/)
+1. Oficjalna dokumentacja - Gem CarrierWave [github.com/carrierwaveuploader/carrierwave/wiki](https://github.com/carrierwaveuploader/carrierwave/wiki)(dostęp 22.05.2017)
+1. Oficjalna dokumentacja - Gem Cloudinary [cloudinary.com/documentation/rails_integration/](http://cloudinary.com/documentation/rails_integration/)(dostęp 22.05.2017)
+1. Oficjalna dokumentacja - Gem reCAPTCHA. [github.com/ambethia/recaptcha](https://github.com/ambethia/recaptcha)(dostęp 22.05.2017)
+1. Oficjalna dokumentacja - Gem CKEditor for Rails. [github.com/galetahub/ckeditor](https://github.com/galetahub/ckeditor)(dostęp 22.05.2017)
+1. Oficjalna dokumentacja - Gem Chartkick. [github.com/ankane/chartkick](https://github.com/ankane/chartkick)(dostęp 22.05.2017)
+1. Oficjalna dokumentacja - Gem PrawnPDF. [prawnpdf.org/api-docs/2.0/](http://prawnpdf.org/api-docs/2.0/)(dostęp 22.05.2017)
+1. Oficjalna dokumentacja - Gem devise. [github.com/plataformatec/devise/](https://github.com/plataformatec/devise/)(dostęp 22.05.2017)
+1. Oficjalna dokumentacja - Gem rQRcode. [rubydoc.info/gems/rqrcode/](http://www.rubydoc.info/gems/rqrcode/)(dostęp 22.05.2017)
+1. Oficjalna dokumentacja - Gem Prawn/QRCode. [rubydoc.info/gems/prawn-qrcode/](http://www.rubydoc.info/gems/prawn-qrcode/)(dostęp s)
+1. Oficjalna dokumentacja - Gem Geocoder. [rubydoc.info/gems/geocoder/](http://www.rubydoc.info/gems/geocoder/)(dostęp 22.05.2017)
+1. Oficjalna dokumentacja - Gem cookies_eu. [rubydoc.info/gems/cookies_eu/](http://www.rubydoc.info/gems/cookies_eu/)(dostęp 22.05.2017)
