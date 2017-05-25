@@ -86,13 +86,13 @@ Opracowana aplikacja pozwala uruchomić w niedługim czasie własną witrynę in
 
 W części teoretycznej opisane zostały prace nad założeniami mającymi na celu stworzenie systemu zarządzania treścią oraz porównano stworzony projekt z potentatami na rynku tychże systemów. Zaprezentowano diagramy obrazujące schemat i architekturę całego systemu. Osadzono ilustracje projektów interfejsu dla administratora, redaktora oraz gościa.
 
-W części poświęconej szczegółom implementacji przedstawiono kolejne etapy integracji poszczególnych dodatków jakie oferuje framework Ruby On Rails. Opisano jak w trakcie pracy zaimplementowano publikowanie artykułów i ich kategoryzację, wyświetlanie listy kategorii artykułów na pasku nawigacji oraz kanał RSS. Opisano jak zaimplementowany został kalendarz wydarzeń, jak Stworzono User Interface, który wyświetla wszystkie artykuły na stronie głównej, niezależnie od kategorii w kolejności malejącej od daty dodania. Omówiono jak do artykułów i wydarzeń w kalendarzu zaimplementowano możliwość załączania ilustracji oraz dodawania komentarzy i ich oceniania. Opisano implementację podglądu szczegółowych statystyk dostępnych dla zalogowanego użytkownika. Zaimplementowano panel administratora służący do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkownikami i kalendarzem wydarzeń oraz zakładkami i komponentami strony głównej.
+W części poświęconej szczegółom implementacji przedstawiono kolejne etapy integracji poszczególnych dodatków jakie oferuje framework Ruby On Rails. Opisano jak w trakcie pracy zaimplementowano publikowanie artykułów i ich kategoryzację, wyświetlanie listy kategorii artykułów na pasku nawigacji oraz kanał RSS. Opisano jak zaimplementowany został kalendarz wydarzeń, jak stworzono User Interface, który wyświetla wszystkie artykuły na stronie głównej, niezależnie od kategorii w kolejności malejącej od daty dodania. Omówiono jak do artykułów i wydarzeń w kalendarzu zaimplementowano możliwość załączania ilustracji oraz dodawania komentarzy i ich oceniania. Opisano implementację podglądu szczegółowych statystyk dostępnych dla zalogowanego użytkownika oraz jak zaimplementowano panel administratora służący do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkownikami i kalendarzem wydarzeń oraz zakładkami i komponentami strony głównej.
 
 W zakończeniu podsumowano wyniki prac oraz zaprezentowano możliwości rozwoju systemu.
 
 Przy implementacji użyto najnowsze wersje technologii Ruby, Ruby on Rails, PostgreSQL, ZURB Foundation, jQuery Turbolinks, Plataformatec Devise, CarrierWave, RMagick, reCAPTCHA, CKEditor, Chartkick, Prawn, RSS, rQRcode, Geocoder.
 
-\mbox{Projekt wdrożono w serwisie\, \\\texttt{heroku.com} i jest dostępny pod adresem:} \\\texttt{\url{https://traincms.herokuapp.com/}}\footnote{Dane dostępowe do wdrożonego projektu: konto administratora: \texttt{user1@pl} z hasłem \texttt{userpl}, konto redaktora: \texttt{user2@pl} z hasłem \texttt{userpl}.}
+\mbox{Projekt wdrożono w serwisie\, \\\texttt{heroku.com} i udostępniono pod adresem:} \\\texttt{\url{https://traincms.herokuapp.com/}}\footnote{Dane dostępowe do wdrożonego projektu: konto administratora: \texttt{user1@pl} z hasłem \texttt{userpl}, konto redaktora: \texttt{user2@pl} z hasłem \texttt{userpl}.}
 
 \mbox{Kod źródłowy dostępny jest w serwisie\, \\\texttt{github.com} pod adresem:} \\\texttt{\url{https://github.com/kamilpek/traincms/}}.
 \end{abstract}
@@ -119,15 +119,15 @@ Na rynku systemów zarządzania treścią znajdziemy sporo różnych rozwiązań
 
 \subsection{Joomla!}
 
-Joomla jest to system zarządzania treścią, napisany w języku PHP, wykorzystujący do swojego działania system zarządzania bazą danych MySQL, rozpowszechniana jest na licencji GPL. Nazwa Joomla w języku suahili oznacza razem.
+Joomla jest to system zarządzania treścią, napisany w języku PHP, wykorzystujący do swojego działania system zarządzania bazą danych MySQL, rozpowszechniany jest na licencji GPL. Nazwa Joomla w języku suahili oznacza razem.
 
 System ten oferuję obsługę wielu kont użytkownika, wyszukiwarkę zaimplementowaną w User Interface, tworzenie wydruków artykułów, dołączanie ilustracji do artykułu, komentowanie artykułów przez niezalogowanych użytkowników. Wymienione funkcjonalności pokrywają się z możliwościami stworzonego przeze mnie systemu.
 
 \newpage
 
-TrainCMS posiada także inne możliwości, których nie oferuję Joomla w wersji podstawowej, jest to kalendarz wydarzeń, dodawanie załączników, generowanie dokumentów PDF zawierających artykuły, przedstawienie statystyk w formie graficznej, karuzela ilustracji wyróżnionych artykułów. Natomiast niektóre z rozwiązań zostały rozszerzone względem Joomli są to komentarze, które w projekcie TrainCMS rejestrują adres IP autora komentarza.
+TrainCMS posiada także inne możliwości, których nie oferuję Joomla w wersji podstawowej, jest to kalendarz wydarzeń, dodawanie załączników, generowanie dokumentów PDF zawierających artykuły, przedstawienie statystyk w formie graficznej, karuzela ilustracji wyróżnionych artykułów. Natomiast niektóre z rozwiązań zostały rozszerzone względem Joomla są to komentarze, które w projekcie TrainCMS rejestrują adres IP autora komentarza.
 
-Znajdziemy także w Joomli funkcje, których nie posiada mój system. Jednym z takich rozwiązań jest tworzenie struktury menu w formie drzewiastej. Kolejnym rozwiązaniem jest możliwość zmiany szablonu frontu strony i szablonu zaplecza witryny. Główną funkcjonalnością Joomli jest możliwość łatwego rozszerzania możliwości strony za pomocą małych dodatków typu plugin oraz komponentów. Podczas porównywania obu systemów należy pamiętać, że Joomla jest produktem z wieloletnim doświadczeniem na rynku, tworzonym przez zespół programistów z całego świata. Rozwiązania oparte na Joomli znajdują zastosowanie głównie przy dużych witrynach.
+Znajdziemy także w Joomli funkcje, których nie posiada mój system. Jednym z takich rozwiązań jest tworzenie struktury menu w formie drzewiastej. Kolejnym rozwiązaniem jest możliwość zmiany szablonu frontu strony i szablonu zaplecza witryny. Główną funkcjonalnością Joomla jest możliwość łatwego rozszerzania możliwości strony za pomocą małych dodatków typu plugin oraz komponentów. Podczas porównywania obu systemów należy pamiętać, że Joomla jest produktem z wieloletnim doświadczeniem na rynku, tworzonym przez zespół programistów z całego świata. Rozwiązania oparte na Joomla znajdują zastosowanie głównie przy dużych witrynach.
 
 \newpage
 
@@ -146,7 +146,7 @@ WordPress jest systemem zarządzania treścią napisanym w języku PHP, wykorzys
 
 System WordPress jest zdecydowanie mniej rozbudowany w porównaniu do Joomli. Oferuje on takie funkcjonalności jak podstawową kategoryzację, tagowanie i komentowanie artykułów, obsługę wielu kont użytkownika, odrębny interfejs dla użytkownika gościa, zwykłego użytkownika i administratora oraz podgląd statystyk, jest również w pełny responsywny. Wszystkie wymienione funkcjonalności pokrywają się z zaimplementowanymi w systemie TrainCMS.
 
-W TrainCMS znajdziemy także inne możliwości, których nie oferuję WordPress w wersji podstawowej, jest to kalendarz wydarzeń, dodawanie załączników, generowanie dokumentów PDF zawierających artykuły oraz karuzela ilustracji wyróżnionych artykułów. Natomiast niektóre z rozwiązań zostały rozszerzone względem Joomli są to komentarze, które w projekcie TrainCMS rejestrują adres IP autora komentarza.
+W TrainCMS znajdziemy także inne możliwości, których nie oferuję WordPress w wersji podstawowej, jest to kalendarz wydarzeń, dodawanie załączników, generowanie dokumentów PDF zawierających artykuły oraz karuzela ilustracji wyróżnionych artykułów. Natomiast niektóre z rozwiązań zostały rozszerzone względem WordPress są to komentarze, które w projekcie TrainCMS rejestrują adres IP autora komentarza.
 
 Należy w tym miejscu wspomnieć, że główną funkcjonalnością WordPress jest łatwość instalacji i zmiany wielu dostępnych szablonów strony. WordPress jest produktem z utartą pozycja na rynku systemów zarządzania treścią, który podobnie jak Joomla tworzony jest przez zespół programistów z całego świata. Witryny obsługiwane przez WordPress to głównie blogi.
 
@@ -244,7 +244,7 @@ W tym rozwiązaniu znajdą zastosowanie wszystkie zaimplementowane w systemie fu
 Głównym rusztowaniem całego systemu jest framework Ruby On Rails \cite{ror} \cite{enterprise} \cite{wikibook} \cite{guides}. Odpowiada on zarówno za frontend jak i backend. Do swojego działania używa bazy PostgreSQL. W dalszych podrozdziałach przybliżę jak wyglądała implementacja poszczególnych elementów systemu za pomocą Ruby On Rails. Framework dystrybuowany jest na licencji MIT License\footnote{MIT License -- Jest to jedna z najmniej rozbudowanych licencji oprogramowania i zarazem jest jedna z najbardziej liberalnych. Umożliwia nieograniczone prawo do użytkowania, kopiowania, modyfikowania i publikacji, również sprzedaży wersji pierwotnej bądź zmodyfikowanej oprogramowania. Jedynym wymaganiem jest umieszczenie informacji o autorze i licencji.}.
 
 \subsection{Artykuły i Kategorie}
-Podstawą jednostką na stronie jest artykuł, który zawsze zawiera się w jednej z uprzednio utworzonych kategorii. Artykuł posiada atrybuty takie jak tytuł, wstęp, treść główną, numer kategorii do której został przypisany, ilustrację, znacznik aktywności, znacznik wyróżnienia, znacznik komentarzy, liczbę wyświetleń oraz znaczniki czasowe – data, czas utworzenia i edycji. Chciałbym przybliżyć niektóre z atrybutów, pierwszym z nich będą znaczniki aktywności, wyróżnienia i komentarzy, które kolejno oznaczają informacje o tym, czy artykuł jest aktywny co przekłada się na to, że będzie wyświetlony na stronie głównej oraz spisie artykułów danej kategorii, kolejny atrybut determinuję to, czy artykuł zostanie wyświetlony na karuzeli ilustracji na szczycie strony głównej, ostatni ze znaczników pozwala dezaktywować moduł komentarzy w przypadku, gdyby zaszła konieczność, aby przy pewnym artykule nie miałoby być komentarzy. Liczba wyświetleń jest sumaryczną wartością wszystkich odsłon artykułu, obliczanie polega na pobraniu liczby wyświetleń z bazy danych, następnie zwiększeniu jej o jeden oraz aktualizacji wartości w bazie danych. Znaczniki czasowe są automatycznie dodawane przez Rails. Zarówno na stronie głównej, jak i na liście artykułów danej kategorii wyświetlany jest tytuł, wstęp do artykułu, ilustracja, autor, data utworzenia, liczba komentarzy. Po przejściu do artykułu zobaczymy pełną treść, w tym celu właśnie zostały zaimplementowane dwa oddzielne atrybuty. Zaimplementowana została również wyszukiwarka artykułów, gdzie słowem kluczowym wyszukiwania jest tytuł artykułu. Algorytm wyszukiwania ignoruje wielkość liter oraz pozwala wyszukiwać treści za pomocą fragmentów wyrazów. Artykuły mogą dodawać jedynie zalogowani użytkownicy. Po przejściu do artykułu możemy go wydrukować dzięki specjalnie do tego przygotowanej formatce optymalizującej miejsce na stronie kartki papieru.
+Podstawową jednostką na stronie jest artykuł, który zawsze zawiera się w jednej z uprzednio utworzonych kategorii. Artykuł posiada atrybuty takie jak tytuł, wstęp, treść główną, numer kategorii do której został przypisany, ilustrację, znacznik aktywności, znacznik wyróżnienia, znacznik komentarzy, liczbę wyświetleń oraz znaczniki czasowe – data, czas utworzenia i edycji. Chciałbym przybliżyć niektóre z atrybutów, pierwszym z nich będą znaczniki aktywności, wyróżnienia i komentarzy, które kolejno oznaczają informacje o tym, czy artykuł jest aktywny co przekłada się na to, że będzie wyświetlony na stronie głównej oraz spisie artykułów danej kategorii, kolejny atrybut determinuję to, czy artykuł zostanie wyświetlony na karuzeli ilustracji na szczycie strony głównej, ostatni ze znaczników pozwala dezaktywować moduł komentarzy w przypadku, gdyby zaszła konieczność, aby przy pewnym artykule nie miałoby być komentarzy. Liczba wyświetleń jest sumaryczną wartością wszystkich odsłon artykułu, obliczanie polega na pobraniu liczby wyświetleń z bazy danych, następnie zwiększeniu jej o jeden oraz aktualizacji wartości w bazie danych. Znaczniki czasowe są automatycznie dodawane przez Rails. Zarówno na stronie głównej, jak i na liście artykułów danej kategorii wyświetlany jest tytuł, wstęp do artykułu, ilustracja, autor, data utworzenia, liczba komentarzy. Po przejściu do artykułu zobaczymy pełną treść, w tym celu właśnie zostały zaimplementowane dwa oddzielne atrybuty. Zaimplementowana została również wyszukiwarka artykułów, gdzie słowem kluczowym wyszukiwania jest tytuł artykułu. Algorytm wyszukiwania ignoruje wielkość liter oraz pozwala wyszukiwać treści za pomocą fragmentów wyrazów. Artykuły mogą dodawać jedynie zalogowani użytkownicy. Po przejściu do artykułu możemy go wydrukować dzięki specjalnie do tego przygotowanej formatce optymalizującej miejsce na stronie kartki papieru.
 
 Kategoria natomiast posiada atrybuty takie jak: tytuł, opis, znacznik aktywności, znacznik strony głównej oraz znaczniki czasowe – data, czas utworzenia i edycji. Wszystkie kategorie oznaczone jako aktywne wyświetlane są na górnym pasku nawigacji, po przejściu w odnośnik do danej kategorii zobaczymy opis kategorii oraz listę wszystkich artykułów przypisanych do tejże kategorii. Istnieje również taki atrybut jak znacznik strony głównej, który określa to czy artykuły przypisane do kategorii będą wyświetlane na stronie głównej. Do strony głównej może być przypisane kilka kategorii.
 
@@ -703,7 +703,7 @@ Oficjalna dokumentacja - Gem CarrierWave.
 
 \bibitem{cloudinary}
 Oficjalna dokumentacja - Gem Cloudinary.
-\\\texttt{\url{http://cloudinary.com/documentation/rails_integration/}} (dostęp 22.05.2017)
+\\\texttt{\url{http://cloudinary.com/documentation/rails_integration/}}\break (dostęp 22.05.2017)
 
 \bibitem{ckeditor}
 Oficjalna dokumentacja - Gem CKEditor for Rails.
@@ -750,13 +750,10 @@ Podczas pracy nad projektem zrealizowałem wszystkie założone wcześniej cele,
 
 % załączniki (opcjonalnie):
 \appendix
-\chapter{Płyta DVD z kodem źródłowym projektu}
 
+\chapter{Płyta CD z plikami pracy licencjackiej}
 
-
-\chapter{Płyta DVD z plikami pracy licencjackiej}
-
-
+\chapter{Płyta CD z kodem źródłowym projektu}
 
 % spis rysunków (jeżeli jest potrzebny):
 \listoffigures

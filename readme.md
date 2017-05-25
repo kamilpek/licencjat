@@ -13,7 +13,7 @@ Opracowana aplikacja pozwala uruchomić w niedługim czasie własną witrynę in
 
 W części teoretycznej opisane zostały prace nad założeniami mającymi na celu stworzenie systemu zarządzania treścią oraz porównano stworzony projekt z potentatami na rynku tychże systemów. Zaprezentowano diagramy obrazujące schemat i architekturę całego systemu. Osadzono ilustracje projektów interfejsu dla administratora, redaktora oraz gościa.
 
-W części poświęconej szczegółom implementacji przedstawiono kolejne etapy integracji poszczególnych dodatków jakie oferuje framework Ruby On Rails. Opisano jak w trakcie pracy zaimplementowano publikowanie artykułów i ich kategoryzację, wyświetlanie listy kategorii artykułów na pasku nawigacji oraz kanał RSS. Opisano jak zaimplementowany został kalendarz wydarzeń, jak Stworzono User Interface, który wyświetla wszystkie artykuły na stronie głównej, niezależnie od kategorii w kolejności malejącej od daty dodania. Omówiono jak do artykułów i wydarzeń w kalendarzu zaimplementowano możliwość załączania ilustracji oraz dodawania komentarzy i ich oceniania. Opisano implementację podglądu szczegółowych statystyk dostępnych dla zalogowanego użytkownika. Zaimplementowano panel administratora służący do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkownikami i kalendarzem wydarzeń oraz zakładkami i komponentami strony głównej.
+W części poświęconej szczegółom implementacji przedstawiono kolejne etapy integracji poszczególnych dodatków jakie oferuje framework Ruby On Rails. Opisano jak w trakcie pracy zaimplementowano publikowanie artykułów i ich kategoryzację, wyświetlanie listy kategorii artykułów na pasku nawigacji oraz kanał RSS. Opisano jak zaimplementowany został kalendarz wydarzeń, jak stworzono User Interface, który wyświetla wszystkie artykuły na stronie głównej, niezależnie od kategorii w kolejności malejącej od daty dodania. Omówiono jak do artykułów i wydarzeń w kalendarzu zaimplementowano możliwość załączania ilustracji oraz dodawania komentarzy i ich oceniania. Opisano implementację podglądu szczegółowych statystyk dostępnych dla zalogowanego użytkownika oraz jak zaimplementowano panel administratora służący do zarządzania artykułami, kategoriami, komentarzami, tagami, użytkownikami i kalendarzem wydarzeń oraz zakładkami i komponentami strony głównej.
 
 W zakończeniu podsumowano wyniki prac oraz zaprezentowano możliwości rozwoju systemu.
 
@@ -21,7 +21,7 @@ Przy implementacji użyto najnowsze wersje technologii Ruby, Ruby on Rails, Post
 
 Do implementacji użyto technologie takie jak Ruby, Ruby on Rails, ZURB Foundation, jQuery Turbolinks, Plataformatec Devise, CarrierWave, RMagick, reCAPTCHA, CKEditor, Chartkick, Prawn.
 
-Projekt wdrożono w serwisie, heroku.com i jest dostępny pod adresem: [https://traincms.herokuapp.com/](https://traincms.herokuapp.com/).
+Projekt wdrożono w serwisie, heroku.com i udostępniono pod adresem: [https://traincms.herokuapp.com/](https://traincms.herokuapp.com/).
 
 Kod źródłowy dostępny jest w serwisie github.com pod adresem: [https://github.com/kamilpek/traincms/](https://github.com/kamilpek/traincms/).
 
@@ -71,6 +71,8 @@ Kod źródłowy dostępny jest w serwisie github.com pod adresem: [https://githu
 1. Zakończenie
 1. Spis rysunków
 1. Spis kodów źródłowych
+1. Płyta CD z plikami pracy licencjackiej
+1. Płyta CD z kodem źródłowym projektu
 1. Oświadczenie
 
 ## Wstęp
